@@ -7,17 +7,28 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-primary text-white pt-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            יצירתיות בכל פריים
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 animate-slide-up">
-            צילום ועריכת וידאו ברמה הגבוהה ביותר
-          </p>
-          <a href="#contact" className="bg-white text-primary-pink px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300">
-            צור קשר
-          </a>
+      <section id="home" className="min-h-screen flex items-center bg-gradient-primary text-white pt-16">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+            <div className="w-full md:w-1/2 text-right space-y-6 animate-fade-in">
+              <h2 className="text-2xl md:text-3xl font-light mb-4 animate-slide-up">
+                אני כאן כדי לקחת את התוכן שלך לרמה הבאה עם אסטרטגיה שיווקית, צילום מקצועי ועריכת סרטונים שמייצרים תוצאות.
+              </h2>
+              <h1 className="text-5xl md:text-7xl font-bold animate-slide-up">
+                אני האמיתי בעסק שלך!
+              </h1>
+              <a href="#contact" className="inline-block bg-white text-primary-pink px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300">
+                צור קשר
+              </a>
+            </div>
+            <div className="w-full md:w-1/2 animate-fade-in">
+              <img 
+                src="/lovable-uploads/23745afe-75ff-4eec-ac80-c2590e9b6dad.png"
+                alt="תמונת גיבור"
+                className="w-full h-auto rounded-2xl shadow-xl"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
