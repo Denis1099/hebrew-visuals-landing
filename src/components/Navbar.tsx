@@ -19,18 +19,21 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <img src="/lovable-uploads/fcc5d5dd-08b4-494a-a7ef-d137915d9e3d.png" alt="Creatives Logo" className="h-12" />
           
-          {/* Mobile menu button */}
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
-
-          {/* Desktop menu */}
-          <div className="hidden md:flex space-x-8 space-x-reverse">
+          {/* Desktop menu - Centered */}
+          <div className="hidden md:flex flex-1 justify-center space-x-8 space-x-reverse">
             <NavLink href="#home">בית</NavLink>
             <NavLink href="#portfolio">תיק עבודות</NavLink>
             <NavLink href="#services">שירותים</NavLink>
             <NavLink href="#contact">צור קשר</NavLink>
           </div>
+
+          {/* Empty div to maintain spacing */}
+          <div className="w-12 hidden md:block"></div>
+          
+          {/* Mobile menu button */}
+          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
 
         {/* Mobile menu */}

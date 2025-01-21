@@ -7,9 +7,9 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center bg-gradient-primary text-white pt-16">
+      <section id="home" className="min-h-screen flex items-start pt-32 bg-gradient-primary text-white">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+          <div className="flex flex-col-reverse md:flex-row items-start justify-between gap-12">
             <div className="w-full md:w-1/2 text-right space-y-6 animate-fade-in">
               <h2 className="text-2xl md:text-3xl font-light mb-4 animate-slide-up">
                 אני כאן כדי לקחת את התוכן שלך לרמה הבאה עם אסטרטגיה שיווקית, צילום מקצועי ועריכת סרטונים שמייצרים תוצאות.
@@ -23,7 +23,7 @@ const Index = () => {
             </div>
             <div className="w-full md:w-1/2 animate-fade-in">
               <img 
-                src="/lovable-uploads/23745afe-75ff-4eec-ac80-c2590e9b6dad.png"
+                src="/lovable-uploads/99678c18-5979-4632-b796-295b97f52ed2.png"
                 alt="תמונת גיבור"
                 className="w-full h-auto rounded-2xl shadow-xl"
               />
