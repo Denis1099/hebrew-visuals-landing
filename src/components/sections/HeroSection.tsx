@@ -52,11 +52,11 @@ const HeroSection = () => {
                       control={form.control}
                       name="name"
                       render={({ field }) => (
-                        <FormItem className="w-full md:w-auto">
+                        <FormItem className="w-full md:w-[300px]">
                           <FormControl>
                             <Input 
                               placeholder="שם מלא" 
-                              className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500"
+                              className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg"
                               {...field}
                             />
                           </FormControl>
@@ -67,12 +67,12 @@ const HeroSection = () => {
                       control={form.control}
                       name="phone"
                       render={({ field }) => (
-                        <FormItem className="w-full md:w-auto">
+                        <FormItem className="w-full md:w-[300px]">
                           <FormControl>
                             <Input 
                               placeholder="מספר טלפון" 
                               type="tel"
-                              className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500"
+                              className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg"
                               {...field}
                             />
                           </FormControl>
@@ -88,7 +88,7 @@ const HeroSection = () => {
                         hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
                         transition-all duration-300 ease-in-out w-full md:w-auto"
                     >
-                      אני רוצה לבלוט ברשת!
+                      אני רוצה לשמוע פרטים נוספים
                     </button>
                     <button 
                       type="button"
