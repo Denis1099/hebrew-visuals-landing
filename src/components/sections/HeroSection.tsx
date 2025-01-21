@@ -15,7 +15,6 @@ const HeroSection = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     console.log('Form submitted:', data);
-    // Here you would typically send the data to your backend
     setIsSubmitting(false);
   };
 
@@ -94,11 +93,11 @@ const HeroSection = () => {
                     <button 
                       type="button"
                       onClick={scrollToFinalCTA}
-                      className="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-medium 
-                        hover:bg-white/10 hover:transform hover:scale-105 hover:shadow-lg 
+                      className="inline-block bg-primary-pink border-2 border-white text-white px-8 py-3 rounded-full font-medium 
+                        hover:bg-primary-pink/90 hover:transform hover:scale-105 hover:shadow-lg 
                         transition-all duration-300 ease-in-out w-full md:w-auto"
                     >
-                      אני רוצה לשמוע עוד
+                      תראה לי איך עושים את זה!
                     </button>
                   </div>
                 </form>
