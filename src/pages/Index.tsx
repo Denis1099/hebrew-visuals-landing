@@ -206,8 +206,13 @@ const Index = () => {
                 className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
               />
               <input
-                type="email"
-                placeholder="אימייל"
+                type="text"
+                placeholder="מה העסק?"
+                className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
+              />
+              <input
+                type="tel"
+                placeholder="טלפון"
                 className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
               />
               <textarea
@@ -219,7 +224,7 @@ const Index = () => {
                 type="submit"
                 className="w-full bg-gradient-primary text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all duration-300"
               >
-                שלח הודעה
+                אני רוצה לבלוט ברשת!
               </button>
             </form>
           </div>
