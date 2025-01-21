@@ -21,22 +21,22 @@ const ContactSection = () => {
             <input
               type="text"
               placeholder="שם מלא"
-              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
+              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink text-right"
             />
             <input
               type="text"
               placeholder="מה העסק?"
-              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
+              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink text-right"
             />
             <input
               type="tel"
               placeholder="טלפון"
-              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
+              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink text-right"
             />
             <textarea
               placeholder="הודעה"
               rows={4}
-              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
+              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink text-right"
             />
             <button
               type="submit"
