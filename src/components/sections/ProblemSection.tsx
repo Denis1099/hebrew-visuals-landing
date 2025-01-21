@@ -23,7 +23,7 @@ const ProblemSection = () => {
           <p className="text-lg">רוצה ללמוד איך לעשות את זה?</p>
           <div className="pt-4 md:pt-6">
             <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-all duration-300">
-              אני רוצה פרטים נוספים
+              תראה לי איך עושים את זה!
             </a>
           </div>
         </div>
