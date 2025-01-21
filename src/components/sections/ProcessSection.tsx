@@ -14,7 +14,7 @@ const ProcessSection = () => {
   return (
     <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 via-purple-50/30 to-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-8 md:mb-12">"מגניב, איך בפועל זה עובד?"</h2>
+        <h2 className="text-4xl font-bold text-center mb-8 md:mb-12 gradient-text">"מגניב, איך בפועל זה עובד?"</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <ProcessCard
             icon={Presentation}

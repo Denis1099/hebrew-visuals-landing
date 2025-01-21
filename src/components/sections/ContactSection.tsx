@@ -11,7 +11,7 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16">צור קשר</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 gradient-text">צור קשר</h2>
         <div className="max-w-2xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <ContactInfo icon={<Phone />} text="050-1234567" />

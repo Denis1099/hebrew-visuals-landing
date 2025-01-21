@@ -2,7 +2,7 @@ const ProblemSection = () => {
   return (
     <section className="py-8 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-6 md:mb-8">"מרגיש תקוע עם יצירת תוכן לעסק שלך?"</h2>
+        <h2 className="text-4xl font-bold text-center mb-6 md:mb-8 gradient-text">"מרגיש תקוע עם יצירת תוכן לעסק שלך?"</h2>
         <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
           <p className="text-xl">אני לגמרי מבין את זה!</p>
           <p className="text-lg">

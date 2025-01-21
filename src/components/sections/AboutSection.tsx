@@ -3,7 +3,7 @@ const AboutSection = () => {
     <section className="py-12 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-8">אז היי, אני גבריאל גלמן</h2>
+          <h2 className="text-4xl font-bold text-center mb-8 gradient-text">אז היי, אני גבריאל גלמן</h2>
           <div className="space-y-4 md:space-y-6 text-center md:text-right text-lg">
             <p>ואני כאן כדי לעזור לך להצליח עם תוכן שיווקי לעסק שלך!</p>
             <p>אני איש תוכן אסטרטג וצלם מאז שאני זוכר את עצמי. מאז גיל 12 שלקחתי את המצלמה הישנה של אחי הגדול לא עזבתי אותה, בשלב מסוים הבנתי שהתמונה לא רק מושכת תשומת לב, אלא גם מביאה לקוחות. כשליוויתי בעלי עסקים, הבנתי את האתגרים – חוסר זמן, פחד ממצלמה, ותחושת חוסר ידע איך להתחיל.</p>
