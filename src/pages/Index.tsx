@@ -17,9 +17,14 @@ const Index = () => {
               <h1 className="text-5xl md:text-7xl font-bold animate-slide-up">
                 אני האמיתי בעסק שלך!
               </h1>
-              <a href="#contact" className="inline-block bg-white text-primary-pink px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300">
-                צור קשר
-              </a>
+              <p className="text-xl md:text-2xl font-light animate-slide-up">
+                הגיע הזמן שהעסק שלך יבלוט ויביא תוצאות אמיתיות!
+              </p>
+              <div className="flex justify-center">
+                <a href="#contact" className="inline-block bg-white text-primary-pink px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300">
+                  צור קשר
+                </a>
+              </div>
             </div>
             <div className="w-full md:w-1/2 animate-fade-in">
               <img 
@@ -32,46 +37,161 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 gradient-text">השירותים שלנו</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <ServiceCard
-              icon={<Camera className="w-12 h-12" />}
-              title="צילום מקצועי"
-              description="צילום איכותי לכל מטרה - אירועים, מוצרים, תדמית ועוד"
-            />
-            <ServiceCard
-              icon={<Video className="w-12 h-12" />}
-              title="עריכת וידאו"
-              description="עריכה מקצועית, אפקטים מיוחדים וצבע"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 gradient-text">תיק עבודות</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="relative group overflow-hidden rounded-lg">
-                <img
-                  src={`https://images.unsplash.com/photo-${item + 1486312338219}`}
-                  alt={`Portfolio item ${item}`}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-75 transition-opacity duration-300" />
-              </div>
+          <h2 className="text-4xl font-bold text-center mb-8">עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:</h2>
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            {[1, 2, 3].map((index) => (
+              <div key={index} className="aspect-video bg-gray-200 rounded-lg"></div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Problem Statement Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-8">"מרגיש תקוע עם יצירת תוכן לעסק שלך?"</h2>
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <p className="text-xl">אני לגמרי מבין את זה!</p>
+            <p className="text-lg">
+              המון בעלי עסקים מגיעים אליי כשהם בדיוק במקום הזה – רוצים להפיק תוכן איכותי אבל לא יודעים איך להתחיל, או פשוט פוחדים מלעמוד מול המצלמה.
+            </p>
+            <div className="space-y-4">
+              <p className="text-lg font-medium">אתה בטח אומר:</p>
+              <ul className="space-y-2">
+                <li>איך עושים את זה נכון?</li>
+                <li>מה יגידו עליי?</li>
+                <li>מה אם אני אשקיע המון זמן וכסף ולא אראה תוצאות?</li>
+              </ul>
+            </div>
+            <p className="text-lg">
+              אז אחרי שעזרתי לעשרות בעלי עסקים לפרוץ ולהתגבר על המכשולים האלו, אני יכול להבטיח לך דבר אחד:
+            </p>
+            <p className="text-xl font-bold">ליצור תוכן יכול להיות פשוט, קליל ואפילו מהנה.</p>
+            <p className="text-lg">רוצה ללמוד איך לעשות את זה?</p>
+            <div className="pt-6">
+              <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-all duration-300">
+                צור קשר
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-8">"גבריאל, תראה לי קצת דוגמאות"</h2>
+          <p className="text-xl text-center mb-12">טוב ידעתי שתבקשו:</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((index) => (
+              <div key={index} className="aspect-video bg-gray-200 rounded-lg"></div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16">"מגניב, איך בפועל זה עובד?"</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <ProcessCard
+              title="שיחת אפיון לעסק"
+              description="שבה נבין בדיוק מה העסק שלך ומי קהל היעד שאליו אנחנו מכוונים"
+            />
+            <ProcessCard
+              title="פגישת אסטרטגיה"
+              description="שבה נצלול לשיטה מדוייקת של ייצרת תוכן מתואם אישית לעסק שלך וכזה שמוציא את 'האני האמיתי שבך' ובסוף ממיר צופים ללקוחות משלמים"
+            />
+            <ProcessCard
+              title="יום צילום"
+              description="עם צלם מקצועי ומפיק שפשוט ידבר איתך כדי שזה ירגיש כמו שיחה רגילה ולך יהיה קל להתרכז ולהוציא את התוכן הכי טוב שלך"
+            />
+            <ProcessCard
+              title="עריכת סרטונים"
+              description="ששמה פוקוס עליך ומשלבת עריכה מתקדמת שמבליטה אותך משאר המתחרים כדי שנמשוך קהל איכותי ורלוונטי ושייפרש את איכות התוכן לטיב השירות שלכם"
+            />
+          </div>
+          <div className="text-center mt-12">
+            <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-all duration-300">
+              צור קשר
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* More Testimonials Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">עוד קצת ממה שהלקוחות שלי אומרים:</h2>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {[1, 2, 3].map((index) => (
+              <div key={index} className="aspect-video bg-gray-200 rounded-lg"></div>
+            ))}
+          </div>
+          <div className="text-center">
+            <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-all duration-300">
+              צור קשר
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-8">אז היי, אני גבריאל גלמן</h2>
+            <div className="space-y-6 text-lg">
+              <p>ואני כאן כדי לעזור לך להצליח עם תוכן שיווקי לעסק שלך!</p>
+              <p>אני איש תוכן אסטרטג וצלם מאז שאני זוכר את עצמי. מאז גיל 12 שלקחתי את המצלמה הישנה של אחי הגדול לא עזבתי אותה, בשלב מסוים הבנתי שהתמונה לא רק מושכת תשומת לב, אלא גם מביאה לקוחות. כשליוויתי בעלי עסקים, הבנתי את האתגרים – חוסר זמן, פחד ממצלמה, ותחושת חוסר ידע איך להתחיל.</p>
+              <p>הייתי גם אני שם – ביישן, לא יודע איך לעמוד מול המצלמה, אבל כל זה השתנה. אז היום אני לא רק צלם, אלא גם אסטרטג שמבין איך ליצור תוכן שמניב תוצאות.</p>
+              <p>אני עובד עם כל לקוח באופן אישי ומותאם, ומטפל בתהליך כולו – מאסטרטגיה ועד עריכה. בגדול דואג שתמשיך לעשות את מה שאתה טוב בו ודואג לכל המעטפת שאתה צריך בשביל ליצור תוכן שממיר צופים ללקוחות משלמים.</p>
+            </div>
+            <div className="text-center mt-12">
+              <h3 className="text-2xl font-bold mb-6">גבריאל בוא נדבר:</h3>
+              <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-all duration-300">
+                צור קשר
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-20 bg-gradient-primary text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-8">אם הגעת עד כאן, כנראה שאתה רציני לגבי העסק שלך.</h2>
+            <div className="space-y-6 text-lg">
+              <p>אני יודע שזה לא קל לעמוד מול מצלמה, ויכול להיות שאתה מרגיש שלא תמיד יש לך את הזמן או את הכלים לעשות את זה נכון.</p>
+              <p>אבל תן לי לשאול אותך –</p>
+              <p>יש שני סוגי בעלי עסקים בעולם:</p>
+              <ul className="space-y-4">
+                <li>אלו שלוקחים את העסק שלהם ברצינות, משקיעים בתוכן איכותי, ומשדרגים את עצמם ואת העסק שלהם.</li>
+                <li>ויש את אלו שמניחים לפחדים ולחששות להחזיק אותם במקום.</li>
+              </ul>
+              <p>(ואת מי אתה חושב שהלקוחות יבחרו? את המותג המוביל או את זה שנשאר מאחור?)</p>
+              <p className="font-bold">אני שואל אותך,</p>
+              <p>איזה סוג של בעל עסק אתה רוצה להיות?</p>
+              <p>האם אתה מוכן לשים את הפחדים בצד ולהפוך למוביל בשוק שלך?</p>
+              <p className="font-bold">הבחירה בידיים שלך.</p>
+              <p>אני משאיר לך הזדמנות אחרונה להשאיר את הפרטים שלך לשיחת ייעוץ והכרת העסק במתנה!</p>
+            </div>
+            <div className="mt-12">
+              <a href="#contact" className="inline-block bg-white text-primary-pink px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300">
+                צור קשר
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-primary text-white">
+      <section id="contact" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">צור קשר</h2>
           <div className="max-w-2xl mx-auto">
@@ -83,21 +203,21 @@ const Index = () => {
               <input
                 type="text"
                 placeholder="שם מלא"
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:border-white"
+                className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
               />
               <input
                 type="email"
                 placeholder="אימייל"
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:border-white"
+                className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
               />
               <textarea
                 placeholder="הודעה"
                 rows={4}
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:border-white"
+                className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink"
               />
               <button
                 type="submit"
-                className="w-full bg-white text-primary-pink px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-300"
+                className="w-full bg-gradient-primary text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all duration-300"
               >
                 שלח הודעה
               </button>
@@ -109,17 +229,16 @@ const Index = () => {
   );
 };
 
-const ServiceCard = ({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) => (
-  <div className="p-8 rounded-xl glass-card">
-    <div className="text-primary-pink mb-4">{icon}</div>
-    <h3 className="text-2xl font-bold mb-4">{title}</h3>
+const ProcessCard = ({ title, description }: { title: string; description: string }) => (
+  <div className="p-6 rounded-xl glass-card">
+    <h3 className="text-xl font-bold mb-4">{title}</h3>
     <p className="text-gray-600">{description}</p>
   </div>
 );
 
 const ContactInfo = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
   <div className="flex items-center space-x-4 space-x-reverse">
-    <div className="text-white">{icon}</div>
+    <div className="text-primary-pink">{icon}</div>
     <span>{text}</span>
   </div>
 );

@@ -50,7 +50,7 @@ export default {
         "gradient-primary": "linear-gradient(135deg, #c0017e 0%, #5797ef 100%)",
       },
       fontFamily: {
-        heebo: ["Heebo", "sans-serif"],
+        'noto': ['"Noto Sans Hebrew"', 'sans-serif'],
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
