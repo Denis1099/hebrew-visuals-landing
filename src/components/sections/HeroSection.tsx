@@ -86,16 +86,16 @@ const HeroSection = () => {
                       disabled={isSubmitting}
                       className="inline-block bg-[#9b87f5] text-white px-8 py-3 rounded-full font-medium 
                         hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                        transition-all duration-300 ease-in-out w-full md:w-auto"
+                        transition-all duration-300 ease-in-out w-full md:w-auto md:text-lg md:px-10 md:py-4"
                     >
-                      שגר אותי
+                      שגר אותי! 🚀
                     </button>
                     <button 
                       type="button"
                       onClick={scrollToFinalCTA}
-                      className="inline-block bg-primary-pink border-2 border-white text-white px-8 py-3 rounded-full font-medium 
+                      className="inline-block bg-primary-pink text-white px-8 py-3 rounded-full font-medium 
                         hover:bg-primary-pink/90 hover:transform hover:scale-105 hover:shadow-lg 
-                        transition-all duration-300 ease-in-out w-full md:w-auto"
+                        transition-all duration-300 ease-in-out w-full md:w-auto md:text-lg md:px-10 md:py-4"
                     >
                       אני רוצה פרטים נוספים
                     </button>
