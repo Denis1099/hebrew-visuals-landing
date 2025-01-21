@@ -7,9 +7,9 @@ const ProcessCard = ({ title, description }: { title: string; description: strin
 
 const ProcessSection = () => {
   return (
-    <section className="py-12 md:py-20 bg-gray-50">
+    <section className="py-8 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 md:mb-16">"מגניב, איך בפועל זה עובד?"</h2>
+        <h2 className="text-4xl font-bold text-center mb-8 md:mb-12">"מגניב, איך בפועל זה עובד?"</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <ProcessCard
             title="שיחת אפיון לעסק"
@@ -28,7 +28,7 @@ const ProcessSection = () => {
             description="ששמה פוקוס עליך ומשלבת עריכה מתקדמת שמבליטה אותך משאר המתחרים כדי שנמשוך קהל איכותי ורלוונטי ושייפרש את איכות התוכן לטיב השירות שלכם"
           />
         </div>
-        <div className="text-center mt-8 md:mt-12">
+        <div className="text-center mt-6 md:mt-8">
           <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-all duration-300">
             צור קשר
           </a>
