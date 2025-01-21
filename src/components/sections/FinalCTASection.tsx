@@ -1,6 +1,6 @@
 const FinalCTASection = () => {
   return (
-    <section className="py-20 bg-gradient-primary text-white">
+    <section id="final-cta" className="py-20 bg-gradient-to-b from-white via-[#805ad5] to-[#6b46c1] text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8">אם הגעת עד כאן, כנראה שאתה רציני לגבי העסק שלך.</h2>
