@@ -23,6 +23,28 @@ export default {
           pink: "#c0017e",
           blue: "#5797ef",
         },
+        foreground: "hsl(var(--foreground))",
+        background: "hsl(var(--background))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
       },
       backgroundImage: {
         "gradient-primary": "linear-gradient(135deg, #c0017e 0%, #5797ef 100%)",

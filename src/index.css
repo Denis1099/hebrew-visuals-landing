@@ -34,7 +34,7 @@
   }
 
   body {
-    @apply font-heebo bg-white text-foreground;
+    @apply font-heebo bg-white text-gray-900;
   }
 }
 
