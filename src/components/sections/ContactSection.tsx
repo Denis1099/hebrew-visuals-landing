@@ -9,7 +9,7 @@ const ContactInfo = ({ icon, text }: { icon: React.ReactNode; text: string }) =>
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-white bg-waves-pink relative">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16">צור קשר</h2>
         <div className="max-w-2xl mx-auto">

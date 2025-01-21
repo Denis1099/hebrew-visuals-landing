@@ -51,3 +51,39 @@
 .section-gradient-alt {
   @apply bg-gradient-to-b from-purple-50/30 via-white to-purple-50/30;
 }
+
+.bg-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(87, 151, 239, 0.1) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.bg-pattern-pink {
+  background-image: radial-gradient(circle at 1px 1px, rgba(192, 1, 126, 0.1) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.bg-waves {
+  background: linear-gradient(45deg, 
+    rgba(87, 151, 239, 0.05) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(87, 151, 239, 0.05) 50%, 
+    rgba(87, 151, 239, 0.05) 75%, 
+    transparent 75%, 
+    transparent
+  );
+  background-size: 60px 60px;
+}
+
+.bg-waves-pink {
+  background: linear-gradient(45deg, 
+    rgba(192, 1, 126, 0.05) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(192, 1, 126, 0.05) 50%, 
+    rgba(192, 1, 126, 0.05) 75%, 
+    transparent 75%, 
+    transparent
+  );
+  background-size: 60px 60px;
+}
