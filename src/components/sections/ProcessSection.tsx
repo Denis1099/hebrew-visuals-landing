@@ -1,4 +1,4 @@
-import { Presentation, Strategy, Camera, Video } from "lucide-react";
+import { Presentation, Lightbulb, Camera, Video } from "lucide-react";
 
 const ProcessCard = ({ title, description, icon: Icon }: { title: string; description: string; icon: any }) => (
   <div className="p-6 rounded-xl glass-card bg-gradient-to-br from-white/80 to-purple-50/30 backdrop-blur-sm text-center">
@@ -22,7 +22,7 @@ const ProcessSection = () => {
             description="שבה נבין בדיוק מה העסק שלך ומי קהל היעד שאליו אנחנו מכוונים"
           />
           <ProcessCard
-            icon={Strategy}
+            icon={Lightbulb}
             title="פגישת אסטרטגיה"
             description="שבה נצלול לשיטה מדוייקת של ייצרת תוכן מתואם אישית לעסק שלך וכזה שמוציא את 'האני האמיתי שבך' ובסוף ממיר צופים ללקוחות משלמים"
           />
