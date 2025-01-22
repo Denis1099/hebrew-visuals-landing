@@ -1,6 +1,6 @@
 const FinalCTASection = () => {
   return (
-    <section id="final-cta" className="py-20 bg-gradient-to-b from-[#D3E4FD] via-[#6b46c1] to-[#333] text-white">
+    <section id="final-cta" className="py-20 bg-gradient-to-b from-[#0EA5E9] via-[#6b46c1] to-[#333] text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8 gradient-text">אם הגעת עד כאן, כנראה שאתה רציני לגבי העסק שלך.</h2>
@@ -19,7 +19,7 @@ const FinalCTASection = () => {
             <p className="text-2xl font-bold text-[#0EA5E9]">הבחירה בידיים שלך.</p>
             <p>אני משאיר לך הזדמנות אחרונה להשאיר את הפרטים שלך לשיחת ייעוץ והכרת העסק במתנה!</p>
           </div>
-          <div className="mt-2">
+          <div className="mt-8">
             <img 
               src="/lovable-uploads/b263b9f3-7b7e-49d4-8ea0-fcea0bd94991.png" 
               alt="Gabriel Creative Signature" 
