@@ -38,9 +38,9 @@ const HeroSection = () => {
                 className="w-[85%] h-auto rounded-2xl shadow-xl mx-auto mb-8"
               />
             </div>
-            <p>אני מזמין אותך לשיחת אפיון לעסק במתנה 🎁
+            <p className="text-xl md:text-2xl font-bold mb-8 md:mb-10 animate-slide-up">אני מזמין אותך לשיחת אפיון לעסק במתנה 🎁
             במודל ״ אני האמיתי ״</p>
-            <h1 className="text-4xl md:text-6xl font-bold mb-8 md:mb-12 animate-slide-up bg-gradient-to-r from-white via-primary-blue to-white bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-7xl font-bold mb-8 md:mb-12 animate-slide-up bg-gradient-to-r from-white via-primary-blue to-white bg-clip-text text-transparent">
               אני האמיתי בעסק שלך!
             </h1>
             <p className="text-xl md:text-2xl font-light mb-8 md:mb-10 animate-slide-up">
@@ -48,7 +48,7 @@ const HeroSection = () => {
             </p>
             <div className="space-y-6 mb-16 md:mb-0">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                     <FormField
                       control={form.control}
@@ -58,7 +58,7 @@ const HeroSection = () => {
                           <FormControl>
                             <Input 
                               placeholder="שם מלא" 
-                              className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg"
+                              className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg"
                               {...field}
                             />
                           </FormControl>
@@ -74,7 +74,7 @@ const HeroSection = () => {
                             <Input 
                               placeholder="מספר טלפון" 
                               type="tel"
-                              className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg"
+                              className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg"
                               {...field}
                             />
                           </FormControl>
