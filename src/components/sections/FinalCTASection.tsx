@@ -1,9 +1,9 @@
 const FinalCTASection = () => {
   return (
-    <section id="final-cta" className="py-20 bg-gradient-to-b from-[#0EA5E9] via-[#6b46c1] to-[#333] text-white">
+    <section id="final-cta" className="py-20 bg-gradient-to-b from-[#1A1F2C] via-[#333] to-[#333] text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 gradient-text">אם הגעת עד כאן, כנראה שאתה רציני לגבי העסק שלך.</h2>
+          <h2 className="text-3xl font-bold mb-8 text-white">אם הגעת עד כאן, כנראה שאתה רציני לגבי העסק שלך.</h2>
           <div className="space-y-6 text-lg">
             <p>אני יודע שזה לא קל לעמוד מול מצלמה, ויכול להיות שאתה מרגיש שלא תמיד יש לך את הזמן או את הכלים לעשות את זה נכון.</p>
             <p className="text-2xl font-bold text-[#0EA5E9]">אבל תן לי לשאול אותך –</p>
