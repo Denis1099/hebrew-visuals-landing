@@ -10,7 +10,7 @@ const ContactSection = () => {
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-lg mb-2">שם מלא</label>
+              <label htmlFor="name" className="sr-only block text-lg mb-2">שם מלא</label>
                 <input 
                   type="text" 
                   id="name" 
@@ -19,7 +19,7 @@ const ContactSection = () => {
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-lg mb-2">טלפון</label>
+                <label htmlFor="phone" className="sr-only block text-lg mb-2">טלפון</label>
                 <input 
                   type="tel" 
                   id="phone" 
@@ -29,7 +29,7 @@ const ContactSection = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="message" className="block text-lg mb-2">איך אני יכול לעזור?</label>
+              <label htmlFor="message" className="sr-only block text-lg mb-2">איך אני יכול לעזור?</label>
               <textarea 
                 id="message" 
                 rows={4}
