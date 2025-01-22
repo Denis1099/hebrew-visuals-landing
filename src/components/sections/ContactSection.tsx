@@ -1,40 +1,24 @@
-import { Mail, Phone } from "lucide-react";
-
-const ContactInfo = ({ icon, text }: { icon: React.ReactNode; text: string }) => (
-  <div className="flex items-center space-x-4 space-x-reverse">
-    <div className="text-primary-pink">{icon}</div>
-    <span>{text}</span>
-  </div>
-);
-
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-[#333] text-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <ContactInfo icon={<Phone />} text="050-1234567" />
-            <ContactInfo icon={<Mail />} text="info@creatives.com" />
+        <h2 className="text-3xl font-bold mb-8">Contact Us</h2>
+        <p className="mb-4">We would love to hear from you! Please fill out the form below to get in touch.</p>
+        <form className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium">Name</label>
+            <input type="text" id="name" className="mt-1 block w-full p-2 border border-gray-300 rounded" />
           </div>
-          <form className="space-y-6">
-            <input
-              type="text"
-              placeholder="שם מלא"
-              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink text-right"
-            />
-            <input
-              type="tel"
-              placeholder="טלפון"
-              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:border-primary-pink text-right"
-            />
-            <button
-              type="submit"
-              className="w-full bg-gradient-primary text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all duration-300"
-            >
-              אני רוצה לבלוט ברשת!
-            </button>
-          </form>
-        </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium">Email</label>
+            <input type="email" id="email" className="mt-1 block w-full p-2 border border-gray-300 rounded" />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium">Message</label>
+            <textarea id="message" className="mt-1 block w-full p-2 border border-gray-300 rounded" rows="4"></textarea>
+          </div>
+          <button type="submit" className="py-2 px-4 bg-blue-600 text-white rounded">Send Message</button>
+        </form>
       </div>
     </section>
   );
