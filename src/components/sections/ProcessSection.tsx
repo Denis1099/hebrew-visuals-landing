@@ -37,11 +37,6 @@ const ProcessSection = () => {
             description="ששמה פוקוס עליך ומשלבת עריכה מתקדמת שמבליטה אותך משאר המתחרים כדי שנמשוך קהל איכותי ורלוונטי ושייפרש את איכות התוכן לטיב השירות שלכם"
           />
         </div>
-        <div className="text-center mt-6 md:mt-8">
-          <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-all duration-300">
-            צור קשר
-          </a>
-        </div>
       </div>
     </section>
   );

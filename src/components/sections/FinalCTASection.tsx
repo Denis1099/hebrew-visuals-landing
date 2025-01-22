@@ -19,11 +19,6 @@ const FinalCTASection = () => {
             <p className="font-bold">הבחירה בידיים שלך.</p>
             <p>אני משאיר לך הזדמנות אחרונה להשאיר את הפרטים שלך לשיחת ייעוץ והכרת העסק במתנה!</p>
           </div>
-          <div className="mt-12">
-            <a href="#contact" className="inline-block bg-white text-primary-pink px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300">
-              צור קשר
-            </a>
-          </div>
         </div>
       </div>
     </section>
