@@ -1,24 +1,53 @@
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-[#333] text-white">
+    <section id="contact" className="py-20 bg-[#333] text-white font-noto text-right">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8">Contact Us</h2>
-        <p className="mb-4">We would love to hear from you! Please fill out the form below to get in touch.</p>
-        <form className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium">Name</label>
-            <input type="text" id="name" className="mt-1 block w-full p-2 border border-gray-300 rounded" />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium">Email</label>
-            <input type="email" id="email" className="mt-1 block w-full p-2 border border-gray-300 rounded" />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium">Message</label>
-            <textarea id="message" className="mt-1 block w-full p-2 border border-gray-300 rounded" rows={4}></textarea>
-          </div>
-          <button type="submit" className="py-2 px-4 bg-blue-600 text-white rounded">Send Message</button>
-        </form>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">בואו נדבר על העסק שלך</h2>
+          <p className="text-xl md:text-2xl mb-12">
+            השאירו פרטים ואחזור אליכם בהקדם כדי שנוכל להתחיל לעבוד על התוכן שלכם
+          </p>
+          <form className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-lg mb-2">שם מלא</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-gray-400"
+                  placeholder="השם שלך"
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-lg mb-2">טלפון</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-gray-400"
+                  placeholder="המספר שלך"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-lg mb-2">איך אני יכול לעזור?</label>
+              <textarea 
+                id="message" 
+                rows={4}
+                className="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-gray-400"
+                placeholder="ספר לי קצת על העסק שלך..."
+              ></textarea>
+            </div>
+            <div className="text-center">
+              <button 
+                type="submit" 
+                className="bg-gradient-primary text-white px-12 py-4 rounded-full text-xl font-medium
+                  hover:opacity-90 transition-opacity duration-300 transform hover:scale-105"
+              >
+                שלח פרטים
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
