@@ -15,7 +15,7 @@ const ContactSection = () => {
           </div>
           <div>
             <label htmlFor="message" className="block text-sm font-medium">Message</label>
-            <textarea id="message" className="mt-1 block w-full p-2 border border-gray-300 rounded" rows="4"></textarea>
+            <textarea id="message" className="mt-1 block w-full p-2 border border-gray-300 rounded" rows={4}></textarea>
           </div>
           <button type="submit" className="py-2 px-4 bg-blue-600 text-white rounded">Send Message</button>
         </form>
