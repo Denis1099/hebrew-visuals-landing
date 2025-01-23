@@ -14,7 +14,7 @@ const ContactSection = () => {
                 <input 
                   type="text" 
                   id="name" 
-                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
+                  className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md"
                   placeholder="השם שלך"
                 />
               </div>
@@ -23,7 +23,7 @@ const ContactSection = () => {
                 <input 
                   type="tel" 
                   id="phone" 
-                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
+                  className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md"
                   placeholder="המספר שלך"
                 />
               </div>
@@ -33,7 +33,7 @@ const ContactSection = () => {
               <textarea 
                 id="message" 
                 rows={3}
-                className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
+                className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md"
                 placeholder="ספר לי קצת על העסק שלך..."
               ></textarea>
             </div>
@@ -41,7 +41,7 @@ const ContactSection = () => {
               <button 
                 type="submit" 
                 className="bg-gradient-primary text-white px-12 py-4 rounded-full text-xl font-medium
-                  hover:opacity-90 transition-opacity duration-300 transform hover:scale-105"
+                  hover:opacity-90 transition-opacity duration-300 transform hover:scale-105 shadow-lg"
               >
                 בוא נדבר!  📥
               </button>
