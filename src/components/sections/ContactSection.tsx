@@ -14,7 +14,7 @@ const ContactSection = () => {
                 <input 
                   type="text" 
                   id="name" 
-                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-black placeholder:text-black-400 text-right"
+                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
                   placeholder="השם שלך"
                 />
               </div>
@@ -23,7 +23,7 @@ const ContactSection = () => {
                 <input 
                   type="tel" 
                   id="phone" 
-                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-black placeholder:text-black-400 text-right"
+                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
                   placeholder="המספר שלך"
                 />
               </div>
@@ -33,7 +33,7 @@ const ContactSection = () => {
               <textarea 
                 id="message" 
                 rows={3}
-                className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-black placeholder:text-black-400 text-right"
+                className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
                 placeholder="ספר לי קצת על העסק שלך..."
               ></textarea>
             </div>
