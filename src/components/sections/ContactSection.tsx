@@ -1,8 +1,8 @@
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-[#c0017e] to-white text-white font-noto text-right">
+    <section id="contact" className="py-20 bg-gradient-to-b from-[#c0017e] to-white text-white font-noto">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">בואו נדבר על העסק שלך</h2>
           <p className="text-xl md:text-2xl mb-12">
             השאירו פרטים ואחזור אליכם בהקדם כדי שנוכל להתחיל לעבוד על התוכן שלכם! 🔥
@@ -10,11 +10,11 @@ const ContactSection = () => {
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-              <label htmlFor="name" className="sr-only block text-lg mb-2">שם מלא</label>
+                <label htmlFor="name" className="sr-only block text-lg mb-2">שם מלא</label>
                 <input 
                   type="text" 
                   id="name" 
-                  className="w-full p-3 bg-white/10 border border-gray/20 rounded-lg text-black placeholder:text-black-400"
+                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-black placeholder:text-black-400 text-right"
                   placeholder="השם שלך"
                 />
               </div>
@@ -23,7 +23,7 @@ const ContactSection = () => {
                 <input 
                   type="tel" 
                   id="phone" 
-                  className="w-full p-3 bg-white/10 border border-gray/20 rounded-lg text-black placeholder:text-black-400"
+                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-black placeholder:text-black-400 text-right"
                   placeholder="המספר שלך"
                 />
               </div>
@@ -32,8 +32,8 @@ const ContactSection = () => {
               <label htmlFor="message" className="sr-only block text-lg mb-2">איך אני יכול לעזור?</label>
               <textarea 
                 id="message" 
-                rows={4}
-                className="w-full p-3 bg-white/10 border border-gray/20 rounded-lg text-white placeholder:text-black-400"
+                rows={3}
+                className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-black placeholder:text-black-400 text-right"
                 placeholder="ספר לי קצת על העסק שלך..."
               ></textarea>
             </div>
