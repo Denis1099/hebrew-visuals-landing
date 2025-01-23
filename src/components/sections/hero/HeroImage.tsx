@@ -1,11 +1,11 @@
 const HeroImage = () => {
   return (
     <>
-      <div className="block md:hidden">
+      <div className="block md:hidden mb-8">
         <img 
           src="/lovable-uploads/99678c18-5979-4632-b796-295b97f52ed2.png"
           alt="תמונת גיבור"
-          className="w-[90%] sm:w-[80%] h-auto rounded-2xl shadow-xl mx-auto mb-6 sm:mb-8"
+          className="w-[90%] sm:w-[80%] h-auto rounded-2xl shadow-xl mx-auto"
         />
       </div>
       <div className="hidden md:block w-full md:w-1/2 animate-fade-in">

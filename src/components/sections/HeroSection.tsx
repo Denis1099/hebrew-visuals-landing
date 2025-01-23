@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import HeroImage from './hero/HeroImage';
@@ -9,10 +8,10 @@ const HeroSection = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
           <div className="w-full md:w-3/4 mx-auto text-center space-y-6 md:space-y-8 lg:space-y-12 animate-fade-in">
+            <HeroImage />
             <HeroTitle />
             <HeroForm />
           </div>
-          <HeroImage />
         </div>
       </div>
     </section>
