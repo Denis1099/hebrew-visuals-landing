@@ -33,7 +33,7 @@ const ContactSection = () => {
               <textarea 
                 id="message" 
                 rows={3}
-                className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md"
+                className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md resize-none"
                 placeholder="ספר לי קצת על העסק שלך..."
               ></textarea>
             </div>
