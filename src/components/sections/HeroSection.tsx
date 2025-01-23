@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { SparklesText } from "@/components/ui/sparkles-text";
 
 type FormData = {
   name: string;
@@ -42,9 +43,12 @@ const HeroSection = () => {
               אני מזמין אותך לשיחת אפיון לעסק במתנה 🎁
               במודל ״ אני האמיתי ״
             </p>
-            <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 md:mb-12 animate-slide-up gradient-text md:bg-gradient-to-r from-white via-primary-blue to-white bg-clip-text text-transparent ">
-              אני האמיתי בעסק שלך!
-            </h1>
+            <SparklesText 
+              text="אני האמיתי בעסק שלך!"
+              className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 md:mb-12 animate-slide-up gradient-text md:bg-gradient-to-r from-white via-primary-blue to-white bg-clip-text text-transparent"
+              colors={{ first: "#c0017e", second: "#5797ef" }}
+              sparklesCount={15}
+            />
             <p className="text-lg sm:text-xl md:text-2xl font-light mb-6 sm:mb-8 md:mb-10 animate-slide-up">
               הגיע הזמן שהעסק שלך יבלוט ויביא תוצאות אמיתיות!
             </p>
