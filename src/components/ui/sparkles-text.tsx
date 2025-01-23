@@ -94,14 +94,14 @@ const Sparkle: React.FC<Sparkle> = ({ id, x, y, color, delay, scale }) => {
   return (
     <motion.svg
       key={id}
-      className="pointer-events-none absolute z-20"
+      className="pointer-events-none absolute z-20 md:scale-120"
       initial={{ opacity: 0, left: x, top: y }}
       animate={{
         opacity: [0, 1, 0],
-        scale: [0, scale, 0],
+        scale: [0, scale * 1.2, 0], // Increased scale by 20% for desktop
         rotate: [75, 120, 150],
       }}
-      transition={{ duration: 1.5, repeat: Infinity, delay }} // Increased duration
+      transition={{ duration: 1.5, repeat: Infinity, delay }}
       width="21"
       height="21"
       viewBox="0 0 21 21"
