@@ -29,7 +29,7 @@ const SparklesText: React.FC<SparklesTextProps> = ({
   text,
   colors = { first: "#c0017e", second: "#5797ef" },
   className,
-  sparklesCount = 10,
+  sparklesCount = 15,
   ...props
 }) => {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
@@ -39,9 +39,9 @@ const SparklesText: React.FC<SparklesTextProps> = ({
       const starX = `${Math.random() * 100}%`;
       const starY = `${Math.random() * 100}%`;
       const color = Math.random() > 0.5 ? colors.first : colors.second;
-      const delay = Math.random() * 2;
+      const delay = Math.random() * 4; // Increased delay for slower animation
       const scale = Math.random() * 1 + 0.3;
-      const lifespan = Math.random() * 10 + 5;
+      const lifespan = Math.random() * 15 + 10; // Increased lifespan
       const id = `${starX}-${starY}-${Date.now()}`;
       return { id, x: starX, y: starY, color, delay, scale, lifespan };
     };
@@ -64,7 +64,7 @@ const SparklesText: React.FC<SparklesTextProps> = ({
     };
 
     initializeStars();
-    const interval = setInterval(updateStars, 100);
+    const interval = setInterval(updateStars, 200); // Slowed down update interval
 
     return () => clearInterval(interval);
   }, [colors.first, colors.second, sparklesCount]);
@@ -84,7 +84,7 @@ const SparklesText: React.FC<SparklesTextProps> = ({
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}
-        <strong>{text}</strong>
+        <strong className="relative z-30">{text}</strong>
       </span>
     </div>
   );
@@ -101,7 +101,7 @@ const Sparkle: React.FC<Sparkle> = ({ id, x, y, color, delay, scale }) => {
         scale: [0, scale, 0],
         rotate: [75, 120, 150],
       }}
-      transition={{ duration: 0.8, repeat: Infinity, delay }}
+      transition={{ duration: 1.5, repeat: Infinity, delay }} // Increased duration
       width="21"
       height="21"
       viewBox="0 0 21 21"
