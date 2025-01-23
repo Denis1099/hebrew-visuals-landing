@@ -8,7 +8,7 @@ const HeroTitle = () => {
       </h2>
       <SparklesText 
         text="אני האמיתי בעסק שלך!"
-        className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 md:mb-12 animate-slide-up gradient-text md:bg-gradient-to-r from-white via-primary-blue to-white bg-clip-text text-transparent"
+        className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 md:mb-12 animate-slide-up text-white"
         colors={{ first: "#c0017e", second: "#5797ef" }}
         sparklesCount={15}
       />
