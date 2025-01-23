@@ -46,9 +46,9 @@ const HeroSection = () => {
             <p className="text-xl md:text-2xl font-light mb-8 md:mb-10 animate-slide-up">
               הגיע הזמן שהעסק שלך יבלוט ויביא תוצאות אמיתיות!
             </p>
-            <div className="space-y-6 mb-16 md:mb-0">
+            <div className="space-y-6 mb-14 md:mb-0">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                   <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                     <FormField
                       control={form.control}
@@ -90,7 +90,7 @@ const HeroSection = () => {
                         hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
                         transition-all duration-300 ease-in-out w-full md:w-auto md:text-lg md:px-10 md:py-4"
                     >
-                      שגר אותי! 🚀
+                       בוא נדבר!  📥
                     </button>
                     <button 
                       type="button"
