@@ -42,7 +42,7 @@ const HeroSection = () => {
               אני מזמין אותך לשיחת אפיון לעסק במתנה 🎁
               במודל ״ אני האמיתי ״
             </p>
-            <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 md:mb-12 animate-slide-up bg-gradient-to-r from-white via-primary-blue to-white bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 md:mb-12 animate-slide-up gradient-text md:bg-gradient-to-r from-white via-primary-blue to-white bg-clip-text text-transparent ">
               אני האמיתי בעסק שלך!
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl font-light mb-6 sm:mb-8 md:mb-10 animate-slide-up">
@@ -88,7 +88,7 @@ const HeroSection = () => {
                     <button 
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-block bg-[#9b87f5] text-white px-6 sm:px-8 py-3 rounded-full font-medium 
+                      className="inline-block bg-primary-pink text-white px-6 sm:px-8 py-3 rounded-full font-medium 
                         hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
                         transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg"
                     >
@@ -97,8 +97,8 @@ const HeroSection = () => {
                     <button 
                       type="button"
                       onClick={scrollToFinalCTA}
-                      className="inline-block bg-primary-pink text-white px-6 sm:px-8 py-3 rounded-full font-medium 
-                        hover:bg-primary-pink/90 hover:transform hover:scale-105 hover:shadow-lg 
+                      className="inline-block bg-[#5797ef] text-white px-6 sm:px-8 py-3 rounded-full font-medium 
+                        hover:bg-primary-blue/90 hover:transform hover:scale-105 hover:shadow-lg 
                         transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg"
                     >
                       אני רוצה פרטים נוספים
