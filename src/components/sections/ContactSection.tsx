@@ -14,8 +14,8 @@ const ContactSection = () => {
                 <input 
                   type="text" 
                   id="name" 
-                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right shadow-sm"
-                  placeholder="שם מלא"
+                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
+                  placeholder="השם שלך"
                 />
               </div>
               <div>
@@ -23,8 +23,8 @@ const ContactSection = () => {
                 <input 
                   type="tel" 
                   id="phone" 
-                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right shadow-sm"
-                  placeholder="מספר טלפון"
+                  className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
+                  placeholder="המספר שלך"
                 />
               </div>
             </div>
@@ -33,7 +33,7 @@ const ContactSection = () => {
               <textarea 
                 id="message" 
                 rows={3}
-                className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right shadow-sm"
+                className="w-full p-3 bg-[#0EA5E9]/10 border border-white/20 rounded-lg text-white placeholder:text-white/70 text-right"
                 placeholder="ספר לי קצת על העסק שלך..."
               ></textarea>
             </div>
@@ -41,7 +41,7 @@ const ContactSection = () => {
               <button 
                 type="submit" 
                 className="bg-gradient-primary text-white px-12 py-4 rounded-full text-xl font-medium
-                  hover:opacity-90 transition-opacity duration-300 transform hover:scale-105 shadow-md"
+                  hover:opacity-90 transition-opacity duration-300 transform hover:scale-105"
               >
                 בוא נדבר!  📥
               </button>
