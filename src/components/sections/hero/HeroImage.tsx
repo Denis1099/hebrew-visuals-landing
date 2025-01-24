@@ -1,8 +1,8 @@
 const HeroImage = () => {
   return (
     <>
-      <div className="block md:hidden w-full mb-4 space-y-4">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold animate-slide-up leading-relaxed text-center mt-8">
+      <div className="block md:hidden w-full mb-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold animate-slide-up leading-relaxed text-center mt-6 mb-4">
           פתרון מלא לתוכן שלך: אסטרטגיה, צילום ועריכת וידאו מקצועיים.
         </h2>
         <img 
