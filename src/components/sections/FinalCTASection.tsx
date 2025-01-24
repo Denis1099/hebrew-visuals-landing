@@ -1,3 +1,5 @@
+import { Instagram, WhatsApp } from "lucide-react";
+
 const FinalCTASection = () => {
   return (
     <section id="final-cta" className="pt-20 pb-18 bg-gradient-to-b from-[#74a9f1] to-[#c0017e] text-white">
@@ -25,6 +27,24 @@ const FinalCTASection = () => {
               alt="Gabriel Creative Signature" 
               className="max-w-[600px] w-full mx-auto object-contain h-[80px]"
             />
+            <div className="flex justify-center gap-6 mt-8">
+              <a
+                href="https://wa.me/message/X2HGLP3OBEWEF1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-12 h-12 bg-[#25D366] rounded-full hover:opacity-90 transition-opacity"
+              >
+                <WhatsApp className="w-6 h-6 text-white" />
+              </a>
+              <a
+                href="https://www.instagram.com/_gabrielgelman?igsh=MW5oMWZuaHdmZnhjZw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-12 h-12 bg-[#E4405F] rounded-full hover:opacity-90 transition-opacity"
+              >
+                <Instagram className="w-6 h-6 text-white" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

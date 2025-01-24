@@ -22,7 +22,7 @@ const PortfolioSection = () => {
         <p className="text-xl text-center mb-12">טוב ידעתי שתבקשו:</p>
         
         {/* Mobile Carousel */}
-        <div className="md:hidden relative px-8">
+        <div className="md:hidden relative">
           <Carousel
             opts={{
               align: "start",
@@ -32,7 +32,7 @@ const PortfolioSection = () => {
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
-                <CarouselItem key={index} className="basis-full">
+                <CarouselItem key={index} className="basis-full pl-4">
                   <div className="aspect-[9/16] w-full">
                     <iframe
                       className="w-full h-full rounded-lg"
@@ -45,8 +45,8 @@ const PortfolioSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
+            <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2" />
           </Carousel>
         </div>
 
