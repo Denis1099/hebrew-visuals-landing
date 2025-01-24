@@ -1,4 +1,4 @@
-import { Instagram, WhatsApp } from "lucide-react";
+import { MessageCircle, Instagram } from "lucide-react";
 
 const FinalCTASection = () => {
   return (
@@ -34,7 +34,7 @@ const FinalCTASection = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-12 h-12 bg-[#25D366] rounded-full hover:opacity-90 transition-opacity"
               >
-                <WhatsApp className="w-6 h-6 text-white" />
+                <MessageCircle className="w-6 h-6 text-white" />
               </a>
               <a
                 href="https://www.instagram.com/_gabrielgelman?igsh=MW5oMWZuaHdmZnhjZw=="
