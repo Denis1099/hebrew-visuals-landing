@@ -7,6 +7,7 @@ import ProcessSection from "@/components/sections/ProcessSection";
 import AboutSection from "@/components/sections/AboutSection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 import ContactSection from "@/components/sections/ContactSection";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <AboutSection />
       <FinalCTASection />
       <ContactSection />
+      <WhatsAppButton />
     </div>
   );
 };

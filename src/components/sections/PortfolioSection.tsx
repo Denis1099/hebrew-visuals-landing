@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -15,6 +16,12 @@ const videos = [
 ];
 
 const PortfolioSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSlideChange = (index: number) => {
+    setActiveIndex(index);
+  };
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -29,18 +36,22 @@ const PortfolioSection = () => {
               loop: true,
             }}
             className="w-full"
+            onSelect={(api) => handleSlideChange(api.selectedScrollSnap())}
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
                 <CarouselItem key={index} className="basis-full pl-4">
                   <div className="aspect-[9/16] w-full">
-                    <iframe
-                      className="w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${videoId}`}
-                      title={`Portfolio video ${index + 1}`}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+                    {Math.abs(activeIndex - index) <= 1 && (
+                      <iframe
+                        className="w-full h-full rounded-lg"
+                        src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
+                        title={`Portfolio video ${index + 1}`}
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    )}
                   </div>
                 </CarouselItem>
               ))}
@@ -56,8 +67,9 @@ const PortfolioSection = () => {
             <div key={index} className="aspect-[9/16]">
               <iframe
                 className="w-full h-full rounded-lg"
-                src={`https://www.youtube.com/embed/${videoId}`}
+                src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
                 title={`Portfolio video ${index + 1}`}
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
