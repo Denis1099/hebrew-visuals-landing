@@ -2,10 +2,10 @@ import { useState } from "react";
 
 const videos = [
   "P_Gz_pML_ds",
-  "lJDDGPLqnZY",
-  "aPA2KXVDcQU",
   "PGKha1BJwus",
-  "On6LztDDgBQ"
+  "aPA2KXVDcQU",
+  "On6LztDDgBQ",
+  "lJDDGPLqnZY"
 ];
 
 const TestimonialsSection = () => {
@@ -21,7 +21,7 @@ const TestimonialsSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayedVideos.map((videoId, index) => (
-            <div key={videoId} className="aspect-[9/16] w-[80%] mx-auto">
+            <div key={videoId} className="aspect-[9/16] w-[70%] mx-auto">
               <iframe
                 className="w-full h-full rounded-lg shadow-lg"
                 src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0&controls=1&title=0&showsearch=0`}

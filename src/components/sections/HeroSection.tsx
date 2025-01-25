@@ -2,6 +2,7 @@ import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import HeroImage from './hero/HeroImage';
 
+
 const HeroSection = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center py-14 md:py-10 bg-gradient-to-b from-[#6b46c1] via-[#805ad5] to-white text-white">

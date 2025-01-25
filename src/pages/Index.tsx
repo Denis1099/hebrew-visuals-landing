@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ProblemSection from "@/components/sections/ProblemSection";
@@ -12,12 +11,11 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Navbar />
       <HeroSection />
       <ProblemSection />
       <TestimonialsSection />
-      <PortfolioSection />
       <ProcessSection />
+      <PortfolioSection />
       <AboutSection />
       <FinalCTASection />
       <ContactSection />
