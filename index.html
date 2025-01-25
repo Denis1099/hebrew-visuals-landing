@@ -10,14 +10,30 @@
     <meta property="og:title" content="hebrew-visuals-landing" />
     <meta property="og:description" content="Lovable Generated Project" />
     <meta name="theme-color" content="#c0017e" />
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-mobile.webp" media="(max-width: 767px)" />
+    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-tablet.webp" media="(min-width: 768px) and (max-width: 1023px)" />
+    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-desktop.webp" media="(min-width: 1024px)" />
+    
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    
+    <!-- Defer non-critical CSS -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100;200;300;400;500;600;700;800;900&display=swap" 
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
   </head>
 
   <body>
     <div id="root"></div>
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" defer></script>
   </body>
 </html>
