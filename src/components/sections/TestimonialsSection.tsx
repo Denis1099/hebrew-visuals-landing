@@ -1,12 +1,4 @@
-import { useState, useEffect } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { type CarouselApi } from "@/components/ui/carousel";
+import { useState } from "react";
 
 const videos = [
   "P_Gz_pML_ds",
@@ -17,16 +9,8 @@ const videos = [
 ];
 
 const TestimonialsSection = () => {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    if (!api) return;
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
+  const [showAll, setShowAll] = useState(false);
+  const displayedVideos = showAll ? videos : videos.slice(0, 3);
 
   return (
     <section className="py-8 md:py-16 bg-white">
@@ -35,48 +19,12 @@ const TestimonialsSection = () => {
           עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:
         </h2>
         
-        {/* Mobile Carousel */}
-        <div className="md:hidden relative px-8">
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-              dragFree: false,
-              containScroll: false,
-              direction: "rtl"
-            }}
-            setApi={setApi}
-            className="w-full"
-          >
-            <CarouselContent>
-              {videos.map((videoId, index) => (
-                <CarouselItem key={videoId} className="basis-full">
-                  <div className="aspect-[9/16] w-full">
-                    <iframe
-                      key={videoId}
-                      className="w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&enablejsapi=1`}
-                      title={`Testimonial video ${index + 1}`}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      loading="lazy"
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
-          </Carousel>
-        </div>
-
-        {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 md:gap-8">
-          {videos.map((videoId, index) => (
-            <div key={videoId} className="aspect-[9/16]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {displayedVideos.map((videoId, index) => (
+            <div key={videoId} className="aspect-[9/16] w-full">
               <iframe
-                className="w-full h-full rounded-lg"
-                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&enablejsapi=1`}
+                className="w-full h-full rounded-lg shadow-lg"
+                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1`}
                 title={`Testimonial video ${index + 1}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -85,6 +33,18 @@ const TestimonialsSection = () => {
             </div>
           ))}
         </div>
+
+        {videos.length > 3 && !showAll && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowAll(true)}
+              className="bg-gradient-primary text-white px-8 py-3 rounded-full text-lg font-medium
+                hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              הצג עוד המלצות
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
