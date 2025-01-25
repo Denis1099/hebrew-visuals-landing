@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -6,7 +7,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { type CarouselApi } from "@/components/ui/carousel";
-import { useState } from "react";
 
 const videos = [
   "3S6Y4INJErM",
@@ -26,7 +26,7 @@ const PortfolioSection = () => {
         <p className="text-xl text-center mb-12">טוב ידעתי שתבקשו:</p>
         
         {/* Mobile Carousel */}
-        <div className="md:hidden relative">
+        <div className="md:hidden relative px-8">
           <Carousel
             opts={{
               align: "start",
@@ -37,12 +37,13 @@ const PortfolioSection = () => {
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
-                <CarouselItem key={index}>
+                <CarouselItem key={index} className="basis-full">
                   <div className="aspect-[9/16] w-full">
                     <iframe
                       className="w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${videoId}`}
+                      src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
                       title={`Portfolio video ${index + 1}`}
+                      loading="lazy"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
@@ -50,8 +51,8 @@ const PortfolioSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
           </Carousel>
         </div>
 
@@ -61,8 +62,9 @@ const PortfolioSection = () => {
             <div key={index} className="aspect-[9/16]">
               <iframe
                 className="w-full h-full rounded-lg"
-                src={`https://www.youtube.com/embed/${videoId}`}
+                src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
                 title={`Portfolio video ${index + 1}`}
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
