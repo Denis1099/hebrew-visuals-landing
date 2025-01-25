@@ -29,14 +29,6 @@ const FinalCTASection = () => {
             />
             <div className="flex justify-center gap-6 mt-8">
               <a
-                href="https://wa.me/message/X2HGLP3OBEWEF1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-12 h-12 bg-[#25D366] rounded-full hover:opacity-90 transition-opacity"
-              >
-                <MessageCircle className="w-6 h-6 text-white" />
-              </a>
-              <a
                 href="https://www.instagram.com/_gabrielgelman?igsh=MW5oMWZuaHdmZnhjZw=="
                 target="_blank"
                 rel="noopener noreferrer"

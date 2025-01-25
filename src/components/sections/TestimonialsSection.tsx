@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -17,13 +17,13 @@ const videos = [
 ];
 
 const TestimonialsSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
-  const handleSlideChange = () => {
+  const onSelect = useCallback(() => {
     if (!api) return;
-    setActiveIndex(api.selectedScrollSnap());
-  };
+    setCurrent(api.selectedScrollSnap());
+  }, [api]);
 
   return (
     <section className="py-8 md:py-16 bg-white">
@@ -39,15 +39,15 @@ const TestimonialsSection = () => {
               align: "start",
               loop: true,
             }}
-            className="w-full"
             setApi={setApi}
-            onSelect={handleSlideChange}
+            onSelect={onSelect}
+            className="w-full"
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
                 <CarouselItem key={index} className="basis-full">
                   <div className="aspect-[9/16] w-full">
-                    {Math.abs(activeIndex - index) <= 1 && (
+                    {Math.abs(current - index) <= 1 && (
                       <iframe
                         className="w-full h-full rounded-lg"
                         src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}

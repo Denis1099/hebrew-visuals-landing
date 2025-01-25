@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -17,13 +17,13 @@ const videos = [
 ];
 
 const PortfolioSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
-  const handleSlideChange = () => {
+  const onSelect = useCallback(() => {
     if (!api) return;
-    setActiveIndex(api.selectedScrollSnap());
-  };
+    setCurrent(api.selectedScrollSnap());
+  }, [api]);
 
   return (
     <section className="py-20 bg-white">
@@ -32,21 +32,21 @@ const PortfolioSection = () => {
         <p className="text-xl text-center mb-12">טוב ידעתי שתבקשו:</p>
         
         {/* Mobile Carousel */}
-        <div className="md:hidden relative">
+        <div className="md:hidden relative px-8">
           <Carousel
             opts={{
               align: "start",
               loop: true,
             }}
-            className="w-full"
             setApi={setApi}
-            onSelect={handleSlideChange}
+            onSelect={onSelect}
+            className="w-full"
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
-                <CarouselItem key={index} className="basis-full pl-4">
+                <CarouselItem key={index} className="basis-full">
                   <div className="aspect-[9/16] w-full">
-                    {Math.abs(activeIndex - index) <= 1 && (
+                    {Math.abs(current - index) <= 1 && (
                       <iframe
                         className="w-full h-full rounded-lg"
                         src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
@@ -60,8 +60,8 @@ const PortfolioSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2" />
+            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
           </Carousel>
         </div>
 
