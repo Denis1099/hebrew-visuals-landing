@@ -17,18 +17,6 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 const Index = () => {
   return (
     <div className="min-h-screen relative">
-      {/* Logo Container */}
-      <div className="w-full py-6 px-4">
-        <img 
-          src="/lovable-uploads/logo.webp" 
-          alt="Logo" 
-          className="h-16 w-auto mx-auto md:mr-6 md:ml-auto"
-          loading="eager"
-          fetchPriority="high"
-        />
-      </div>
-
-      {/* Main Content */}
       <HeroSection />
       
       <Suspense fallback={

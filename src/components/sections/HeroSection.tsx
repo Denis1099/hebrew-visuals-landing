@@ -2,11 +2,20 @@ import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import HeroImage from './hero/HeroImage';
 
-
 const HeroSection = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center py-14 md:py-10 bg-gradient-to-b from-[#6b46c1] via-[#805ad5] to-white text-white">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section id="home" className="min-h-screen flex flex-col py-14 md:py-10 bg-gradient-to-b from-[#6b46c1] via-[#805ad5] to-white text-white">
+      {/* Logo Container */}
+      <div className="w-full px-4 mb-6">
+        <img 
+          src="/lovable-uploads/logo-transparent.webp" 
+          alt="Logo" 
+          className="h-16 w-auto mx-auto md:mr-6 md:ml-auto"
+          loading="eager"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 max-w-7xl flex-grow flex items-center">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-0 md:gap-12">
           {/* Text Content Column */}
           <div className="w-full text-center space-y-4 md:space-y-10 animate-fade-in order-2 md:order-1">
