@@ -23,7 +23,7 @@ const FinalCTASection = () => {
           </div>
           <div className="mt-14">
             <img 
-              src="/lovable-uploads/b263b9f3-7b7e-49d4-8ea0-fcea0bd94991.png" 
+              src="/lovable-uploads/signaturewhite.webp" 
               alt="Gabriel Creative Signature" 
               className="max-w-[600px] w-full mx-auto object-contain h-[80px]"
             />

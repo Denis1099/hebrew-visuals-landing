@@ -4,7 +4,7 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8 gradient-text">אז היי, אני גבריאל גלמן</h2>
-          <div className="space-y-4 md:space-y-6 text-center md:text-right text-lg">
+          <div className="space-y-4 md:space-y-6 text-center  text-lg">
             <p>ואני כאן כדי לעזור לך לקחת את העסק שלך לשלב הבא!</p>
             <p>כבר שלוש שנים שיצירת תוכן זורמת לי בדם,
             מאז שאני זוכר את עצמי או אם לדייק מאז גיל 10 שלקחתי את המצלמה הישנה של אחי הגדול לא עזבתי אותה, בשלב מסוים הבנתי שוידאו מעבר לזה שזה עושה לי את זה זה אשכרה מביא תוצאות ומשנה מציאות לבעלי עסקים!</p>

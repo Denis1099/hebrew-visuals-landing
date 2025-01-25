@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-transparent"}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <img src="/lovable-uploads/fcc5d5dd-08b4-494a-a7ef-d137915d9e3d.png" alt="Creatives Logo" className="h-12" />
+          <img src="/lovable-uploads/logo.webp" alt="Creatives Logo" className="h-12" />
           
           {/* Desktop menu - Centered */}
           <div className="hidden md:flex flex-1 justify-center space-x-8 space-x-reverse">
