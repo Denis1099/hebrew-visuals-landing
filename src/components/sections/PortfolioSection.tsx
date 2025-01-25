@@ -18,8 +18,9 @@ const videos = [
 
 const PortfolioSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi>();
 
-  const handleSlideChange = (api: CarouselApi | null) => {
+  const handleSlideChange = () => {
     if (!api) return;
     setActiveIndex(api.selectedScrollSnap());
   };
@@ -38,6 +39,7 @@ const PortfolioSection = () => {
               loop: true,
             }}
             className="w-full"
+            setApi={setApi}
             onSelect={handleSlideChange}
           >
             <CarouselContent>

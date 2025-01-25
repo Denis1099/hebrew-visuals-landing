@@ -18,8 +18,9 @@ const videos = [
 
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi>();
 
-  const handleSlideChange = (api: CarouselApi | null) => {
+  const handleSlideChange = () => {
     if (!api) return;
     setActiveIndex(api.selectedScrollSnap());
   };
@@ -39,6 +40,7 @@ const TestimonialsSection = () => {
               loop: true,
             }}
             className="w-full"
+            setApi={setApi}
             onSelect={handleSlideChange}
           >
             <CarouselContent>
