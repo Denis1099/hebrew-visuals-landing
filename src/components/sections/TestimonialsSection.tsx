@@ -31,8 +31,11 @@ const TestimonialsSection = () => {
         <div className="md:hidden relative px-8">
           <Carousel
             opts={{
-              align: "start",
+              align: "center",
               loop: true,
+              skipSnaps: false,
+              containScroll: "trimSnaps",
+              dragFree: false
             }}
             setApi={setApi}
             className="w-full"
@@ -42,6 +45,7 @@ const TestimonialsSection = () => {
                 <CarouselItem key={index} className="basis-full">
                   <div className="aspect-[9/16] w-full">
                     <iframe
+                      key={`${videoId}-${index}`}
                       className="w-full h-full rounded-lg"
                       src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1`}
                       title={`Testimonial video ${index + 1}`}
