@@ -40,16 +40,16 @@ const PortfolioSection = () => {
             opts={{
               align: "center",
               loop: true,
-              skipSnaps: false,
-              containScroll: "trimSnaps",
-              dragFree: false
+              dragFree: false,
+              containScroll: false,
+              direction: "rtl"
             }}
             setApi={setApi}
             className="w-full"
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
-                <CarouselItem key={index} className="basis-full">
+                <CarouselItem key={videoId} className="basis-full">
                   <div className="aspect-[9/16] w-full">
                     <iframe
                       key={videoId}
@@ -58,6 +58,7 @@ const PortfolioSection = () => {
                       title={`Portfolio video ${index + 1}`}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
+                      loading="lazy"
                     />
                   </div>
                 </CarouselItem>
@@ -71,13 +72,14 @@ const PortfolioSection = () => {
         {/* Desktop Grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-6 md:gap-8">
           {videos.map((videoId, index) => (
-            <div key={index} className="aspect-[9/16]">
+            <div key={videoId} className="aspect-[9/16]">
               <iframe
                 className="w-full h-full rounded-lg"
                 src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&enablejsapi=1`}
                 title={`Portfolio video ${index + 1}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                loading="lazy"
               />
             </div>
           ))}
