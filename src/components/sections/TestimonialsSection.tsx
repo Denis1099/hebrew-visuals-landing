@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -19,6 +19,14 @@ const videos = [
 const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   return (
     <section className="py-8 md:py-16 bg-white">
@@ -45,9 +53,9 @@ const TestimonialsSection = () => {
                 <CarouselItem key={index} className="basis-full">
                   <div className="aspect-[9/16] w-full">
                     <iframe
-                      key={`${videoId}-${index}`}
+                      key={videoId}
                       className="w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1`}
+                      src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&enablejsapi=1`}
                       title={`Testimonial video ${index + 1}`}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -67,7 +75,7 @@ const TestimonialsSection = () => {
             <div key={index} className="aspect-[9/16]">
               <iframe
                 className="w-full h-full rounded-lg"
-                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1`}
+                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&enablejsapi=1`}
                 title={`Testimonial video ${index + 1}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
