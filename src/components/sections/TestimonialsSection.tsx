@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -18,12 +18,6 @@ const videos = [
 
 const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-
-  const onSelect = useCallback(() => {
-    if (!api) return;
-    setCurrent(api.selectedScrollSnap());
-  }, [api]);
 
   return (
     <section className="py-8 md:py-16 bg-white">
@@ -40,23 +34,20 @@ const TestimonialsSection = () => {
               loop: true,
             }}
             setApi={setApi}
-            onSelect={onSelect}
             className="w-full"
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
                 <CarouselItem key={index} className="basis-full">
                   <div className="aspect-[9/16] w-full">
-                    {Math.abs(current - index) <= 1 && (
-                      <iframe
-                        className="w-full h-full rounded-lg"
-                        src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
-                        title={`Testimonial video ${index + 1}`}
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    )}
+                    <iframe
+                      className="w-full h-full rounded-lg"
+                      src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
+                      title={`Testimonial video ${index + 1}`}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
                 </CarouselItem>
               ))}

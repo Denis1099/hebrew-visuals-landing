@@ -7,7 +7,7 @@ const WhatsAppButton = () => {
       className="fixed bottom-6 right-6 z-50 transition-transform hover:scale-110"
     >
       <img
-        src="/whatsapp-icon.webp"
+        src="/lovable-uploads/whatsapp-icon.webp"
         alt="WhatsApp Contact"
         width={60}
         height={60}
