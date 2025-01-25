@@ -6,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { type CarouselApi } from "@/components/ui/carousel";
 
 const videos = [
   "P_Gz_pML_ds",
@@ -18,8 +19,9 @@ const videos = [
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleSlideChange = (index: number) => {
-    setActiveIndex(index);
+  const handleSlideChange = (api: CarouselApi | null) => {
+    if (!api) return;
+    setActiveIndex(api.selectedScrollSnap());
   };
 
   return (
@@ -37,7 +39,7 @@ const TestimonialsSection = () => {
               loop: true,
             }}
             className="w-full"
-            onSelect={(api) => handleSlideChange(api.selectedScrollSnap())}
+            onSelect={handleSlideChange}
           >
             <CarouselContent>
               {videos.map((videoId, index) => (

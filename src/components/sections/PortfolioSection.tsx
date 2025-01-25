@@ -6,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { type CarouselApi } from "@/components/ui/carousel";
 
 const videos = [
   "3S6Y4INJErM",
@@ -18,8 +19,9 @@ const videos = [
 const PortfolioSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleSlideChange = (index: number) => {
-    setActiveIndex(index);
+  const handleSlideChange = (api: CarouselApi | null) => {
+    if (!api) return;
+    setActiveIndex(api.selectedScrollSnap());
   };
 
   return (
@@ -36,7 +38,7 @@ const PortfolioSection = () => {
               loop: true,
             }}
             className="w-full"
-            onSelect={(api) => handleSlideChange(api.selectedScrollSnap())}
+            onSelect={handleSlideChange}
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
