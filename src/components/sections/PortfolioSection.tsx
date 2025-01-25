@@ -37,9 +37,9 @@ const PortfolioSection = () => {
         <h2 className="text-4xl font-bold text-center mb-6 gradient-text">"גבריאל, תראה לי קצת דוגמאות"</h2>
         <p className="text-xl text-center mb-8">טוב ידעתי שתבקשו:</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayedVideos.map((videoId, index) => (
-            <div key={videoId} className="aspect-[9/16] w-full">
+            <div key={videoId} className="aspect-[9/16] w-[70%] mx-auto">
               {loadedVideos.includes(videoId) ? (
                 <iframe
                   className="w-full h-full rounded-lg shadow-lg"

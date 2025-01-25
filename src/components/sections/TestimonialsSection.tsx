@@ -19,9 +19,9 @@ const TestimonialsSection = () => {
           עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayedVideos.map((videoId, index) => (
-            <div key={videoId} className="aspect-[9/16] w-full">
+            <div key={videoId} className="aspect-[9/16] w-[70%] mx-auto">
               <iframe
                 className="w-full h-full rounded-lg shadow-lg"
                 src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0&controls=1&title=0&showsearch=0`}
