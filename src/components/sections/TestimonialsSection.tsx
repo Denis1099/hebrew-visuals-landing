@@ -36,6 +36,7 @@ const TestimonialsSection = () => {
             }}
             setApi={setApi}
             className="w-full"
+            onSelect={(index) => setCurrent(index)}
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
@@ -43,7 +44,7 @@ const TestimonialsSection = () => {
                   <div className="aspect-[9/16] w-full">
                     <iframe
                       className="w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${videoId}`}
+                      src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1`}
                       title={`Testimonial video ${index + 1}`}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -63,7 +64,7 @@ const TestimonialsSection = () => {
             <div key={index} className="aspect-[9/16]">
               <iframe
                 className="w-full h-full rounded-lg"
-                src={`https://www.youtube.com/embed/${videoId}`}
+                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1`}
                 title={`Testimonial video ${index + 1}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
