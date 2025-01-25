@@ -1,25 +1,47 @@
+import { lazy, Suspense } from "react";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
+
+// Lazy load sections that are not immediately visible
+const TestimonialsSection = lazy(() => import("@/components/sections/TestimonialsSection"));
+const ProblemSection = lazy(() => import("@/components/sections/ProblemSection"));
+const PortfolioSection = lazy(() => import("@/components/sections/PortfolioSection"));
+const ProcessSection = lazy(() => import("@/components/sections/ProcessSection"));
+const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
+const FinalCTASection = lazy(() => import("@/components/sections/FinalCTASection"));
+const ContactSection = lazy(() => import("@/components/sections/ContactSection"));
+
+// Import HeroSection normally since it's above the fold
 import HeroSection from "@/components/sections/HeroSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import ProblemSection from "@/components/sections/ProblemSection";
-import PortfolioSection from "@/components/sections/PortfolioSection";
-import ProcessSection from "@/components/sections/ProcessSection";
-import AboutSection from "@/components/sections/AboutSection";
-import FinalCTASection from "@/components/sections/FinalCTASection";
-import ContactSection from "@/components/sections/ContactSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Fixed Logo */}
+      <div className="fixed top-6 right-6 z-50">
+        <img 
+          src="/lovable-uploads/logo.webp" 
+          alt="Logo" 
+          className="h-16 w-auto"
+          loading="eager"
+        />
+      </div>
+
+      {/* Main Content */}
       <HeroSection />
-      <ProblemSection />
-      <TestimonialsSection />
-      <ProcessSection />
-      <PortfolioSection />
-      <AboutSection />
-      <FinalCTASection />
-      <ContactSection />
+      
+      <Suspense fallback={<div className="h-96 flex items-center justify-center">טוען...</div>}>
+        <ProblemSection />
+        <TestimonialsSection />
+        <ProcessSection />
+        <PortfolioSection />
+        <AboutSection />
+        <FinalCTASection />
+        <ContactSection />
+      </Suspense>
+
       <WhatsAppButton />
+      <AccessibilityWidget />
     </div>
   );
 };
