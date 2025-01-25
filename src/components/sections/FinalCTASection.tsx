@@ -22,11 +22,15 @@ const FinalCTASection = () => {
             <p>אני משאיר לך הזדמנות אחרונה להשאיר את הפרטים שלך לשיחת ייעוץ והכרת העסק במתנה!</p>
           </div>
           <div className="mt-14">
+          <picture>
+          <source media="(min-width: 768px)" srcSet="/lovable-uploads/gg-signature-desktop.webp" />
             <img 
-              src="/lovable-uploads/signaturewhite.webp" 
+            
+              src="/lovable-uploads/gg-signature-mobile.webp" 
               alt="Gabriel Creative Signature" 
               className="max-w-[600px] w-full mx-auto object-contain h-[80px]"
             />
+            </picture>
             <div className="flex justify-center gap-6 mt-8">
               <a
                 href="https://www.instagram.com/_gabrielgelman?igsh=MW5oMWZuaHdmZnhjZw=="
