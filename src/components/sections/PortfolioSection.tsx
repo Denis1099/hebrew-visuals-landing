@@ -35,7 +35,6 @@ const PortfolioSection = () => {
             }}
             setApi={setApi}
             className="w-full"
-            onSelect={(index) => setCurrent(index)}
           >
             <CarouselContent>
               {videos.map((videoId, index) => (
