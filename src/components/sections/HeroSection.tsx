@@ -4,7 +4,7 @@ import HeroImage from './hero/HeroImage';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center py-16 md:py-12 bg-gradient-to-b from-[#6b46c1] via-[#805ad5] to-white text-white">
+    <section id="home" className="min-h-screen flex items-center justify-center py-14 md:py-10 bg-gradient-to-b from-[#6b46c1] via-[#805ad5] to-white text-white">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-0 md:gap-12">
           {/* Text Content Column */}

@@ -13,10 +13,10 @@ const PortfolioSection = () => {
   const displayedVideos = showAll ? videos : videos.slice(0, 3);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-8 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-8 gradient-text">"גבריאל, תראה לי קצת דוגמאות"</h2>
-        <p className="text-xl text-center mb-12">טוב ידעתי שתבקשו:</p>
+        <h2 className="text-4xl font-bold text-center mb-6 gradient-text">"גבריאל, תראה לי קצת דוגמאות"</h2>
+        <p className="text-xl text-center mb-8">טוב ידעתי שתבקשו:</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayedVideos.map((videoId, index) => (
