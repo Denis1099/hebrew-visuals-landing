@@ -18,6 +18,7 @@ const videos = [
 
 const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
   return (
     <section className="py-8 md:py-16 bg-white">
@@ -42,9 +43,8 @@ const TestimonialsSection = () => {
                   <div className="aspect-[9/16] w-full">
                     <iframe
                       className="w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
+                      src={`https://www.youtube.com/embed/${videoId}`}
                       title={`Testimonial video ${index + 1}`}
-                      loading="lazy"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
@@ -63,9 +63,8 @@ const TestimonialsSection = () => {
             <div key={index} className="aspect-[9/16]">
               <iframe
                 className="w-full h-full rounded-lg"
-                src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
+                src={`https://www.youtube.com/embed/${videoId}`}
                 title={`Testimonial video ${index + 1}`}
-                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
