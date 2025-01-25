@@ -19,14 +19,49 @@ const videos = [
 const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   useEffect(() => {
     if (!api) return;
 
     api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
+      const selectedIndex = api.selectedScrollSnap();
+      setCurrent(selectedIndex);
+      setActiveVideo(videos[selectedIndex]);
     });
   }, [api]);
+
+  // Initialize first video
+  useEffect(() => {
+    setActiveVideo(videos[0]);
+  }, []);
+
+  const renderVideoOrThumbnail = (videoId: string) => {
+    const isActive = videoId === activeVideo;
+    
+    if (!isActive) {
+      return (
+        <img
+          src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+          alt="Video thumbnail"
+          className="w-full h-full object-cover rounded-lg"
+          loading="lazy"
+        />
+      );
+    }
+
+    return (
+      <iframe
+        key={videoId}
+        className="w-full h-full rounded-lg"
+        src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&playsinline=1&origin=${window.location.origin}`}
+        title={`Testimonial video ${videoId}`}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        loading="lazy"
+      />
+    );
+  };
 
   return (
     <section className="py-8 md:py-16 bg-white">
@@ -43,7 +78,6 @@ const TestimonialsSection = () => {
               loop: true,
               dragFree: false,
               containScroll: false,
-              direction: "rtl"
             }}
             setApi={setApi}
             className="w-full"
@@ -52,15 +86,7 @@ const TestimonialsSection = () => {
               {videos.map((videoId, index) => (
                 <CarouselItem key={videoId} className="basis-full">
                   <div className="aspect-[9/16] w-full">
-                    <iframe
-                      key={videoId}
-                      className="w-full h-full rounded-lg"
-                      src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&enablejsapi=1`}
-                      title={`Testimonial video ${index + 1}`}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      loading="lazy"
-                    />
+                    {renderVideoOrThumbnail(videoId)}
                   </div>
                 </CarouselItem>
               ))}
@@ -76,7 +102,7 @@ const TestimonialsSection = () => {
             <div key={videoId} className="aspect-[9/16]">
               <iframe
                 className="w-full h-full rounded-lg"
-                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&enablejsapi=1`}
+                src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&controls=1&playsinline=1&origin=${window.location.origin}`}
                 title={`Testimonial video ${index + 1}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
