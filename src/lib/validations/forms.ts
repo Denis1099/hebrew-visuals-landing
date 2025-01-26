@@ -18,8 +18,8 @@ export const contactFormSchema = z.object({
     .regex(/^[0-9+\-\s()]*$/, "מספר טלפון לא תקין"),
   message: z
     .string()
-    .min(10, "ההודעה חייבת להכיל לפחות 10 תווים")
-    .max(1000, "ההודעה ארוכה מדי"),
+    .max(1000, "ההודעה ארוכה מדי")
+    .optional(),
 });
 
 export type HeroFormData = z.infer<typeof heroFormSchema>;
