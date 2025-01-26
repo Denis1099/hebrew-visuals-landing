@@ -1,5 +1,4 @@
 import { lazy, Suspense } from "react";
-import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 // Lazy load sections that are not immediately visible
 const TestimonialsSection = lazy(() => import("@/components/sections/TestimonialsSection"));
@@ -34,7 +33,6 @@ const Index = () => {
       </Suspense>
 
       <WhatsAppButton />
-      <AccessibilityWidget />
     </div>
   );
 };
