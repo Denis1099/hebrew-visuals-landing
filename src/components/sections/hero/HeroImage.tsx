@@ -7,7 +7,7 @@ const HeroImage = () => {
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold animate-slide-up leading-relaxed text-center mt-4 mb-2">
           פתרון מלא לתוכן שלך: אסטרטגיה, צילום ועריכת וידאו מקצועיים.
         </h2>
-        <AspectRatio ratio={16/9} className="w-[90%] sm:w-[80%] mx-auto">
+        <AspectRatio ratio={1/1} className="w-[90%] sm:w-[80%] mx-auto">
           <picture>
             <source 
               media="(min-width: 768px)" 
@@ -34,7 +34,7 @@ const HeroImage = () => {
         </AspectRatio>
       </div>
       <div className="hidden md:block w-full animate-fade-in">
-        <AspectRatio ratio={16/9} className="w-[90%] lg:w-[70%] mx-auto">
+        <AspectRatio ratio={5/4} className="w-[90%] lg:w-[70%] mx-auto">
           <picture>
             <source 
               media="(min-width: 1024px)" 
