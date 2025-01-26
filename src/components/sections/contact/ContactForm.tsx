@@ -37,8 +37,8 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
               <FormItem>
                 <FormControl>
                   <Input 
-                    placeholder="* שם מלא"
-                    className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md"
+                    placeholder="שם מלא *"
+                    className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md"
                     {...field}
                   />
                 </FormControl>
@@ -55,7 +55,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
                   <Input 
                     placeholder="* מספר טלפון"
                     type="tel"
-                    className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md"
+                    className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md"
                     {...field}
                   />
                 </FormControl>
@@ -72,7 +72,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
               <FormControl>
                 <Textarea 
                   placeholder="ספר לי קצת על העסק שלך..."
-                  className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md resize-none h-32"
+                  className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md resize-none h-32"
                   {...field}
                 />
               </FormControl>
