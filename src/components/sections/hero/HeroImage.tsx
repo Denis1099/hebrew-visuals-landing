@@ -20,7 +20,7 @@ const HeroImage = () => {
           />
           <img 
             src="/lovable-uploads/gg-hero-image-mobile.webp"
-            alt="תמונת גיבור המציגה את השירותים שלנו"
+            alt="תמונת גיבור המציגה את גבריאל גלמן"
             className="w-[90%] sm:w-[80%] h-auto rounded-2xl shadow-xl mx-auto"
             width="640"
             height="360"
@@ -39,7 +39,7 @@ const HeroImage = () => {
           />
           <img 
             src="/lovable-uploads/gg-hero-image-tablet.webp"
-            alt="תמונת גיבור המציגה את השירותים שלנו"
+            alt="תמונת גיבור המציגה את גבריאל גלמן"
             className="w-[90%] lg:w-[70%] h-auto rounded-2xl shadow-xl mx-auto transform hover:scale-105 transition-transform duration-300"
             width="1024"
             height="576"

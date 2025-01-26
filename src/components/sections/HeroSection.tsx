@@ -11,6 +11,8 @@ const HeroSection = () => {
           src="/lovable-uploads/gg-logo.webp" 
           alt="Logo" 
           className="h-16 w-auto mx-auto md:mr-6 md:ml-auto"
+          width="64"
+          height="64"
           loading="eager"
         />
       </div>
