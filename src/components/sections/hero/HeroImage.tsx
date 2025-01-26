@@ -25,7 +25,7 @@ const HeroImage = () => {
             width="640"
             height="360"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </picture>
       </div>
@@ -44,7 +44,7 @@ const HeroImage = () => {
             width="1024"
             height="576"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </picture>
       </div>
