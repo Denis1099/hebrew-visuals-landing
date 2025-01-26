@@ -8,7 +8,7 @@ interface YouTubeFacadeProps {
 export const YouTubeFacade = ({ videoId, className = '' }: YouTubeFacadeProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [thumbnailUrl, setThumbnailUrl] = useState('');
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLButtonElement>(null);
 
   const tryLoadThumbnail = async (quality: string) => {
     return new Promise((resolve, reject) => {
