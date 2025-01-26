@@ -7,8 +7,9 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-green-500 p-3 rounded-full shadow-lg transition-transform hover:scale-110"
+      aria-label="פתח צ'אט בווטסאפ"
     >
-      <MessageCircle className="w-8 h-8 text-white" />
+      <MessageCircle className="w-8 h-8 text-white" aria-hidden="true" />
     </a>
   );
 };

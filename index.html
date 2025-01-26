@@ -11,10 +11,13 @@
     <meta property="og:description" content="Lovable Generated Project" />
     <meta name="theme-color" content="#c0017e" />
     
-    <!-- Preload critical assets -->
-    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-mobile.webp" media="(max-width: 767px)" />
-    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-tablet.webp" media="(min-width: 768px) and (max-width: 1023px)" />
-    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-desktop.webp" media="(min-width: 1024px)" />
+    <!-- Cache control -->
+    <meta http-equiv="Cache-Control" content="max-age=31536000" />
+    
+    <!-- Preload critical assets with high priority -->
+    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-mobile.webp" media="(max-width: 767px)" fetchpriority="high" imagesizes="100vw" />
+    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-tablet.webp" media="(min-width: 768px) and (max-width: 1023px)" fetchpriority="high" imagesizes="100vw" />
+    <link rel="preload" as="image" href="/lovable-uploads/gg-hero-image-desktop.webp" media="(min-width: 1024px)" fetchpriority="high" imagesizes="100vw" />
     
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,7 +36,7 @@
 
   <body>
     <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer></script>
     <script type="module" src="/src/main.tsx" defer></script>
   </body>
 </html>

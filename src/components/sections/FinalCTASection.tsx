@@ -22,14 +22,15 @@ const FinalCTASection = () => {
             <p>אני משאיר לך הזדמנות אחרונה להשאיר את הפרטים שלך לשיחת ייעוץ והכרת העסק במתנה!</p>
           </div>
           <div className="mt-14">
-          <picture>
-          <source media="(min-width: 768px)" srcSet="/lovable-uploads/gg-signature-desktop.webp" />
-            <img 
-            
-              src="/lovable-uploads/gg-signature-mobile.webp" 
-              alt="Gabriel Creative Signature" 
-              className="max-w-[600px] w-full mx-auto object-contain h-[80px]"
-            />
+            <picture>
+              <source media="(min-width: 768px)" srcSet="/lovable-uploads/gg-signature-desktop.webp" />
+              <img 
+                src="/lovable-uploads/gg-signature-mobile.webp" 
+                alt="Gabriel Creative Signature" 
+                className="max-w-[600px] w-full mx-auto object-contain h-[80px]"
+                width="600"
+                height="80"
+              />
             </picture>
             <div className="flex justify-center gap-6 mt-8">
               <a
@@ -37,8 +38,9 @@ const FinalCTASection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-12 h-12 bg-[#E4405F] rounded-full hover:opacity-90 transition-opacity"
+                aria-label="עקוב אחרינו באינסטגרם"
               >
-                <Instagram className="w-6 h-6 text-white" />
+                <Instagram className="w-6 h-6 text-white" aria-hidden="true" />
               </a>
             </div>
           </div>
