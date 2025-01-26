@@ -1,21 +1,48 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-
-type FormData = {
-  name: string;
-  phone: string;
-};
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
+import { heroFormSchema, type HeroFormData } from "@/lib/validations/forms";
 
 const HeroForm = () => {
-  const form = useForm<FormData>();
+  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = async (data: FormData) => {
+  const form = useForm<HeroFormData>({
+    resolver: zodResolver(heroFormSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+    },
+  });
+
+  const onSubmit = async (data: HeroFormData) => {
     setIsSubmitting(true);
-    console.log('Form submitted:', data);
-    setIsSubmitting(false);
+    try {
+      // Here you would typically send the data to your backend
+      console.log('Form submitted:', data);
+      toast({
+        title: "הטופס נשלח בהצלחה!",
+        description: "נחזור אליך בהקדם 😊",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "שגיאה בשליחת הטופס",
+        description: "אנא נסה שוב מאוחר יותר",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToFinalCTA = () => {
@@ -35,11 +62,12 @@ const HeroForm = () => {
                 <FormItem className="w-full md:w-[300px]">
                   <FormControl>
                     <Input 
-                      placeholder="שם מלא" 
+                      placeholder="שם מלא *" 
                       className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage className="text-right text-red-200" />
                 </FormItem>
               )}
             />
@@ -50,12 +78,13 @@ const HeroForm = () => {
                 <FormItem className="w-full md:w-[300px]">
                   <FormControl>
                     <Input 
-                      placeholder="מספר טלפון" 
+                      placeholder="מספר טלפון *" 
                       type="tel"
                       className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage className="text-right text-red-200" />
                 </FormItem>
               )}
             />
@@ -66,9 +95,10 @@ const HeroForm = () => {
               disabled={isSubmitting}
               className="inline-block bg-primary-pink text-white px-6 sm:px-8 py-3 rounded-full font-medium 
                 hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg"
+                transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg
+                disabled:opacity-50 disabled:cursor-not-allowed"
             >
-               בוא נדבר!  📥
+              {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
             </button>
             <button 
               type="button"
