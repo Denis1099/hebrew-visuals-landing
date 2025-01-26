@@ -62,7 +62,7 @@ const HeroForm = () => {
                 <FormItem className="w-full md:w-[300px]">
                   <FormControl>
                     <Input 
-                      placeholder="שם מלא *" 
+                      placeholder="* שם מלא" 
                       className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md"
                       {...field}
                     />
@@ -78,7 +78,7 @@ const HeroForm = () => {
                 <FormItem className="w-full md:w-[300px]">
                   <FormControl>
                     <Input 
-                      placeholder="מספר טלפון *" 
+                      placeholder="* מספר טלפון" 
                       type="tel"
                       className="text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md"
                       {...field}

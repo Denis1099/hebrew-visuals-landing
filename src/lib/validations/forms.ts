@@ -16,10 +16,7 @@ export const contactFormSchema = z.object({
     .min(9, "מספר טלפון חייב להכיל לפחות 9 ספרות")
     .max(15, "מספר טלפון ארוך מדי")
     .regex(/^[0-9+\-\s()]*$/, "מספר טלפון לא תקין"),
-  message: z
-    .string()
-    .min(10, "ההודעה חייבת להכיל לפחות 10 תווים")
-    .max(1000, "ההודעה ארוכה מדי"),
+  message: z.string().optional(),
 });
 
 export type HeroFormData = z.infer<typeof heroFormSchema>;

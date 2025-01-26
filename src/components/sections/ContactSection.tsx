@@ -65,7 +65,7 @@ const ContactSection = () => {
                     <FormItem>
                       <FormControl>
                         <Input 
-                          placeholder="השם שלך *"
+                          placeholder="* שם מלא"
                           className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md"
                           {...field}
                         />
@@ -81,7 +81,7 @@ const ContactSection = () => {
                     <FormItem>
                       <FormControl>
                         <Input 
-                          placeholder="המספר שלך *"
+                          placeholder="* מספר טלפון"
                           type="tel"
                           className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md"
                           {...field}
@@ -99,7 +99,7 @@ const ContactSection = () => {
                   <FormItem>
                     <FormControl>
                       <Textarea 
-                        placeholder="ספר לי קצת על העסק שלך... *"
+                        placeholder="ספר לי קצת על העסק שלך..."
                         className="w-full p-3 bg-white rounded-lg text-gray-900 placeholder:text-gray-500 text-right shadow-md resize-none h-32"
                         {...field}
                       />
