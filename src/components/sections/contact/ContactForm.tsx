@@ -33,13 +33,13 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
           <FormField
             control={form.control}
             name="name"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input 
                     placeholder="שם מלא"
-                    className={`w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md
-                      ${fieldState.invalid ? 'border-red-500 before:content-["*"] before:text-red-500 before:mr-1' : ''}`}
+                    className={`w-full p-3 bg-white rounded-lg text-black text-right shadow-md placeholder:text-gray-500 
+                      ${form.formState.errors.name ? 'border-red-500 placeholder:text-red-500 placeholder:after:content-["*"] placeholder:after:mr-1' : ''}`}
                     {...field}
                   />
                 </FormControl>
@@ -50,15 +50,15 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
           <FormField
             control={form.control}
             name="phone"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input 
                     placeholder="מספר טלפון"
                     type="tel"
                     dir="ltr"
-                    className={`w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md
-                      ${fieldState.invalid ? 'border-red-500 before:content-["*"] before:text-red-500 before:mr-1' : ''}`}
+                    className={`w-full p-3 bg-white rounded-lg text-black text-right shadow-md placeholder:text-gray-500
+                      ${form.formState.errors.phone ? 'border-red-500 placeholder:text-red-500 placeholder:after:content-["*"] placeholder:after:mr-1' : ''}`}
                     {...field}
                   />
                 </FormControl>
@@ -75,7 +75,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
               <FormControl>
                 <Textarea 
                   placeholder="ספר לי קצת על העסק שלך..."
-                  className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md resize-none h-32"
+                  className="w-full p-3 bg-white rounded-lg text-black text-right shadow-md placeholder:text-gray-500 resize-none h-32"
                   {...field}
                 />
               </FormControl>
