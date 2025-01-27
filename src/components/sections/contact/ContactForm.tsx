@@ -28,8 +28,21 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" data-netlify="true" name="contact-form" method="POST">
-      <input type="hidden" name="form-name" value="contact-form" />
+      <form 
+        onSubmit={form.handleSubmit(onSubmit)} 
+        className="space-y-6" 
+        data-netlify="true" 
+        name="contact-form" 
+        method="POST"
+        netlify-honeypot="bot-field"
+        action="/success"
+      >
+        <input type="hidden" name="form-name" value="contact-form" />
+        <p hidden>
+          <label>
+            Don't fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}

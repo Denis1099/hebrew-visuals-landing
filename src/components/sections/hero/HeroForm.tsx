@@ -52,8 +52,21 @@ const HeroForm = () => {
   return (
     <div className="space-y-6 mb-10 md:mb-0">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8" data-netlify="true" name="contact-form" method="POST">
-        <input type="hidden" name="form-name" value="contact-form" />
+        <form 
+          onSubmit={form.handleSubmit(onSubmit)} 
+          className="space-y-6 sm:space-y-8" 
+          data-netlify="true" 
+          name="hero-form" 
+          method="POST"
+          netlify-honeypot="bot-field"
+          action="/success"
+        >
+          <input type="hidden" name="form-name" value="hero-form" />
+          <p hidden>
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
             <FormField
               control={form.control}
