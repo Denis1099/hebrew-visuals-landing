@@ -53,7 +53,7 @@ const HeroForm = () => {
   return (
     <div className="space-y-6 mb-10 md:mb-0">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8" data-netlify="true" name="contact-form">
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
             <FormField
               control={form.control}
