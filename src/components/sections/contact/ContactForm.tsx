@@ -38,6 +38,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
                 <FormControl>
                   <Input 
                     placeholder="שם מלא"
+                    autoComplete="name"
                     className={`w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
                       form.formState.errors.name ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
                     }`}
@@ -57,6 +58,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
                   <Input 
                     placeholder="מספר טלפון"
                     type="tel"
+                    autoComplete="tel"
                     dir="ltr"
                     className={`w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
                       form.formState.errors.phone ? 'border-red-500 before:opacity-100' : 'before:opacity-0'

@@ -62,6 +62,7 @@ const HeroForm = () => {
                   <FormControl>
                     <Input 
                       placeholder="שם מלא"
+                      autoComplete="name"
                       className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
                         form.formState.errors.name ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
                       }`}
@@ -81,6 +82,7 @@ const HeroForm = () => {
                     <Input 
                       placeholder="מספר טלפון"
                       type="tel"
+                      autoComplete="tel"
                       dir="ltr"
                       className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
                         form.formState.errors.phone ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
