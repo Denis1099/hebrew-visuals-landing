@@ -62,9 +62,8 @@ const HeroForm = () => {
                 <FormItem className="w-full md:w-[300px]">
                   <FormControl>
                     <Input 
-                      placeholder="שם מלא"
-                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 h-12 text-lg rounded-lg shadow-md placeholder:text-gray-500
-                        ${form.formState.errors.name ? 'border-red-500 placeholder:text-red-500 placeholder:after:content-["*"] placeholder:after:mr-1' : ''}`}
+                      placeholder="שם מלא *"
+                      className="text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md"
                       {...field}
                     />
                   </FormControl>
@@ -79,11 +78,9 @@ const HeroForm = () => {
                 <FormItem className="w-full md:w-[300px]">
                   <FormControl>
                     <Input 
-                      placeholder="מספר טלפון"
+                      placeholder="* מספר טלפון"
                       type="tel"
-                      dir="ltr"
-                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 h-12 text-lg rounded-lg shadow-md placeholder:text-gray-500
-                        ${form.formState.errors.phone ? 'border-red-500 placeholder:text-red-500 placeholder:after:content-["*"] placeholder:after:mr-1' : ''}`}
+                      className="text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md"
                       {...field}
                     />
                   </FormControl>

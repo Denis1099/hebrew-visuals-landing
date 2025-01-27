@@ -37,9 +37,8 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
               <FormItem>
                 <FormControl>
                   <Input 
-                    placeholder="שם מלא"
-                    className={`w-full p-3 bg-white rounded-lg text-black text-right shadow-md placeholder:text-gray-500 
-                      ${form.formState.errors.name ? 'border-red-500 placeholder:text-red-500 placeholder:after:content-["*"] placeholder:after:mr-1' : ''}`}
+                    placeholder="שם מלא *"
+                    className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md"
                     {...field}
                   />
                 </FormControl>
@@ -54,11 +53,9 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
               <FormItem>
                 <FormControl>
                   <Input 
-                    placeholder="מספר טלפון"
+                    placeholder="* מספר טלפון"
                     type="tel"
-                    dir="ltr"
-                    className={`w-full p-3 bg-white rounded-lg text-black text-right shadow-md placeholder:text-gray-500
-                      ${form.formState.errors.phone ? 'border-red-500 placeholder:text-red-500 placeholder:after:content-["*"] placeholder:after:mr-1' : ''}`}
+                    className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md"
                     {...field}
                   />
                 </FormControl>
@@ -75,7 +72,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
               <FormControl>
                 <Textarea 
                   placeholder="ספר לי קצת על העסק שלך..."
-                  className="w-full p-3 bg-white rounded-lg text-black text-right shadow-md placeholder:text-gray-500 resize-none h-32"
+                  className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md resize-none h-32"
                   {...field}
                 />
               </FormControl>
@@ -89,7 +86,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
             disabled={isSubmitting}
             className="bg-gradient-primary text-white px-12 py-4 rounded-full text-xl font-medium
               hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-              transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg
+                transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg
               disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
