@@ -37,8 +37,10 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
               <FormItem>
                 <FormControl>
                   <Input 
-                    placeholder="שם מלא *"
-                    className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md"
+                    placeholder="שם מלא"
+                    className={`w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
+                      form.formState.errors.name ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
+                    }`}
                     {...field}
                   />
                 </FormControl>
@@ -53,9 +55,12 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
               <FormItem>
                 <FormControl>
                   <Input 
-                    placeholder="* מספר טלפון"
+                    placeholder="מספר טלפון"
                     type="tel"
-                    className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md"
+                    dir="ltr"
+                    className={`w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
+                      form.formState.errors.phone ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
+                    }`}
                     {...field}
                   />
                 </FormControl>
