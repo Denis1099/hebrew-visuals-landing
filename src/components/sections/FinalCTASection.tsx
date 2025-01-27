@@ -37,7 +37,8 @@ const FinalCTASection = () => {
                 href="https://www.instagram.com/_gabrielgelman?igsh=MW5oMWZuaHdmZnhjZw=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-12 h-12 bg-[#E4405F] rounded-full hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center w-12 h-12 bg-[#E4405F] rounded-full hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
+                transition-all duration-300 ease-in-out"
                 aria-label="עקוב אחרינו באינסטגרם"
               >
                 <Instagram className="w-6 h-6 text-white" aria-hidden="true" />

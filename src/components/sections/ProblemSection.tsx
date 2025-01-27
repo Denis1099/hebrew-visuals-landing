@@ -22,7 +22,8 @@ const ProblemSection = () => {
           <p className="text-xl font-bold text-[#c0017e]">ליצור תוכן יכול להיות פשוט, קליל ואפילו מהנה.</p>
           <p className="text-lg">רוצה ללמוד איך לעשות את זה?</p>
           <div className="pt-4 md:pt-6">
-            <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-all duration-300">
+            <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
+                transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg">
               תראה לי איך עושים את זה!
             </a>
           </div>

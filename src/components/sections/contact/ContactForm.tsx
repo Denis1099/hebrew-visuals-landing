@@ -85,7 +85,8 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
             type="submit"
             disabled={isSubmitting}
             className="bg-gradient-primary text-white px-12 py-4 rounded-full text-xl font-medium
-              hover:opacity-90 transition-opacity duration-300 transform hover:scale-105 shadow-lg
+              hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
+                transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg
               disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
