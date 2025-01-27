@@ -17,7 +17,9 @@ const TestimonialsSection = () => {
     <section className="py-8 md:py-12 md:pb-8 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-6 md:mb-14 gradient-text">
-          עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:
+          כבר שלוש שנים שיצירת תוכן זורמת לי בדם, מאז שאני זוכר את עצמי או אם לדייק מאז גיל 10 שלקחתי את המצלמה הישנה של אחי הגדול לא עזבתי אותה, בשלב מסוים הבנתי שזהו מעבר לזה שזה עושה לי את זה
+          <br />
+          <span className="font-bold">תוצאות ומשנה מציאות לבעלי עסקים!</span>
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -33,12 +33,13 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
           <FormField
             control={form.control}
             name="name"
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <FormItem>
                 <FormControl>
                   <Input 
-                    placeholder="שם מלא *"
-                    className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md"
+                    placeholder="שם מלא"
+                    className={`w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md
+                      ${fieldState.invalid ? 'border-red-500 before:content-["*"] before:text-red-500 before:mr-1' : ''}`}
                     {...field}
                   />
                 </FormControl>
@@ -49,13 +50,15 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
           <FormField
             control={form.control}
             name="phone"
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <FormItem>
                 <FormControl>
                   <Input 
-                    placeholder="* מספר טלפון"
+                    placeholder="מספר טלפון"
                     type="tel"
-                    className="w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md"
+                    dir="ltr"
+                    className={`w-full p-3 bg-white rounded-lg text-black placeholder:text-gray-500 text-right shadow-md
+                      ${fieldState.invalid ? 'border-red-500 before:content-["*"] before:text-red-500 before:mr-1' : ''}`}
                     {...field}
                   />
                 </FormControl>
@@ -86,7 +89,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
             disabled={isSubmitting}
             className="bg-gradient-primary text-white px-12 py-4 rounded-full text-xl font-medium
               hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg
+              transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg
               disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
