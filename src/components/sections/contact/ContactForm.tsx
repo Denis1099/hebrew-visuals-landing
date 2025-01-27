@@ -26,11 +26,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
     },
   });
 
-  const handleSubmit = async (data: ContactFormData, e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    const formData = new FormData(e.currentTarget);
-    
+  const handleSubmit = async (data: ContactFormData) => {
     try {
       // Handle React form submission
       await onSubmit(data);
@@ -39,7 +35,10 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: new URLSearchParams({
+          "form-name": "contact-form",
+          ...data
+        }).toString(),
       });
     } catch (error) {
       console.error('Form submission error:', error);
@@ -49,7 +48,7 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
   return (
     <Form {...form}>
       <form 
-        onSubmit={(e) => form.handleSubmit((data) => handleSubmit(data, e))(e)}
+        onSubmit={form.handleSubmit(handleSubmit)}
         className="space-y-6" 
         data-netlify="true" 
         name="contact-form" 

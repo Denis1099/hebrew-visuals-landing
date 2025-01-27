@@ -24,39 +24,27 @@ const HeroForm = () => {
     },
   });
 
-  const onSubmit = async (data: HeroFormData, e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = async (data: HeroFormData) => {
     setIsSubmitting(true);
-    
-    const formData = new FormData(e.currentTarget);
     
     try {
       console.log('Form submitted:', data);
       
       // Submit the form data to Netlify
-      fetch("/", {
+      await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
-      })
-        .then(() => {
-          toast({
-            title: "הטופס נשלח בהצלחה!",
-            description: "נחזור אליך בהקדם 😊",
-          });
-          form.reset();
-        })
-        .catch((error) => {
-          console.error('Submission error:', error);
-          toast({
-            variant: "destructive",
-            title: "שגיאה בשליחת הטופס",
-            description: "אנא נסה שוב מאוחר יותר",
-          });
-        })
-        .finally(() => {
-          setIsSubmitting(false);
-        });
+        body: new URLSearchParams({
+          "form-name": "hero-form",
+          ...data
+        }).toString(),
+      });
+      
+      toast({
+        title: "הטופס נשלח בהצלחה!",
+        description: "נחזור אליך בהקדם 😊",
+      });
+      form.reset();
     } catch (error) {
       console.error('Form error:', error);
       toast({
@@ -64,6 +52,7 @@ const HeroForm = () => {
         title: "שגיאה בשליחת הטופס",
         description: "אנא נסה שוב מאוחר יותר",
       });
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -72,7 +61,7 @@ const HeroForm = () => {
     <div className="space-y-6 mb-10 md:mb-0">
       <Form {...form}>
         <form 
-          onSubmit={(e) => form.handleSubmit((data) => onSubmit(data, e))(e)}
+          onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-6 sm:space-y-8" 
           data-netlify="true" 
           name="hero-form" 
