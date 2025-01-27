@@ -26,16 +26,35 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
     },
   });
 
+  const handleSubmit = async (data: ContactFormData, e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      // Handle React form submission
+      await onSubmit(data);
+      
+      // Submit the form data to Netlify
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
+  };
+
   return (
     <Form {...form}>
       <form 
-        onSubmit={form.handleSubmit(onSubmit)} 
+        onSubmit={(e) => form.handleSubmit((data) => handleSubmit(data, e))(e)}
         className="space-y-6" 
         data-netlify="true" 
         name="contact-form" 
         method="POST"
         netlify-honeypot="bot-field"
-        action="/success"
       >
         <input type="hidden" name="form-name" value="contact-form" />
         <p hidden>

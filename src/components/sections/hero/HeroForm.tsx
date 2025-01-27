@@ -24,42 +24,60 @@ const HeroForm = () => {
     },
   });
 
-  const onSubmit = async (data: HeroFormData) => {
+  const onSubmit = async (data: HeroFormData, e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    
     try {
       console.log('Form submitted:', data);
-      toast({
-        title: "הטופס נשלח בהצלחה!",
-        description: "נחזור אליך בהקדם 😊",
-      });
-      form.reset();
+      
+      // Submit the form data to Netlify
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      })
+        .then(() => {
+          toast({
+            title: "הטופס נשלח בהצלחה!",
+            description: "נחזור אליך בהקדם 😊",
+          });
+          form.reset();
+        })
+        .catch((error) => {
+          console.error('Submission error:', error);
+          toast({
+            variant: "destructive",
+            title: "שגיאה בשליחת הטופס",
+            description: "אנא נסה שוב מאוחר יותר",
+          });
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     } catch (error) {
+      console.error('Form error:', error);
       toast({
         variant: "destructive",
         title: "שגיאה בשליחת הטופס",
         description: "אנא נסה שוב מאוחר יותר",
       });
-    } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const scrollToFinalCTA = () => {
-    const element = document.querySelector('#final-cta');
-    element?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div className="space-y-6 mb-10 md:mb-0">
       <Form {...form}>
         <form 
-          onSubmit={form.handleSubmit(onSubmit)} 
+          onSubmit={(e) => form.handleSubmit((data) => onSubmit(data, e))(e)}
           className="space-y-6 sm:space-y-8" 
           data-netlify="true" 
           name="hero-form" 
           method="POST"
           netlify-honeypot="bot-field"
-          action="/success"
         >
           <input type="hidden" name="form-name" value="hero-form" />
           <p hidden>
@@ -122,7 +140,10 @@ const HeroForm = () => {
             </button>
             <button 
               type="button"
-              onClick={scrollToFinalCTA}
+              onClick={() => {
+                const element = document.querySelector('#final-cta');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="inline-block bg-[#5797ef] text-white px-6 sm:px-8 py-3 rounded-full font-medium 
                 hover:bg-primary-blue/90 hover:transform hover:scale-105 hover:shadow-lg 
                 transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg"
