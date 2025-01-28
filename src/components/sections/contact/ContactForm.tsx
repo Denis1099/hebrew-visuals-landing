@@ -28,6 +28,14 @@ const ContactForm = ({ onSubmit, isSubmitting }: ContactFormProps) => {
 
   const handleSubmit = async (data: ContactFormData) => {
     try {
+      // Track form submission with Meta Pixel
+      (window as any).fbq('track', 'Contact', {
+        content_name: 'contact_form_submission',
+        content_category: 'form_submission',
+        value: 0,
+        currency: 'ILS',
+      });
+      
       // Handle React form submission
       await onSubmit(data);
       

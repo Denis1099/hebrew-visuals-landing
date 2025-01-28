@@ -28,6 +28,14 @@ const HeroForm = () => {
     setIsSubmitting(true);
     
     try {
+      // Track form submission with Meta Pixel
+      (window as any).fbq('track', 'Lead', {
+        content_name: 'hero_form_submission',
+        content_category: 'form_submission',
+        value: 0,
+        currency: 'ILS',
+      });
+      
       console.log('Form submitted:', data);
       
       // Submit the form data to Netlify

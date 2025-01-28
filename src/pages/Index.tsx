@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 
 // Lazy load sections that are not immediately visible
 const TestimonialsSection = lazy(() => import("@/components/sections/TestimonialsSection"));
@@ -14,6 +14,39 @@ import HeroSection from "@/components/sections/HeroSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
+  useEffect(() => {
+    let scrollTracked = {
+      25: false,
+      50: false,
+      75: false,
+      90: false
+    };
+
+    const handleScroll = () => {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      
+      if (scrollPercent >= 25 && !scrollTracked[25]) {
+        (window as any).fbq('track', 'ScrollMilestone', { milestone: '25%' });
+        scrollTracked[25] = true;
+      }
+      if (scrollPercent >= 50 && !scrollTracked[50]) {
+        (window as any).fbq('track', 'ScrollMilestone', { milestone: '50%' });
+        scrollTracked[50] = true;
+      }
+      if (scrollPercent >= 75 && !scrollTracked[75]) {
+        (window as any).fbq('track', 'ScrollMilestone', { milestone: '75%' });
+        scrollTracked[75] = true;
+      }
+      if (scrollPercent >= 90 && !scrollTracked[90]) {
+        (window as any).fbq('track', 'ScrollMilestone', { milestone: '90%' });
+        scrollTracked[90] = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen relative">
       <HeroSection />
