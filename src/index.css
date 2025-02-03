@@ -64,10 +64,17 @@
 }
 
 /* Animation classes */
-.animate-fade-in {
+[data-scroll] {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeIn 1.2s ease-out forwards;
+  visibility: hidden;
+}
+
+.animate-fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+  transition: all 1.2s ease-out;
 }
 
 @keyframes fadeIn {
@@ -79,10 +86,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Initial state for elements before animation */
-[data-scroll] {
-  opacity: 0;
-  transform: translateY(20px);
 }

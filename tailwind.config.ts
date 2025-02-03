@@ -53,8 +53,8 @@ export default {
         'noto': ['"Noto Sans Hebrew"', 'sans-serif'],
       },
       animation: {
-        "fade-in": "fadeIn 0.5s ease-in-out",
-        "slide-up": "slideUp 0.5s ease-out",
+        "fade-in": "fadeIn 1.2s ease-out",
+        "slide-up": "slideUp 1.2s ease-out",
       },
       keyframes: {
         fadeIn: {
