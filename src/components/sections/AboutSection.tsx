@@ -1,8 +1,12 @@
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 const AboutSection = () => {
+  const ref = useScrollAnimation();
+
   return (
     <section className="py-12 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto" ref={ref}>
           <h2 className="text-4xl font-bold text-center mb-8 gradient-text">אז היי, אני גבריאל גלמן</h2>
           <div className="space-y-4 md:space-y-6 text-center text-lg">
             <p className="font-bold text-xl">ואני כאן כדי לעזור לך לקחת את העסק שלך לשלב הבא!</p>
