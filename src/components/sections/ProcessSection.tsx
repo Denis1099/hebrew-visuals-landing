@@ -1,4 +1,3 @@
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Presentation, Lightbulb, Camera, Video } from "lucide-react";
 
 const ProcessCard = ({ title, description, icon: Icon }: { title: string; description: string; icon: any }) => (
@@ -12,11 +11,10 @@ const ProcessCard = ({ title, description, icon: Icon }: { title: string; descri
 );
 
 const ProcessSection = () => {
-  const ref = useScrollAnimation();
 
   return (
     <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 via-purple-50/30 to-white">
-      <div className="container mx-auto px-4" ref={ref}>
+      <div className="container mx-auto px-4" >
         <h2 className="text-4xl font-bold text-center mb-8 md:mb-12 gradient-text">"מגניב, איך בפועל זה עובד?"</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <ProcessCard
