@@ -4,13 +4,13 @@ import HeroImage from './hero/HeroImage';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="min-h-screen flex flex-col py-6 md:py-8 bg-gradient-to-b from-[#6b46c1] via-[#805ad5] to-white text-white">
+    <section id="home" className="min-h-screen flex flex-col py-4 md:py-6 bg-gradient-to-b from-[#6b46c1] via-[#805ad5] to-white text-white">
       {/* Logo Container */}
-      <div className="w-full px-4 mb-2">
+      <div className="w-full px-4 mb-4 md:mb-0">
         <img 
           src="/lovable-uploads/gg-logo.webp" 
           alt="Logo" 
-          className="h-16 w-auto mx-auto md:mr-6 md:ml-auto"
+          className="h-10 md:h-14 w-auto mx-auto md:mr-6 md:ml-auto"
           width="64"
           height="64"
           loading="eager"
