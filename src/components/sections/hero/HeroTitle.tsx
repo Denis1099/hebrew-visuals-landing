@@ -6,7 +6,7 @@ const HeroTitle = () => {
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-0 md:mb-6 md:mt-6 animate-slide-up leading-relaxed hidden md:block">
         פתרון מלא לתוכן שלך: אסטרטגיה, צילום ועריכת וידאו מקצועיים.
       </h2>
-      <p className="text-xl sm:text-xl md:text-xl font-bold mb-2 sm:mb-4 md:mb-2 mt-2 animate-slide-up">
+      <p className="text-xl sm:text-xl md:text-xl font-bold mb-2 sm:mb-4 md:mb-2 mt-0 animate-slide-up">
         אני מזמין אותך לשיחת אפיון לעסק במתנה 🎁
         <br />
         במודל ״ אני האמיתי ״

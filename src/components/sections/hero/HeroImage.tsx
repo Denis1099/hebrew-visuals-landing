@@ -7,7 +7,7 @@ const HeroImage = () => {
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold leading-relaxed text-center mb-2 motion-safe:animate-slide-up">
           פתרון מלא לתוכן שלך: אסטרטגיה, צילום ועריכת וידאו מקצועיים.
         </h2>
-        <AspectRatio ratio={1/1} className="w-[90%] sm:w-[80%] mx-auto">
+        <AspectRatio ratio={1/1} className="h-[85%] md:h-[100%] w-[90%] sm:w-[80%] mx-auto">
           <picture>
             <source 
               media="(min-width: 768px)" 
