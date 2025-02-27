@@ -15,16 +15,12 @@ const AboutSection = () => {
             
             <motion.div 
               className="font-bold text-2xl my-6 text-primary-pink"
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ 
-                duration: 0.5,
-                repeat: Infinity,
-                repeatType: "reverse",
-                repeatDelay: 2
-              }}
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              *סרטונים = כסף*
+              סרטונים = כסף
             </motion.div>
             
             <p>
