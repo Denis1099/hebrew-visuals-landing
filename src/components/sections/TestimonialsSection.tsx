@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { YouTubeFacade } from "@/components/ui/youtube-facade";
 
@@ -14,7 +15,7 @@ const TestimonialsSection = () => {
   const displayedVideos = showAll ? videos : videos.slice(0, 3);
 
   return (
-    <section className="py-8 md:py-12 md:pb-8 bg-white">
+    <section className="py-8 md:py-12 md:pb-8 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-6 md:mb-14 gradient-text">
           עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:

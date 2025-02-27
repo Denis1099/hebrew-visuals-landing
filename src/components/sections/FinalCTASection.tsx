@@ -1,9 +1,11 @@
+
 import { MessageCircle, Instagram } from "lucide-react";
 
 const FinalCTASection = () => {
   return (
-    <section id="final-cta" className="pt-20 pb-18 bg-gradient-to-b from-[#74a9f1] to-[#c0017e] text-white">
-      <div className="container mx-auto px-4">
+    <section id="final-cta" className="pt-20 pb-18 relative">
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8 text-[#a2066f]">אם הגעת עד כאן, כנראה שאתה רציני לגבי העסק שלך.</h2>
           <div className="space-y-6 text-lg">

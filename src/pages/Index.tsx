@@ -1,3 +1,4 @@
+
 import { lazy, Suspense, useEffect } from "react";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 

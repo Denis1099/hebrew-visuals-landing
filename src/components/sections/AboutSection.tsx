@@ -1,10 +1,9 @@
 
 const AboutSection = () => {
-
-
   return (
-    <section className="py-12 md:py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section className="py-12 md:py-20 relative">
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-8 gradient-text">אז היי, אני גבריאל גלמן</h2>
           <div className="space-y-4 md:space-y-6 text-center text-lg">

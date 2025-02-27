@@ -1,9 +1,9 @@
 
 const ProblemSection = () => {
-
   return (
-    <section className="py-8 md:py-12 bg-gradient-to-b from-white to-primary-blue">
-      <div className="container mx-auto px-4">
+    <section className="py-8 md:py-12 relative">
+      <div className="absolute inset-0 bg-white/50 backdrop-blur-sm"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl font-bold text-center mb-6 md:mb-8 gradient-text">מרגיש תקוע עם יצירת תוכן לעסק שלך?</h2>
         <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
           <p className="text-xl font-bold">אני לגמרי מבין את זה!</p>
