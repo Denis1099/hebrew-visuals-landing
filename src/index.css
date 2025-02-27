@@ -83,238 +83,25 @@
   }
 }
 
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .animate-icon-float {
   animation: iconFloat 3s ease-in-out infinite;
 }
 
-/* Enhanced Morphing Gradients Animation - Optimized */
-:root {
-  --color-bg1: #6b46c1;
-  --color-bg2: #5797ef;
-  --color1: 192, 1, 126; /* Pink #c0017e */
-  --color2: 107, 70, 193; /* Purple #6b46c1 */
-  --color3: 87, 151, 239; /* Blue #5797ef */
-  --color4: 192, 1, 126; /* Pink #c0017e - darker variation */
-  --color5: 127, 100, 193; /* Purple variation */
-  --color-interactive: 192, 1, 126; /* Pink #c0017e */
-  --circle-size: 80%;
-  --blending: hard-light;
-}
-
-.gradient-bg {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
-  z-index: -10;
-  will-change: transform;
-}
-
-.gradient-bg svg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-}
-
-.gradients-container {
-  filter: url(#goo) blur(40px);
-  width: 100%;
-  height: 100%;
-  contain: strict;
-}
-
-/* Primary pink gradient with pulsing and moving animation */
-.g1 {
-  position: absolute;
-  background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
-  mix-blend-mode: var(--blending);
-  width: var(--circle-size);
-  height: var(--circle-size);
-  top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
-  transform-origin: center center;
-  animation: movePulsingVertical 15s ease infinite;
-  opacity: 1;
-  will-change: transform;
-}
-
-/* Purple gradient with figure-8 movement */
-.g2 {
-  position: absolute;
-  background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
-  mix-blend-mode: var(--blending);
-  width: var(--circle-size);
-  height: var(--circle-size);
-  top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
-  transform-origin: calc(50% - 200px);
-  animation: moveFigureEight 25s ease infinite;
-  opacity: 1;
-  will-change: transform;
-}
-
-/* Blue gradient with spiral movement */
-.g3 {
-  position: absolute;
-  background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
-  mix-blend-mode: var(--blending);
-  width: var(--circle-size);
-  height: var(--circle-size);
-  top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
-  transform-origin: calc(50% + 200px);
-  animation: moveSpiral 30s linear infinite;
-  opacity: 1;
-  will-change: transform;
-}
-
-/* Simpler diagonal movement */
-.g4 {
-  position: absolute;
-  background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
-  mix-blend-mode: var(--blending);
-  width: var(--circle-size);
-  height: var(--circle-size);
-  top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
-  transform-origin: center center;
-  animation: moveDiagonal 20s ease infinite;
-  opacity: 0.7;
-  will-change: transform;
-}
-
-/* Purple variation with wave movement */
-.g5 {
-  position: absolute;
-  background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
-  mix-blend-mode: var(--blending);
-  width: calc(var(--circle-size) * 1.5);
-  height: calc(var(--circle-size) * 1.5);
-  top: calc(50% - var(--circle-size) * 0.75);
-  left: calc(50% - var(--circle-size) * 0.75);
-  transform-origin: center center;
-  animation: moveWave 18s ease-in-out infinite;
-  opacity: 1;
-  will-change: transform;
-}
-
-.interactive {
-  position: absolute;
-  background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
-  mix-blend-mode: var(--blending);
-  width: 100%;
-  height: 100%;
-  top: -50%;
-  left: -50%;
-  opacity: 0.7;
-}
-
-/* Only apply animation when the animated-fallback class is present */
-.interactive.animated-fallback {
-  animation: moveCurved 25s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-/* Optimized animation keyframes */
-@keyframes movePulsingVertical {
-  0% {
-    transform: translateY(-30%) scale(1);
-  }
-  50% {
-    transform: translateY(30%) scale(0.9);
-  }
-  100% {
-    transform: translateY(-30%) scale(1);
-  }
-}
-
-@keyframes moveFigureEight {
-  0% {
-    transform: translate(-30%, -30%) rotate(0deg);
-  }
-  50% {
-    transform: translate(30%, 30%) rotate(180deg);
-  }
-  100% {
-    transform: translate(-30%, -30%) rotate(360deg);
-  }
-}
-
-@keyframes moveSpiral {
-  0% {
-    transform: rotate(0deg) translateX(20%) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) translateX(20%) scale(0.8);
-  }
-  100% {
-    transform: rotate(360deg) translateX(20%) scale(1);
-  }
-}
-
-@keyframes moveDiagonal {
-  0% {
-    transform: translate(-40%, -40%);
-  }
-  50% {
-    transform: translate(40%, 40%);
-  }
-  100% {
-    transform: translate(-40%, -40%);
-  }
-}
-
-@keyframes moveWave {
-  0% {
-    transform: translateX(-30%) scale(1);
-  }
-  50% {
-    transform: translateX(30%) scale(1.1);
-  }
-  100% {
-    transform: translateX(-30%) scale(1);
-  }
-}
-
-@keyframes moveCurved {
-  0% {
-    transform: translate(-20%, -20%);
-  }
-  33% {
-    transform: translate(30%, -10%);
-  }
-  66% {
-    transform: translate(10%, 30%);
-  }
-  100% {
-    transform: translate(-20%, -20%);
-  }
-}
-
-/* Responsive adjustments for mobile */
-@media (max-width: 768px) {
-  :root {
-    --circle-size: 120%; /* Larger circles on mobile */
-  }
-  
-  .g1, .g2, .g3, .g4, .g5 {
-    animation-duration: 25s; /* Slower animation on mobile to improve performance */
-  }
-  
-  .interactive.animated-fallback {
-    animation-duration: 30s;
-  }
-}
-
-/* Performance optimizations */
-@media (prefers-reduced-motion: reduce) {
-  .g1, .g2, .g3, .g4, .g5, .interactive {
-    animation: none !important;
-    opacity: 0.5;
-  }
+.animate-icon-pulse {
+  animation: iconPulse 2s ease-in-out infinite;
 }
