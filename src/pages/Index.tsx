@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 
 // Lazy load sections that are not immediately visible
 const TestimonialsSection = lazy(() => import("@/components/sections/TestimonialsSection"));
@@ -49,6 +50,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative">
+      {/* Global Animated Background */}
+      <BackgroundAnimation />
+      
       <HeroSection />
       
       <Suspense fallback={

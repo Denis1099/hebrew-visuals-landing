@@ -4,7 +4,7 @@ import HeroImage from './hero/HeroImage';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="min-h-screen flex flex-col py-2 md:py-6 bg-gradient-to-b from-[#6b46c1] via-[#805ad5] to-white text-white">
+    <section id="home" className="min-h-screen flex flex-col py-2 md:py-6 text-white">
       {/* Logo Container */}
       <div className="w-full px-4 mb-4 md:mb-0">
         <img 
