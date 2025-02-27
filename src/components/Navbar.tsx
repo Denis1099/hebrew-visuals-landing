@@ -1,7 +1,40 @@
-
 import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
+// Add this CSS to your global stylesheet or include it here
+const navbarStyles = `
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .mobile-nav-container {
+    font-size: 1.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .mobile-nav-buttons {
+    padding: 0.5rem 0.75rem;
+  }
+}
+`;
 
 const Navbar = () => {
+  // Add the styles to the document head
+  useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = navbarStyles;
+    document.head.appendChild(styleElement);
+    
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
   const location = useLocation();
   
   const scrollToTop = () => {
@@ -16,21 +49,35 @@ const Navbar = () => {
     }
   };
 
+  // Check if we're on the about page
+  const isAboutPage = location.pathname === "/about";
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center py-3">
-      <div className="inline-flex gap-4 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full shadow-sm">
-        <Link 
-          to="/about" 
-          className="px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white"
-        >
-          אודות
-        </Link>
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center py-3 sm:py-3 px-2 animate-fadeIn mobile-nav-container">
+      <div className="inline-flex items-center px-4 py-2 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-md rounded-full shadow-md text-lg mobile-nav-buttons">
         <button 
           onClick={scrollToTop}
-          className="px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors text-white"
+          className={`px-4 py-2 transition-all duration-300 text-white 
+            rounded-full hover:bg-white/30
+            ${isAboutPage 
+              ? "" 
+              : "font-medium"}`}
         >
           בית
         </button>
+        
+        <span className="mx-2 text-white/70">|</span>
+        
+        <Link 
+          to="/about" 
+          className={`px-4 py-2 transition-all duration-300 text-white 
+            rounded-full hover:bg-white/30
+            ${isAboutPage 
+              ? "font-medium" 
+              : ""}`}
+        >
+          אודות
+        </Link>
       </div>
     </nav>
   );
