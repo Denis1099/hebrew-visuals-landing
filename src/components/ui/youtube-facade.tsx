@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 
 interface YouTubeFacadeProps {
@@ -65,11 +66,7 @@ export const YouTubeFacade = ({ videoId, className = '' }: YouTubeFacadeProps) =
           style={{ backgroundImage: thumbnailUrl ? `url(${thumbnailUrl})` : undefined }}
           aria-label={`הפעל סרטון YouTube`}
         >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
-              <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-white ml-1"></div>
-            </div>
-          </div>
+          {/* YouTube play button is removed, letting the standard YouTube play button show when embedded */}
         </button>
       ) : (
         <iframe
