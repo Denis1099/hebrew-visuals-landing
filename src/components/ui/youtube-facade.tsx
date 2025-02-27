@@ -1,6 +1,5 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { Play } from 'lucide-react';
 
 interface YouTubeFacadeProps {
   videoId: string;
@@ -63,15 +62,11 @@ export const YouTubeFacade = ({ videoId, className = '' }: YouTubeFacadeProps) =
         <button
           ref={containerRef}
           onClick={loadVideo}
-          className="w-full h-full bg-gray-200 bg-cover bg-center rounded-lg relative focus:outline-none focus:ring-2 focus:ring-primary-pink overflow-hidden group"
+          className="w-full h-full bg-gray-200 bg-cover bg-center rounded-lg relative focus:outline-none focus:ring-2 focus:ring-primary-pink"
           style={{ backgroundImage: thumbnailUrl ? `url(${thumbnailUrl})` : undefined }}
           aria-label={`הפעל סרטון YouTube`}
         >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-primary-pink bg-opacity-90 rounded-full flex items-center justify-center transition-all duration-300 transform group-hover:scale-110 group-hover:bg-opacity-100 shadow-lg">
-              <Play className="w-8 h-8 text-white fill-white ml-1" />
-            </div>
-          </div>
+          {/* YouTube play button is removed, letting the standard YouTube play button show when embedded */}
         </button>
       ) : (
         <iframe

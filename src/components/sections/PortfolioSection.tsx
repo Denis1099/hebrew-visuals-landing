@@ -17,7 +17,7 @@ const PortfolioSection = () => {
   return (
     <section className="py-8 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-6 text-white">
+        <h2 className="text-4xl font-bold text-center mb-6 text-[#1A1F2C]">
           "גבריאל, תראה לי קצת דוגמאות"
         </h2>
         <p className="text-xl text-center mb-8">טוב ידעתי שתבקשו:</p>
