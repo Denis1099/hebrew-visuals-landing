@@ -83,8 +83,25 @@
   }
 }
 
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+    color: #c0017e;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .animate-icon-float {
   animation: iconFloat 3s ease-in-out infinite;
+}
+
+.animate-icon-pulse {
+  animation: iconPulse 1.5s ease-in-out infinite;
 }
 
 /* Enhanced Morphing Gradients Animation - Optimized */
