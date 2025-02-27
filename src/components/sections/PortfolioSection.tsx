@@ -1,5 +1,5 @@
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { YouTubeFacade } from "@/components/ui/youtube-facade";
 
 const videos = [
@@ -17,11 +17,15 @@ const PortfolioSection = () => {
   return (
     <section className="py-8 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-6 gradient-text">"גבריאל, תראה לי קצת דוגמאות"</h2>
+        <h2 className="text-4xl font-bold text-center mb-6 relative z-10">
+          <span className="bg-white/80 px-4 py-2 rounded-lg shadow-sm backdrop-blur-md inline-block">
+            "גבריאל, תראה לי קצת דוגמאות"
+          </span>
+        </h2>
         <p className="text-xl text-center mb-8">טוב ידעתי שתבקשו:</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {displayedVideos.map((videoId, index) => (
+          {displayedVideos.map((videoId) => (
             <YouTubeFacade
               key={videoId}
               videoId={videoId}

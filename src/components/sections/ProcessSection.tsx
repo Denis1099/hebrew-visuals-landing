@@ -15,7 +15,11 @@ const ProcessSection = () => {
   return (
     <section className="py-8 md:py-16">
       <div className="container mx-auto px-4" >
-        <h2 className="text-4xl font-bold text-center mb-8 md:mb-12 gradient-text">"מגניב, איך בפועל זה עובד?"</h2>
+        <h2 className="text-4xl font-bold text-center mb-8 md:mb-12 relative z-10">
+          <span className="bg-white/80 px-4 py-2 rounded-lg shadow-sm backdrop-blur-md inline-block">
+            "מגניב, איך בפועל זה עובד?"
+          </span>
+        </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           <ProcessCard
             icon={Presentation}
