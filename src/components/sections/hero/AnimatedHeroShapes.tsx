@@ -10,9 +10,9 @@ const AnimatedHeroShapes = () => {
         alt=""
         className="
           absolute
-          w-[300px] md:w-[650px] lg:w-[850px]
+          w-[250px] md:w-[650px] lg:w-[850px]
           top-[70%] md:top-[0%] lg:top-[0%]
-          -left-[0%] md:-left-[10%] lg:-left-[0%]
+          left-[32%] md:-left-[10%] lg:-left-[0%]
           h-auto
           z-5
         "
@@ -28,9 +28,9 @@ const AnimatedHeroShapes = () => {
         alt=""
         className="
           absolute
-          w-[350px] md:w-[650px] lg:w-[850px]
-          top-[60%] md:top-[10%] lg:top-[0%]
-          -left-[40%] md:-left-[10%] lg:-left-[8%]
+          w-[250px] md:w-[650px] lg:w-[850px]
+          top-[66%] md:top-[10%] lg:top-[0%]
+          left-[10%] md:-left-[10%] lg:-left-[8%]
           h-auto
           z-5
         "
@@ -46,8 +46,8 @@ const AnimatedHeroShapes = () => {
         alt=""
         className="
           absolute
-          w-[320px] md:w-[725px] lg:w-[925px]
-          bottom-[0%] md:bottom-[0%] lg:bottom-[0%]
+          w-[300px] md:w-[725px] lg:w-[925px]
+          bottom-[4%] md:bottom-[0%] lg:bottom-[0%]
           -left-[0%] md:-left-[0%] lg:left-[0%]
           h-auto
           z-5

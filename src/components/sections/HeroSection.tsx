@@ -44,9 +44,9 @@ const HeroSection = () => {
                 absolute
                 w-auto 
                 h-auto
-                max-h-[70vh] md:max-h-[80vh] lg:max-h-[95vh]
+                max-h-[80vh] md:max-h-[80vh] lg:max-h-[95vh]
                 max-w-[280px] md:max-w-[400px] lg:max-w-[600px]
-                top-[50px] md:top-[0px] lg:top-[0px]
+                top-[10px] md:top-[0px] lg:top-[0px]
                 left-[50px] md:left-[0px] lg:left-[10px]
                 object-contain
                 z-30
