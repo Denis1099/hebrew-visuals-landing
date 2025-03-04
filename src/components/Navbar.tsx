@@ -1,3 +1,4 @@
+
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -53,8 +54,8 @@ const Navbar = () => {
   const isAboutPage = location.pathname === "/about";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center py-3 sm:py-3 px-2 animate-fadeIn mobile-nav-container">
-      <div className="inline-flex items-center px-4 py-2 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-md rounded-full shadow-md text-lg mobile-nav-buttons">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center py-3 sm:py-3 px-2 animate-fadeIn mobile-nav-container w-full">
+      <div className="inline-flex items-center px-4 py-2 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-md rounded-full shadow-md text-lg mobile-nav-buttons max-w-full">
         <button 
           onClick={scrollToTop}
           className={`px-4 py-2 transition-all duration-300 text-white 

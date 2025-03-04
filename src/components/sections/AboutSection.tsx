@@ -14,7 +14,7 @@ const AboutSection = () => {
             <p>הרבה אנשים עושים סרטונים אבל לא הרבה מממשים את המשוואה:</p>
             
             <motion.div 
-              className="font-bold text-2xl my-6 text-primary-pink"
+              className="font-bold text-3xl md:text-4xl my-6 text-primary-pink"
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
