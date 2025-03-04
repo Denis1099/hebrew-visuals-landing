@@ -1,82 +1,22 @@
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const AnimatedHeroShapes = () => {
-  const [blueButtonPosition, setBlueButtonPosition] = useState({ top: 0, left: 0, width: 0 });
-  
-  // Find the blue button and track its position
-  useEffect(() => {
-    const updateButtonPosition = () => {
-      const blueButton = document.querySelector('button.bg-\\[\\#5797ef\\]');
-      if (blueButton) {
-        const rect = blueButton.getBoundingClientRect();
-        const scrollY = window.scrollY;
-        setBlueButtonPosition({
-          top: rect.top + scrollY,
-          left: rect.left,
-          width: rect.width
-        });
-      }
-    };
-    
-    // Update on load and resize
-    updateButtonPosition();
-    window.addEventListener('resize', updateButtonPosition);
-    
-    // Update when DOM changes may affect button position
-    const observer = new MutationObserver(updateButtonPosition);
-    observer.observe(document.body, { subtree: true, childList: true });
-    
-    return () => {
-      window.removeEventListener('resize', updateButtonPosition);
-      observer.disconnect();
-    };
-  }, []);
-
-  // Calculate arrow positions based on the blue button
-  const isMobile = window.innerWidth < 768;
-  const arrowPositioning = isMobile ? {
-    // Mobile positioning - relative to blue button
-    topArrow: {
-      top: blueButtonPosition.top - 120,
-      left: blueButtonPosition.left - 10
-    },
-    middleArrow: {
-      top: blueButtonPosition.top - 70,
-      left: blueButtonPosition.left - 20
-    },
-    bottomArrow: {
-      top: blueButtonPosition.top + 50,
-      left: blueButtonPosition.left - 20
-    }
-  } : {
-    // Desktop positioning - original layout
-    topArrow: {},
-    middleArrow: {},
-    bottomArrow: {}
-  };
-
   return (
     <div className="w-full h-full">
       {/* Top Arrow */}
       <motion.img 
         src="/lovable-uploads/top_arrow.svg" 
         alt=""
-        className={`
+        className="
           absolute
           w-[250px] md:w-[650px] lg:w-[850px]
-          ${isMobile ? '' : 'top-[70%] md:top-[0%] lg:top-[0%] left-[32%] md:-left-[10%] lg:-left-[0%]'}
+          top-[70%] md:top-[0%] lg:top-[0%]
+          left-[32%] md:-left-[10%] lg:-left-[0%]
           h-auto
           z-5
-        `}
-        style={{ 
-          maxWidth: 'none',
-          ...(isMobile && {
-            top: `${arrowPositioning.topArrow.top}px`,
-            left: `${arrowPositioning.topArrow.left}px`,
-          }) 
-        }}
+        "
+        style={{ maxWidth: 'none' }}
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -86,20 +26,15 @@ const AnimatedHeroShapes = () => {
       <motion.img 
         src="/lovable-uploads/middle_arrow.svg" 
         alt=""
-        className={`
+        className="
           absolute
           w-[250px] md:w-[650px] lg:w-[850px]
-          ${isMobile ? '' : 'top-[66%] md:top-[10%] lg:top-[0%] left-[10%] md:-left-[10%] lg:-left-[8%]'}
+          top-[66%] md:top-[10%] lg:top-[0%]
+          left-[10%] md:-left-[10%] lg:-left-[8%]
           h-auto
           z-5
-        `}
-        style={{ 
-          maxWidth: 'none',
-          ...(isMobile && {
-            top: `${arrowPositioning.middleArrow.top}px`,
-            left: `${arrowPositioning.middleArrow.left}px`,
-          }) 
-        }}
+        "
+        style={{ maxWidth: 'none' }}
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -109,20 +44,15 @@ const AnimatedHeroShapes = () => {
       <motion.img 
         src="/lovable-uploads/bottom_arrow.svg" 
         alt=""
-        className={`
+        className="
           absolute
           w-[300px] md:w-[725px] lg:w-[925px]
-          ${isMobile ? '' : 'bottom-[4%] md:bottom-[0%] lg:bottom-[0%] -left-[0%] md:-left-[0%] lg:left-[0%]'}
+          bottom-[4%] md:bottom-[0%] lg:bottom-[0%]
+          -left-[0%] md:-left-[0%] lg:left-[0%]
           h-auto
           z-5
-        `}
-        style={{ 
-          maxWidth: 'none',
-          ...(isMobile && {
-            top: `${arrowPositioning.bottomArrow.top}px`,
-            left: `${arrowPositioning.bottomArrow.left}px`,
-          }) 
-        }}
+        "
+        style={{ maxWidth: 'none' }}
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
