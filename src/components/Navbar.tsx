@@ -54,7 +54,7 @@ const Navbar = () => {
   const isAboutPage = location.pathname === "/about";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center items-center py-3 animate-fadeIn w-full">
+    <nav className="fixed top-0 left-0 w-full z-50 flex justify-center items-center py-3 animate-fadeIn">
       <div className="inline-flex items-center justify-center px-4 py-2 bg-white/20 backdrop-blur-md rounded-full shadow-md text-lg max-w-[90%] mx-auto">
         <button 
           onClick={scrollToTop}

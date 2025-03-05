@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="h-screen flex flex-col py-2 md:py-6 text-white relative overflow-x-hidden overflow-y-hidden">
+    <section id="home" className="h-screen flex flex-col py-2 md:py-6 text-white relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 opacity-100 z-0"></div>
       
@@ -16,7 +16,7 @@ const HeroSection = () => {
       </div>
       
       {/* Logo Container - Adjusted for mobile to appear above navbar with margin */}
-      <div className="w-full px-4 mt-12 sm:mt-4 md:mb-0 relative z-20">
+      <div className="w-full px-4 mt-16 sm:mt-8 md:mt-4 relative z-20">
         <img 
           src="/lovable-uploads/gg-logo.webp" 
           alt="Logo" 
