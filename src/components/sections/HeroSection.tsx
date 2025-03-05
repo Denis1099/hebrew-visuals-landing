@@ -1,3 +1,4 @@
+
 import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import AnimatedHeroShapes from './hero/AnimatedHeroShapes';
@@ -14,8 +15,8 @@ const HeroSection = () => {
         <AnimatedHeroShapes />
       </div>
       
-      {/* Logo Container */}
-      <div className="w-full px-4 mb-4 md:mb-0 relative z-20">
+      {/* Logo Container - Adjusted for mobile to appear above navbar with margin */}
+      <div className="w-full px-4 mt-12 sm:mt-4 md:mb-0 relative z-20">
         <img 
           src="/lovable-uploads/gg-logo.webp" 
           alt="Logo" 
