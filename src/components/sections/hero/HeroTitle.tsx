@@ -4,7 +4,7 @@ import { SparklesText } from "@/components/ui/sparkles-text";
 const HeroTitle = () => {
   return (
     <div className=" ">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-0 md:mb-6 md:mt-16 animate-slide-up leading-relaxed hidden md:block">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-0 md:mb-6 md:mt-0 animate-slide-up leading-relaxed hidden md:block">
         פתרון מלא לתוכן שלך: אסטרטגיה, צילום ועריכת וידאו מקצועיים.
       </h2>
       <p className="text-xl sm:text-xl md:text-xl font-bold mb-2 sm:mb-4 md:mb-2 mt-0 animate-slide-up">

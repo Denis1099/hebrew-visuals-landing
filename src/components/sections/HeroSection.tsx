@@ -62,13 +62,13 @@ const HeroSection = () => {
           {/* Desktop Layout (grid) - Only visible at md breakpoint and above */}
           <div className="hidden md:grid w-full grid-cols-12 h-full">
             {/* Text Content Column */}
-            <div className="col-span-6 order-1 w-full text-center space-y-6 text-white self-center">
+            <div className="col-span-9 order-1 w-full text-center space-y-6 text-white self-center">
               <HeroTitle />
               <HeroForm />
             </div>
             
             {/* Person Image Column */}
-            <div className="col-span-6 order-2 w-full h-full relative -left-[12%] md:left-[6%] lg:left-[12%] z-10">
+            <div className="col-span-3 order-2 w-full h-full relative -left-[12%] md:left-[0%] lg:left-[6%] z-10">
               <motion.div 
                 className="absolute bottom-0 left-0"
                 initial={{ opacity: 0 }}
@@ -81,7 +81,7 @@ const HeroSection = () => {
                   className="
                     h-auto
                     max-h-[70vh] lg:max-h-[80vh]
-                    max-w-[380px] lg:max-w-[480px]
+                    max-w-[380px] md:max-w-[300px] lg:max-w-[480px]
                     object-contain
                   "
                   width="400"
