@@ -1,3 +1,4 @@
+
 import { SparklesText } from "@/components/ui/sparkles-text";
 
 const HeroTitle = () => {
