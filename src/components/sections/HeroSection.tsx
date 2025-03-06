@@ -1,3 +1,4 @@
+
 import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import AnimatedHeroShapes from './hero/AnimatedHeroShapes';
@@ -6,8 +7,7 @@ import { motion } from 'framer-motion';
 const HeroSection = () => {
   return (
     <section id="home" className="relative h-screen flex flex-col overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 z-0"></div>
+      {/* Background gradient - removed as we're using the global background now */}
       
       {/* SVG shapes container */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
@@ -32,7 +32,7 @@ const HeroSection = () => {
         <div className="flex-grow container mx-auto px-4 flex flex-col justify-between h-full">
           {/* Mobile/Tablet Layout (flex column) - Only visible below md breakpoint */}
           <div className="w-full flex flex-col items-center justify-between h-full md:hidden">
-            <div className="w-full text-center space-y-4 text-white mt-8">
+            <div className="w-full text-center space-y-4 text-black mt-8">
               <HeroTitle />
               <HeroForm />
             </div>
@@ -62,7 +62,7 @@ const HeroSection = () => {
           {/* Desktop Layout (grid) - Only visible at md breakpoint and above */}
           <div className="hidden md:grid w-full grid-cols-12 h-full">
             {/* Text Content Column */}
-            <div className="col-span-9 order-1 w-full text-center space-y-6 text-white self-center">
+            <div className="col-span-9 order-1 w-full text-center space-y-6 text-black self-center">
               <HeroTitle />
               <HeroForm />
             </div>

@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -118,13 +119,13 @@
 }
 
 :root {
-  --color-bg1: #6b46c1;
-  --color-bg2: #5797ef;
-  --color1: 192, 1, 126;
-  --color2: 107, 70, 193;
-  --color3: 87, 151, 239;
-  --color4: 192, 1, 126;
-  --color5: 127, 100, 193;
+  --color-bg1: #ABAAAA;
+  --color-bg2: #ABAAAA;
+  --color1: 171, 170, 170;
+  --color2: 255, 255, 255;
+  --color3: 171, 170, 170;
+  --color4: 255, 255, 255;
+  --color5: 171, 170, 170;
   --color-interactive: 192, 1, 126;
   --circle-size: 80%;
   --blending: hard-light;
@@ -137,7 +138,7 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+  background: radial-gradient(circle at center, #FFFFFF 0%, #ABAAAA 100%);
   z-index: -10;
   will-change: transform;
 }
