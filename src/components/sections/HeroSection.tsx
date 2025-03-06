@@ -38,8 +38,8 @@ const HeroSection = () => {
               <HeroForm />
             </div>
             
-            {/* Person Image Column - ensured attachment to bottom */}
-            <div className="md:col-span-6 md:order-2 order-2 w-full relative h-[35vh] md:h-[70vh] md:-left-[12%] lg:-left-[32%] z-30">
+            {/* Person Image Column - ensure it attaches to bottom */}
+            <div className="md:col-span-6 md:order-2 order-2 w-full relative h-[35vh] md:h-auto md:-left-[12%] lg:-left-[32%] z-30 md:self-end">
               <motion.div 
                 className="absolute inset-x-0 bottom-0 flex justify-center md:justify-start"
                 initial={{ opacity: 0 }}

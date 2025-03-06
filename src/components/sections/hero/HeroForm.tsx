@@ -125,13 +125,13 @@ const HeroForm = () => {
               )}
             />
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+          <div className="flex flex-col gap-3 justify-center items-center">
             <button 
               type="submit"
               disabled={isSubmitting}
               className="inline-block bg-primary-pink text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium 
                 hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full sm:w-auto text-base
+                transition-all duration-300 ease-in-out w-full text-base
                 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
@@ -144,7 +144,7 @@ const HeroForm = () => {
               }}
               className="inline-block bg-[#5797ef] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium 
                 hover:bg-primary-blue/90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full sm:w-auto text-base"
+                transition-all duration-300 ease-in-out w-full text-base"
             >
               אני רוצה פרטים נוספים
             </button>
