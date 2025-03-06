@@ -11,7 +11,7 @@ export default {
   prefix: "",
   theme: {
     screens: {
-      'xs': '375px',  // Added custom breakpoint for screens larger than iPhone SE
+      'xs': '376px',  // Added custom breakpoint for screens larger than iPhone SE
       'sm': '640px',
       'md': '768px',
       'lg': '1024px',
