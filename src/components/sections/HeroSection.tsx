@@ -56,7 +56,7 @@ const HeroSection = () => {
                     max-h-[45vh] sm:max-h-[60vh] md:max-h-[70vh] lg:max-h-[90vh]
                     max-w-[200px] sm:max-w-[280px] md:max-w-[380px] lg:max-w-[480px]
                     object-contain
-                    sm:translate-y-10 md:translate-y-0
+                    sm:translate-y-10 md:translate-y-20
                   "
                   width="400"
                   height="400"
