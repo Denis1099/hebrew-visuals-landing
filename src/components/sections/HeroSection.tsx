@@ -16,8 +16,8 @@ const HeroSection = () => {
       
       {/* Content container */}
       <div className="relative z-20 flex flex-col h-full">
-        {/* Logo Container - reduced top margin */}
-        <div className="w-full px-4 mt-6 sm:mt-6 md:mt-4">
+        {/* Logo Container */}
+        <div className="w-full px-4 mt-4">
           <img 
             src="/lovable-uploads/gg-logo.webp" 
             alt="Logo" 
@@ -28,53 +28,64 @@ const HeroSection = () => {
           />
         </div>
 
-        {/* Main content area - adjusted padding and layout */}
-        <div className="flex-grow container mx-auto px-4 sm:px-8 max-w-7xl flex items-center">
-          <div className="w-full grid grid-cols-1 md:grid-cols-12 md:items-start items-center gap-0 md:gap-2">
-            {/* Text Content Column */}
-            <div className="md:col-span-6 md:order-1 order-1 w-full text-center space-y-4 md:space-y-6 animate-fade-in text-white">
+        {/* Main content area - CONDITIONAL LAYOUT */}
+        <div className="flex-grow container mx-auto px-4 flex flex-col justify-between h-full">
+          {/* Mobile/Tablet Layout (flex column) - Only visible below md breakpoint */}
+          <div className="w-full flex flex-col items-center justify-between h-full md:hidden">
+            <div className="w-full text-center space-y-4 text-white mt-8">
               <HeroTitle />
               <HeroForm />
             </div>
             
-            {/* Person Image Column - adjusted for tablet view */}
-            <div className="md:col-span-6 md:order-2 order-2 w-full relative h-[35vh] md:h-auto md:-left-[12%] lg:-left-[32%] z-10 md:self-end">
+            <div className="w-full flex justify-center mt-auto">
               <motion.div 
-                className="absolute inset-x-0 bottom-0 flex justify-center md:justify-start"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                {/* Desktop and large tablet image */}
                 <img 
                   src="/lovable-uploads/gabriel-image.webp"
                   alt="תמונה של גבריאל גלמן"
                   className="
-                    hidden sm:block
                     h-auto
-                    max-h-[45vh] sm:max-h-[60vh] md:max-h-[70vh] lg:max-h-[90vh]
-                    max-w-[200px] sm:max-w-[280px] md:max-w-[380px] lg:max-w-[480px]
+                    max-h-[40vh] sm:max-h-[45vh]
+                    max-w-[200px] sm:max-w-[240px]
                     object-contain
-                    sm:translate-y-10 md:translate-y-20
+                  "
+                  width="240"
+                  height="240"
+                />
+              </motion.div>
+            </div>
+          </div>
+          
+          {/* Desktop Layout (grid) - Only visible at md breakpoint and above */}
+          <div className="hidden md:grid w-full grid-cols-12 h-full">
+            {/* Text Content Column */}
+            <div className="col-span-6 order-1 w-full text-center space-y-6 text-white self-center">
+              <HeroTitle />
+              <HeroForm />
+            </div>
+            
+            {/* Person Image Column */}
+            <div className="col-span-6 order-2 w-full h-full relative -left-[12%] md:left-[6%] lg:left-[12%] z-10">
+              <motion.div 
+                className="absolute bottom-0 left-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                <img 
+                  src="/lovable-uploads/gabriel-image.webp"
+                  alt="תמונה של גבריאל גלמן"
+                  className="
+                    h-auto
+                    max-h-[70vh] lg:max-h-[80vh]
+                    max-w-[380px] lg:max-w-[480px]
+                    object-contain
                   "
                   width="400"
                   height="400"
-                />
-                
-                {/* Mobile image */}
-                <img 
-                  src="/lovable-uploads/gabriel-image.webp"
-                  alt="תמונה של גבריאל גלמן"
-                  className="
-                    hidden xs:block sm:hidden
-                    h-auto
-                    max-h-[40vh]
-                    max-w-[180px]
-                    object-contain
-                    translate-y-0
-                  "
-                  width="180"
-                  height="180"
                 />
               </motion.div>
             </div>

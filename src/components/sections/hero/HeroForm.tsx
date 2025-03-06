@@ -66,11 +66,11 @@ const HeroForm = () => {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-6 mb-10 md:mb-0 hero-form-tablet-fix">
+    <div className="space-y-3 sm:space-y-4 mb-6 md:mb-0 hero-form-tablet-fix">
       <Form {...form}>
         <form 
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 sm:space-y-6" 
+          className="space-y-3 sm:space-y-4" 
           data-netlify="true" 
           name="hero-form" 
           method="POST"
@@ -82,17 +82,17 @@ const HeroForm = () => {
               Don't fill this out if you're human: <input name="bot-field" />
             </label>
           </p>
-          <div className="flex flex-col md:flex-row gap-4 sm:gap-6 justify-center items-center">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 justify-center items-center">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem className="w-full md:w-[300px]">
+                <FormItem className="w-full md:w-[280px]">
                   <FormControl>
                     <Input 
                       placeholder="שם מלא"
                       autoComplete="name"
-                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
+                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-10 sm:h-12 text-lg rounded-lg shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
                         form.formState.errors.name ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
                       }`}
                       {...field}
@@ -106,14 +106,14 @@ const HeroForm = () => {
               control={form.control}
               name="phone"
               render={({ field }) => (
-                <FormItem className="w-full md:w-[300px]">
+                <FormItem className="w-full md:w-[280px]">
                   <FormControl>
                     <Input 
                       placeholder="מספר טלפון"
                       type="tel"
                       autoComplete="tel"
                       dir="ltr"
-                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-12 text-lg rounded-lg shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
+                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-10 sm:h-12 text-lg rounded-lg shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
                         form.formState.errors.phone ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
                       }`}
                       {...field}
@@ -124,14 +124,14 @@ const HeroForm = () => {
               )}
             />
           </div>
-          <div className="flex flex-col gap-3 justify-center items-center form-buttons-tablet-fix">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center form-buttons-tablet-fix">
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="inline-block bg-primary-pink text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium 
+              className="inline-block bg-primary-pink text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium 
                 hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full md:w-auto text-base
-                disabled:opacity-50 disabled:cursor-not-allowed"
+                transition-all duration-300 ease-in-out w-full sm:w-auto text-base
+                disabled:opacity-50 disabled:cursor-not-allowed order-1 sm:order-1"
             >
               {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
             </button>
@@ -141,9 +141,9 @@ const HeroForm = () => {
                 const element = document.querySelector('#final-cta');
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-block bg-[#5797ef] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium 
+              className="inline-block bg-[#5797ef] text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium 
                 hover:bg-primary-blue/90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full md:w-auto text-base"
+                transition-all duration-300 ease-in-out w-full sm:w-auto text-base order-2 sm:order-2"
             >
               אני רוצה פרטים נוספים
             </button>
