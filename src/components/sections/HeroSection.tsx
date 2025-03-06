@@ -1,4 +1,5 @@
 
+
 import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import AnimatedHeroShapes from './hero/AnimatedHeroShapes';
@@ -61,7 +62,6 @@ const HeroSection = () => {
                   width="400"
                   height="400"
                 />
-                
                 
                 {/* For xs to sm range (375px to 639px) */}
                 <img 

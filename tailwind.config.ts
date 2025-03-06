@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -10,6 +11,14 @@ export default {
   ],
   prefix: "",
   theme: {
+    screens: {
+      'xs': '375px',  // Added custom breakpoint for screens larger than iPhone SE
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -22,6 +31,7 @@ export default {
         primary: {
           pink: "#c0017e",
           blue: "#5797ef",
+          purple: "#6b46c1", // Added purple from custom instructions
         },
         foreground: "hsl(var(--foreground))",
         background: "hsl(var(--background))",
