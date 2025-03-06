@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -67,7 +66,7 @@ const HeroForm = () => {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-6 mb-10 md:mb-0">
+    <div className="space-y-4 sm:space-y-6 mb-10 md:mb-0 hero-form-tablet-fix">
       <Form {...form}>
         <form 
           onSubmit={form.handleSubmit(onSubmit)}
@@ -125,13 +124,13 @@ const HeroForm = () => {
               )}
             />
           </div>
-          <div className="flex flex-col gap-3 justify-center items-center">
+          <div className="flex flex-col gap-3 justify-center items-center form-buttons-tablet-fix">
             <button 
               type="submit"
               disabled={isSubmitting}
               className="inline-block bg-primary-pink text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium 
                 hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full text-base
+                transition-all duration-300 ease-in-out w-full md:w-auto text-base
                 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
@@ -144,7 +143,7 @@ const HeroForm = () => {
               }}
               className="inline-block bg-[#5797ef] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium 
                 hover:bg-primary-blue/90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full text-base"
+                transition-all duration-300 ease-in-out w-full md:w-auto text-base"
             >
               אני רוצה פרטים נוספים
             </button>

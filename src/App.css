@@ -19,25 +19,26 @@ html, body, #root {
 }
 
 /* Fix for specific tablet-sized viewport issues */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hero-section-tablet-fix {
-    padding-bottom: 2rem;
-  }
-  
-  .hero-form-tablet-fix {
-    margin-bottom: 0;
-  }
-}
-
-/* Single-column button layout for specific screen sizes */
 @media (min-width: 640px) and (max-width: 950px) {
   .form-buttons-tablet-fix {
     flex-direction: column !important;
+    gap: 1rem !important;
     width: 100%;
   }
   
   .form-buttons-tablet-fix button {
     width: 100% !important;
+  }
+}
+
+/* Additional fix for medium-sized tablets */
+@media (min-width: 768px) and (max-width: 950px) {
+  .hero-section-tablet-fix {
+    padding-bottom: 2rem;
+  }
+  
+  .hero-form-tablet-fix {
+    margin-bottom: 2rem;
   }
 }
 

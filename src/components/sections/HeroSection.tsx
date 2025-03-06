@@ -1,4 +1,3 @@
-
 import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import AnimatedHeroShapes from './hero/AnimatedHeroShapes';
@@ -17,8 +16,8 @@ const HeroSection = () => {
       
       {/* Content container */}
       <div className="relative z-20 flex flex-col h-full">
-        {/* Logo Container */}
-        <div className="w-full px-4 mt-10 sm:mt-8 md:mt-4">
+        {/* Logo Container - reduced top margin */}
+        <div className="w-full px-4 mt-6 sm:mt-6 md:mt-4">
           <img 
             src="/lovable-uploads/gg-logo.webp" 
             alt="Logo" 
@@ -29,24 +28,24 @@ const HeroSection = () => {
           />
         </div>
 
-        {/* Main content area - adjusted vertical alignment */}
+        {/* Main content area - adjusted padding and layout */}
         <div className="flex-grow container mx-auto px-4 sm:px-8 max-w-7xl flex items-center">
-          <div className="w-full grid grid-cols-1 md:grid-cols-12 md:items-start items-center gap-0 md:gap-2 md:pt-0">
-            {/* Text Content Column - moved higher on desktop */}
+          <div className="w-full grid grid-cols-1 md:grid-cols-12 md:items-start items-center gap-0 md:gap-2">
+            {/* Text Content Column */}
             <div className="md:col-span-6 md:order-1 order-1 w-full text-center space-y-4 md:space-y-6 animate-fade-in text-white">
               <HeroTitle />
               <HeroForm />
             </div>
             
-            {/* Person Image Column - ensure it attaches to bottom */}
-            <div className="md:col-span-6 md:order-2 order-2 w-full relative h-[35vh] md:h-auto md:-left-[12%] lg:-left-[32%] z-30 md:self-end">
+            {/* Person Image Column - adjusted for tablet view */}
+            <div className="md:col-span-6 md:order-2 order-2 w-full relative h-[35vh] md:h-auto md:-left-[12%] lg:-left-[32%] z-10 md:self-end">
               <motion.div 
                 className="absolute inset-x-0 bottom-0 flex justify-center md:justify-start"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                {/* For sm breakpoint and up (640px+) */}
+                {/* Desktop and large tablet image */}
                 <img 
                   src="/lovable-uploads/gabriel-image.webp"
                   alt="תמונה של גבריאל גלמן"
@@ -62,7 +61,7 @@ const HeroSection = () => {
                   height="400"
                 />
                 
-                {/* For xs to sm range (375px to 639px) */}
+                {/* Mobile image */}
                 <img 
                   src="/lovable-uploads/gabriel-image.webp"
                   alt="תמונה של גבריאל גלמן"
@@ -77,8 +76,6 @@ const HeroSection = () => {
                   width="180"
                   height="180"
                 />
-                
-                {/* No image rendered below 375px (iPhone SE) */}
               </motion.div>
             </div>
           </div>
