@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -11,7 +10,6 @@ const navbarStyles = `
 .animate-fadeIn {
   animation: fadeIn 0.5s ease-out forwards;
 }
-
 /* Mobile optimizations */
 @media (max-width: 640px) {
   .mobile-nav-container {
@@ -36,6 +34,7 @@ const Navbar = () => {
       document.head.removeChild(styleElement);
     };
   }, []);
+
   const location = useLocation();
   
   const scrollToTop = () => {
@@ -50,34 +49,48 @@ const Navbar = () => {
     }
   };
 
-  // Check if we're on the about page
+  // Check which page we're on
   const isAboutPage = location.pathname === "/about";
+  const isPortfolioPage = location.pathname === "/portfolio";
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex justify-center items-center py-3 animate-fadeIn">
-      <div className="inline-flex items-center justify-center px-4 py-2 bg-white/20 backdrop-blur-md rounded-full shadow-md text-lg max-w-[90%] mx-auto">
+    <nav className="absolute top-0 left-0 w-full z-50 flex justify-center items-center py-5 animate-fadeIn">
+      <div className="inline-flex items-center justify-center px-4 py-2 bg-white/50 rounded-full text-lg max-w-[90%] mx-auto">
         <button 
           onClick={scrollToTop}
-          className={`px-4 py-2 transition-all duration-300 text-white 
-            rounded-full hover:bg-white/30
-            ${isAboutPage 
-              ? "" 
-              : "font-medium"}`}
+          className={`px-4 py-2 transition-all duration-300 text-gray-800 
+            rounded-full hover:bg-white/70
+            ${!isAboutPage && !isPortfolioPage 
+              ? "font-medium" 
+              : ""}`}
         >
           בית
         </button>
         
-        <span className="mx-2 text-white/70">|</span>
+        <span className="mx-2 text-gray-500">|</span>
         
         <Link 
           to="/about" 
-          className={`px-4 py-2 transition-all duration-300 text-white 
-            rounded-full hover:bg-white/30
+          className={`px-4 py-2 transition-all duration-300 text-gray-800 
+            rounded-full hover:bg-white/70
             ${isAboutPage 
               ? "font-medium" 
               : ""}`}
         >
           אודות
+        </Link>
+
+        <span className="mx-2 text-gray-500">|</span>
+        
+        <Link 
+          to="/portfolio" 
+          className={`px-4 py-2 transition-all duration-300 text-gray-800 
+            rounded-full hover:bg-white/70
+            ${isPortfolioPage 
+              ? "font-medium" 
+              : ""}`}
+        >
+          פורטפוליו
         </Link>
       </div>
     </nav>
