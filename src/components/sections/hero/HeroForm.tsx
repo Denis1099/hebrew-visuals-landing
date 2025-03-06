@@ -67,11 +67,11 @@ const HeroForm = () => {
   };
 
   return (
-    <div className="space-y-6 mb-10 md:mb-0">
+    <div className="space-y-4 sm:space-y-6 mb-10 md:mb-0">
       <Form {...form}>
         <form 
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 sm:space-y-8" 
+          className="space-y-4 sm:space-y-6" 
           data-netlify="true" 
           name="hero-form" 
           method="POST"
@@ -83,7 +83,7 @@ const HeroForm = () => {
               Don't fill this out if you're human: <input name="bot-field" />
             </label>
           </p>
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col md:flex-row gap-4 sm:gap-6 justify-center items-center">
             <FormField
               control={form.control}
               name="name"
@@ -125,13 +125,13 @@ const HeroForm = () => {
               )}
             />
           </div>
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="inline-block bg-primary-pink text-white px-6 sm:px-8 py-3 rounded-full font-medium 
+              className="inline-block bg-primary-pink text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium 
                 hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full md:w-auto text-base sm:text-lg
+                transition-all duration-300 ease-in-out w-full sm:w-auto text-base
                 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
@@ -142,9 +142,9 @@ const HeroForm = () => {
                 const element = document.querySelector('#final-cta');
                 element?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-block bg-[#5797ef] text-white px-6 sm:px-8 py-3 rounded-full font-medium 
+              className="inline-block bg-[#5797ef] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium 
                 hover:bg-primary-blue/90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full md:w-auto text-base sm:text-lg"
+                transition-all duration-300 ease-in-out w-full sm:w-auto text-base"
             >
               אני רוצה פרטים נוספים
             </button>

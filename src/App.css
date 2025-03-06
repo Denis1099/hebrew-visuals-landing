@@ -19,6 +19,17 @@ html, body, #root {
   position: relative;
 }
 
+/* Fix for specific tablet-sized viewport issues */
+@media (min-width: 768px) and (max-width: 900px) {
+  .hero-section-tablet-fix {
+    padding-bottom: 2rem;
+  }
+  
+  .hero-form-tablet-fix {
+    margin-bottom: 0;
+  }
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -1,5 +1,4 @@
 
-
 import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import AnimatedHeroShapes from './hero/AnimatedHeroShapes';
@@ -19,7 +18,7 @@ const HeroSection = () => {
       {/* Content container */}
       <div className="relative z-20 flex flex-col h-full">
         {/* Logo Container */}
-        <div className="w-full px-4 mt-16 sm:mt-8 md:mt-4">
+        <div className="w-full px-4 mt-10 sm:mt-8 md:mt-4">
           <img 
             src="/lovable-uploads/gg-logo.webp" 
             alt="Logo" 
@@ -31,16 +30,16 @@ const HeroSection = () => {
         </div>
 
         {/* Main content area - adjusted vertical alignment */}
-        <div className="flex-grow container mx-auto px-8 max-w-7xl flex md:items-start items-center">
-          <div className="w-full grid grid-cols-1 md:grid-cols-12 md:items-start items-center gap-0 md:gap-2 md:pt-14">
+        <div className="flex-grow container mx-auto px-4 sm:px-8 max-w-7xl flex items-center">
+          <div className="w-full grid grid-cols-1 md:grid-cols-12 md:items-start items-center gap-0 md:gap-2 md:pt-0">
             {/* Text Content Column - moved higher on desktop */}
-            <div className="md:col-span-6 md:order-1 order-1 w-full text-center space-y-4 md:space-y-8 animate-fade-in text-white">
+            <div className="md:col-span-6 md:order-1 order-1 w-full text-center space-y-4 md:space-y-6 animate-fade-in text-white">
               <HeroTitle />
               <HeroForm />
             </div>
             
             {/* Person Image Column - ensured attachment to bottom */}
-            <div className="md:col-span-6 md:order-2 order-2 w-full relative h-[35vh] md:h-[86vh] md:-left-[12%] lg:-left-[32%] z-30">
+            <div className="md:col-span-6 md:order-2 order-2 w-full relative h-[35vh] md:h-[70vh] md:-left-[12%] lg:-left-[32%] z-30">
               <motion.div 
                 className="absolute inset-x-0 bottom-0 flex justify-center md:justify-start"
                 initial={{ opacity: 0 }}
@@ -54,10 +53,10 @@ const HeroSection = () => {
                   className="
                     hidden sm:block
                     h-auto
-                    max-h-[45vh] sm:max-h-[65vh] md:max-h-[75vh] lg:max-h-[95vh]
+                    max-h-[45vh] sm:max-h-[60vh] md:max-h-[70vh] lg:max-h-[90vh]
                     max-w-[200px] sm:max-w-[280px] md:max-w-[380px] lg:max-w-[480px]
                     object-contain
-                    sm:translate-y-20 md:translate-y-0
+                    sm:translate-y-10 md:translate-y-0
                   "
                   width="400"
                   height="400"
