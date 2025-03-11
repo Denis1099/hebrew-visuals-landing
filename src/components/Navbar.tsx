@@ -1,5 +1,7 @@
+
 import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 
 // Add this CSS to your global stylesheet or include it here
 const navbarStyles = `
@@ -24,6 +26,8 @@ const navbarStyles = `
 `;
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   // Add the styles to the document head
   useEffect(() => {
     const styleElement = document.createElement('style');
@@ -47,6 +51,9 @@ const Navbar = () => {
     if (location.pathname !== "/") {
       window.location.href = "/";
     }
+    
+    // Close mobile menu if open
+    setIsMenuOpen(false);
   };
 
   // Check which page we're on
@@ -55,7 +62,8 @@ const Navbar = () => {
 
   return (
     <nav className="absolute top-0 left-0 w-full z-50 flex justify-center items-center py-5 animate-fadeIn">
-      <div className="inline-flex items-center justify-center px-4 py-2 bg-white/50 rounded-full text-lg max-w-[90%] mx-auto">
+      {/* Desktop Menu */}
+      <div className="hidden sm:inline-flex items-center justify-center px-4 py-2 bg-white/50 rounded-full text-lg max-w-[90%] mx-auto">
         <button 
           onClick={scrollToTop}
           className={`px-4 py-2 transition-all duration-300 text-gray-800 
@@ -93,6 +101,59 @@ const Navbar = () => {
           פורטפוליו
         </Link>
       </div>
+      
+      {/* Mobile Menu Button */}
+      <div className="sm:hidden flex justify-end px-4 w-full">
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="p-2 bg-white/50 rounded-full"
+          aria-label={isMenuOpen ? "סגור תפריט" : "פתח תפריט"}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      
+      {/* Mobile Menu Panel */}
+      {isMenuOpen && (
+        <div className="sm:hidden absolute top-16 right-4 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-4 w-48 z-50">
+          <div className="flex flex-col space-y-3">
+            <button 
+              onClick={scrollToTop}
+              className={`px-4 py-2 text-right transition-all duration-300 text-gray-800 
+                rounded-lg hover:bg-white/70
+                ${!isAboutPage && !isPortfolioPage 
+                  ? "font-medium" 
+                  : ""}`}
+            >
+              בית
+            </button>
+            
+            <Link 
+              to="/about" 
+              onClick={() => setIsMenuOpen(false)}
+              className={`px-4 py-2 text-right transition-all duration-300 text-gray-800 
+                rounded-lg hover:bg-white/70
+                ${isAboutPage 
+                  ? "font-medium" 
+                  : ""}`}
+            >
+              אודות
+            </Link>
+            
+            <Link 
+              to="/portfolio" 
+              onClick={() => setIsMenuOpen(false)}
+              className={`px-4 py-2 text-right transition-all duration-300 text-gray-800 
+                rounded-lg hover:bg-white/70
+                ${isPortfolioPage 
+                  ? "font-medium" 
+                  : ""}`}
+            >
+              פורטפוליו
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

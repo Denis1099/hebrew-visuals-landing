@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -361,4 +360,16 @@
     animation: none !important;
     opacity: 0.5;
   }
+}
+
+.font-migdal {
+  font-family: 'MigdalHaemeqMedium', sans-serif !important;
+}
+
+.font-gveretlevin {
+  font-family: 'GveretLevin', sans-serif !important;
+}
+
+.font-assistant {
+  font-family: 'Assistant', sans-serif !important;
 }
