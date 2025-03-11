@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,6 +10,13 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: 'MigdalHaemeqMedium';
+  src: url('https://fontlibrary.org/assets/fonts/migdal-haemeq/22abd29698b1f94189cd39240fed2a0e/15f50c38c1dd29ba86fc98d8e2693cd6/MigdalHaemeqMedium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @layer base {

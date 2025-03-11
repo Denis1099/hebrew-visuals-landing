@@ -3,12 +3,12 @@ import { SparklesText } from "@/components/ui/sparkles-text";
 
 const HeroTitle = () => {
   return (
-    <div className="">
+    <div className="text-center">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-0 md:mb-6 md:mt-0 animate-slide-up leading-relaxed text-[#7105a3] font-assistant hidden md:block">
         אסטרטגיה, צילום ועריכת<br />וידאו מקצועיים!
       </h2>
       
-      <div className="relative mb-4 md:mb-6">
+      <div className="relative mb-4 md:mb-6 flex justify-center">
         <div className="flex items-start">
           <span className="text-5xl leading-none text-[#c6008a]">"</span>
           <div className="mx-1">
