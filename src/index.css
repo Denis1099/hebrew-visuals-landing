@@ -43,7 +43,7 @@
   }
 
   body {
-    @apply font-noto bg-white text-gray-900;
+    @apply font-assistant bg-white text-gray-900;
     width: 100%;
     overflow-x: hidden;
     position: relative;

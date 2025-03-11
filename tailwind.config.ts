@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -31,6 +32,9 @@ export default {
           pink: "#c0017e",
           blue: "#5797ef",
           purple: "#6b46c1", // Added purple from custom instructions
+          deepPurple: "#7105a3", // Added from the image
+          brightPink: "#c6008a", // Added from the image
+          brightBlue: "#004aad", // Added from the image
         },
         foreground: "hsl(var(--foreground))",
         background: "hsl(var(--background))",
@@ -59,7 +63,7 @@ export default {
         "gradient-primary": "linear-gradient(135deg, #c0017e 0%, #5797ef 100%)",
       },
       fontFamily: {
-        'noto': ['"Noto Sans Hebrew"', 'sans-serif'],
+        'assistant': ['Assistant', 'sans-serif'],
         'migdal': ['MigdalHaemeqMedium', 'sans-serif'],
         'gveretlevin': ['GveretLevin', 'sans-serif'],
       },
