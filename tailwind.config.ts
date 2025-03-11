@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +60,8 @@ export default {
       },
       fontFamily: {
         'noto': ['"Noto Sans Hebrew"', 'sans-serif'],
+        'migdal': ['MigdalHaemeqMedium', 'sans-serif'],
+        'gveretlevin': ['GveretLevin', 'sans-serif'],
       },
       animation: {
         "fade-in": "fadeIn 1.2s ease-out",

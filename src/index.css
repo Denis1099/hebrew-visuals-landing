@@ -1,7 +1,15 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'GveretLevin';
+  src: url('/fonts/GveretLevinAlefAlefAlef-Regular.woff2') format('woff2'),
+       url('/fonts/GveretLevinAlefAlefAlef-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {
