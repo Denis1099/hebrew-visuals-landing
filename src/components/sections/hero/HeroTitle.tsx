@@ -13,9 +13,9 @@ const HeroTitle = () => {
       
       <div className="relative mb-4 md:mb-8 flex justify-center">
         <div className="flex flex-col items-center justify-center">
-          <div className="flex items-center">
+          <div className="flex">
             <span className="text-5xl md:text-6xl lg:text-8xl leading-none text-[#c6008a]">"</span>
-            <div className="flex flex-col items-center mx-1">
+            <div className="flex flex-col items-center mx-3">
               <span className="text-5xl sm:text-4xl md:text-6xl lg:text-8xl text-[#c6008a] font-migdal">
                 אני האמיתי
               </span>
