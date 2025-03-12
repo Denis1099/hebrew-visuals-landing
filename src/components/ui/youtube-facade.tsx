@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Play } from 'lucide-react';
 
@@ -103,7 +104,7 @@ export const YouTubeFacade = ({
           {isActive && !disableActivation && (
             <div className="absolute inset-0 flex items-center justify-center">
               <button
-                className="w-16 h-16 bg-primary-pink rounded-full flex items-center justify-center 
+                className="w-16 h-16 bg-[#c0017e] rounded-full flex items-center justify-center 
                          transition-transform duration-300 hover:scale-110 shadow-lg focus:outline-none"
                 aria-label={`הפעל סרטון YouTube`}
                 onClick={(e) => {
@@ -117,34 +118,23 @@ export const YouTubeFacade = ({
           )}
         </div>
       ) : (
-        // Simpler solution: embed with black background and proper sizing
-        <div className="absolute inset-0 bg-black">
-          {/* DIV overlay to hide the thin black bars at the exact position */}
-          <div className="absolute inset-0 z-10 pointer-events-none">
-            <div className="absolute top-0 bottom-0 left-0 w-[7%] bg-black"></div>
-            <div className="absolute top-0 bottom-0 right-0 w-[7%] bg-black"></div>
-          </div>
-          
-          {/* YouTube iframe with proper positioning */}
-          <div 
-            className="absolute inset-0 w-full h-full"
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              overflow: 'hidden',
-            }}
-          >
+        // Improved solution for vertical videos to hide black bars
+        <div className="absolute inset-0 w-full h-full bg-black overflow-hidden">
+          {/* Wrapper for the iframe with specialized positioning */}
+          <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden">
             <iframe
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&fs=0`}
               title="YouTube"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               loading="lazy"
+              className="absolute"
               style={{ 
-                position: 'absolute',
-                width: '115%',  // Only slightly wider to avoid extreme zoom
+                width: '100vw', /* Make it wide enough to crop sides */
                 height: '100%',
+                maxWidth: 'none',
+                left: '50%',
+                transform: 'translateX(-50%)',
                 border: 'none',
               }}
             />

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { heroFormSchema, type HeroFormData } from "@/lib/validations/forms";
+import { Rocket } from "lucide-react";
 
 const HeroForm = () => {
   const { toast } = useToast();
@@ -82,40 +84,39 @@ const HeroForm = () => {
               Don't fill this out if you're human: <input name="bot-field" />
             </label>
           </p>
-          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 justify-center items-center">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem className="w-full md:w-[280px]">
-                  <FormControl>
-                    <Input 
-                      placeholder="שם מלא"
-                      autoComplete="name"
-                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-10 sm:h-12 text-lg rounded-lg shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
-                        form.formState.errors.name ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
-                      }`}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage className="text-right text-red-200" />
-                </FormItem>
+          
+          {/* Updated form layout - horizontal with three items in a row */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 justify-center items-center">
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="order-3 sm:order-1 bg-[#c0017e] text-white px-6 py-3 rounded-xl font-medium 
+                hover:bg-opacity-90 transition-all duration-300 ease-in-out
+                w-full sm:w-[140px] h-[54px] flex items-center justify-center gap-2
+                disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "שולח..." : (
+                <>
+                  שלח!
+                  <Rocket className="w-4 h-4" />
+                </>
               )}
-            />
+            </button>
+            
             <FormField
               control={form.control}
               name="phone"
               render={({ field }) => (
-                <FormItem className="w-full md:w-[280px]">
+                <FormItem className="order-2 sm:order-2 w-full sm:w-[220px]">
                   <FormControl>
                     <Input 
-                      placeholder="מספר טלפון"
+                      placeholder="פלאפון"
                       type="tel"
                       autoComplete="tel"
                       dir="ltr"
-                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 placeholder:text-gray-500 h-10 sm:h-12 text-lg rounded-lg shadow-md before:content-['*'] before:mr-[-1em] before:text-red-500 before:absolute ${
-                        form.formState.errors.phone ? 'border-red-500 before:opacity-100' : 'before:opacity-0'
-                      }`}
+                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 
+                        placeholder:text-gray-500 h-[54px] px-4 rounded-xl shadow-md 
+                        ${form.formState.errors.phone ? 'border-red-500' : ''}`}
                       {...field}
                     />
                   </FormControl>
@@ -123,30 +124,26 @@ const HeroForm = () => {
                 </FormItem>
               )}
             />
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center form-buttons-tablet-fix">
-            <button 
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-block bg-primary-pink text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium 
-                hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full sm:w-auto text-base
-                disabled:opacity-50 disabled:cursor-not-allowed order-1 sm:order-1"
-            >
-              {isSubmitting ? "שולח..." : "בוא נדבר! 📥"}
-            </button>
-            <button 
-              type="button"
-              onClick={() => {
-                const element = document.querySelector('#final-cta');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="inline-block bg-[#5797ef] text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium 
-                hover:bg-primary-blue/90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full sm:w-auto text-base order-2 sm:order-2"
-            >
-              אני רוצה פרטים נוספים
-            </button>
+            
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem className="order-1 sm:order-3 w-full sm:w-[220px]">
+                  <FormControl>
+                    <Input 
+                      placeholder="שם מלא"
+                      autoComplete="name"
+                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 
+                        placeholder:text-gray-500 h-[54px] px-4 rounded-xl shadow-md
+                        ${form.formState.errors.name ? 'border-red-500' : ''}`}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-right text-red-200" />
+                </FormItem>
+              )}
+            />
           </div>
         </form>
       </Form>
