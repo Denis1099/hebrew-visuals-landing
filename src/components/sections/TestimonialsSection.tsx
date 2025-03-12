@@ -1,6 +1,6 @@
-
-import { useState } from "react";
 import { YouTubeFacade } from "@/components/ui/youtube-facade";
+import CardCarousel from "../ui/CardCarousel";
+import { useEffect, useState } from "react";
 
 const videos = [
   "P_Gz_pML_ds",
@@ -11,37 +11,56 @@ const videos = [
 ];
 
 const TestimonialsSection = () => {
-  const [showAll, setShowAll] = useState(false);
-  const displayedVideos = showAll ? videos : videos.slice(0, 3);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [carouselItems, setCarouselItems] = useState<React.ReactNode[]>([]);
+
+  useEffect(() => {
+    // Create carousel items with active state and navigation callbacks
+    const updateItems = () => {
+      const items = videos.map((videoId, index) => {
+        const isActive = index === currentIndex;
+        
+        return (
+          <div key={videoId} className="w-full h-full">
+            <YouTubeFacade
+              videoId={videoId}
+              className="w-full h-full rounded-lg overflow-hidden shadow-xl"
+              isActive={isActive}
+              // Only allow activation for the active card
+              disableActivation={!isActive}
+              onNavigationClick={() => setCurrentIndex(index)}
+            />
+          </div>
+        );
+      });
+      
+      setCarouselItems(items);
+    };
+    
+    updateItems();
+  }, [currentIndex]);
+
+  // Handler for when carousel navigation happens
+  const handleCarouselChange = (newIndex: number) => {
+    setCurrentIndex(newIndex);
+  };
 
   return (
     <section className="py-8 md:py-12 md:pb-8 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-6 md:mb-14 text-white">
+        <h2 className="text-4xl font-bold text-center mb-16 text-white">
           עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {displayedVideos.map((videoId) => (
-            <YouTubeFacade
-              key={videoId}
-              videoId={videoId}
-              className="w-[70%] mx-auto"
-            />
-          ))}
+        {/* Using a taller container for the YouTube Shorts */}
+        <div className="h-[580px] md:h-[640px] lg:h-[700px] relative my-8 mt-16 mb-20">
+          <CardCarousel 
+            items={carouselItems} 
+            rtl={true} 
+            onChangeIndex={handleCarouselChange} 
+            currentIndex={currentIndex}
+          />
         </div>
-
-        {videos.length > 3 && !showAll && (
-          <div className="text-center mt-8">
-            <button
-              onClick={() => setShowAll(true)}
-              className="bg-gradient-primary text-white px-8 py-3 rounded-full text-lg font-medium
-                hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              הצג עוד המלצות
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
