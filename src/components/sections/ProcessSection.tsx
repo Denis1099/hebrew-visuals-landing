@@ -15,7 +15,7 @@ const ProcessSection = () => {
   return (
     <section className="py-8 md:py-16">
       <div className="container mx-auto px-4" >
-        <h2 className="text-4xl font-bold text-center mb-8 md:mb-12 text-white">
+        <h2 className="text-4xl font-migdal text-[#410175] text-center mb-8 md:mb-12">
           "מגניב, איך בפועל זה עובד?"
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

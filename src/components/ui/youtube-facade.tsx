@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Play } from 'lucide-react';
 
@@ -62,16 +61,12 @@ export const YouTubeFacade = ({
     return () => observer.disconnect();
   }, [videoId]);
 
-  // Handle click based on active state
   const handleClick = (e: React.MouseEvent) => {
-    // If this is not the active card and we have a navigation callback, 
-    // call it regardless of disableActivation
     if (!isActive && onNavigationClick) {
       onNavigationClick();
       return;
     }
     
-    // Only load the video if this is the active card 
     if (isActive && !isLoaded && !disableActivation) {
       setIsLoaded(true);
     }
@@ -88,6 +83,8 @@ export const YouTubeFacade = ({
         backgroundColor: '#000',
         overflow: 'hidden',
         borderRadius: '0.5rem',
+        maxWidth: '300px',
+        margin: '0 auto',
       }}
     >
       {!isLoaded ? (
@@ -100,7 +97,6 @@ export const YouTubeFacade = ({
             backgroundSize: 'cover',
           }}
         >
-          {/* Only show play button for active card that's not disabled */}
           {isActive && !disableActivation && (
             <div className="absolute inset-0 flex items-center justify-center">
               <button
@@ -118,9 +114,7 @@ export const YouTubeFacade = ({
           )}
         </div>
       ) : (
-        // Improved solution for vertical videos to hide black bars
         <div className="absolute inset-0 w-full h-full bg-black overflow-hidden">
-          {/* Wrapper for the iframe with specialized positioning */}
           <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden">
             <iframe
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&fs=0`}
@@ -128,11 +122,10 @@ export const YouTubeFacade = ({
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               loading="lazy"
-              className="absolute"
+              className="absolute w-full h-full"
               style={{ 
-                width: '100vw', /* Make it wide enough to crop sides */
+                maxWidth: '100vw',
                 height: '100%',
-                maxWidth: 'none',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 border: 'none',

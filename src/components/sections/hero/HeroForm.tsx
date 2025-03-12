@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -85,7 +84,6 @@ const HeroForm = () => {
             </label>
           </p>
           
-          {/* Updated form layout - horizontal with three items in a row */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 justify-center items-center">
             <button 
               type="submit"
@@ -98,7 +96,7 @@ const HeroForm = () => {
               {isSubmitting ? "שולח..." : (
                 <>
                   שלח!
-                  <Rocket className="w-4 h-4" />
+                  <span role="img" aria-label="rocket">🚀</span>
                 </>
               )}
             </button>

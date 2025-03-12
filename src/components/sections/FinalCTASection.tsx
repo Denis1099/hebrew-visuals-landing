@@ -1,4 +1,3 @@
-
 import { MessageCircle, Instagram } from "lucide-react";
 
 const FinalCTASection = () => {
@@ -7,7 +6,9 @@ const FinalCTASection = () => {
       <div className="absolute inset-0 backdrop-blur-sm"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 text-[white]">אם הגעת עד כאן, כנראה שאתה רציני לגבי העסק שלך.</h2>
+          <h2 className="text-3xl font-migdal text-[#410175] mb-8">
+            אם הגעת עד כאן, כנראה שאתה רציני לגבי העסק שלך.
+          </h2>
           <div className="space-y-6 text-lg">
             <p>אני יודע שזה לא קל לעמוד מול מצלמה, ויכול להיות שאתה מרגיש שלא תמיד יש לך את הזמן או את הכלים לעשות את זה נכון.</p>
             <p className="text-2xl font-bold text-[#0EA5E9]">אבל תן לי לשאול אותך –</p>
@@ -29,7 +30,7 @@ const FinalCTASection = () => {
               <img 
                 src="/lovable-uploads/gg-signature-mobile.webp" 
                 alt="Gabriel Creative Signature" 
-                className="max-w-[600px] w-full mx-auto object-contain h-[80px]"
+                className="max-w-[600px] w-full mx-auto object-contain h-[80px] brightness-0"
                 width="600"
                 height="80"
               />

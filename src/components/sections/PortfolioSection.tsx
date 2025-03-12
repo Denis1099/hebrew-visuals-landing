@@ -15,7 +15,6 @@ const PortfolioSection = () => {
   const [carouselItems, setCarouselItems] = useState<React.ReactNode[]>([]);
 
   useEffect(() => {
-    // Create carousel items with active state and navigation callbacks
     const updateItems = () => {
       const items = videos.map((videoId, index) => {
         const isActive = index === currentIndex;
@@ -26,7 +25,6 @@ const PortfolioSection = () => {
               videoId={videoId}
               className="w-full h-full rounded-lg overflow-hidden shadow-xl"
               isActive={isActive}
-              // Only allow activation for the active card
               disableActivation={!isActive}
               onNavigationClick={() => setCurrentIndex(index)}
             />
@@ -40,7 +38,6 @@ const PortfolioSection = () => {
     updateItems();
   }, [currentIndex]);
 
-  // Handler for when carousel navigation happens
   const handleCarouselChange = (newIndex: number) => {
     setCurrentIndex(newIndex);
   };
@@ -48,12 +45,11 @@ const PortfolioSection = () => {
   return (
     <section className="py-8 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16 text-white">
+        <h2 className="text-4xl font-migdal text-[#410175] text-center mb-16">
           "גבריאל, תראה לי קצת דוגמאות"
         </h2>
         <p className="text-xl text-center mb-8">טוב ידעתי שתבקשו:</p>
         
-        {/* Increased height for larger players on desktop */}
         <div className="h-[580px] md:h-[640px] lg:h-[700px] relative my-8 mt-16 pb-20">
           <CardCarousel 
             items={carouselItems} 
