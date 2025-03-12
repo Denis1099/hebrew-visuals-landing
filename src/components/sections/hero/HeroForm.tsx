@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,7 +12,6 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { heroFormSchema, type HeroFormData } from "@/lib/validations/forms";
-import { Rocket } from "lucide-react";
 
 const HeroForm = () => {
   const { toast } = useToast();
