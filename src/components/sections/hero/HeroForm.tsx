@@ -85,22 +85,26 @@ const HeroForm = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 justify-center items-center">
-            <button 
-              type="submit"
-              disabled={isSubmitting}
-              className="order-3 sm:order-1 bg-[#c0017e] text-white px-6 py-3 rounded-xl font-medium 
-                hover:bg-opacity-90 transition-all duration-300 ease-in-out
-                w-full sm:w-[140px] h-[54px] flex items-center justify-center gap-2
-                disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? "שולח..." : (
-                <>
-                  שלח!
-                  <span role="img" aria-label="rocket">🚀</span>
-                </>
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem className="order-1 sm:order-3 w-full sm:w-[220px]">
+                  <FormControl>
+                    <Input 
+                      placeholder="שם מלא"
+                      autoComplete="name"
+                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 
+                        placeholder:text-gray-500 h-[54px] px-4 rounded-xl shadow-md
+                        ${form.formState.errors.name ? 'border-red-500' : ''}`}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-right text-red-200" />
+                </FormItem>
               )}
-            </button>
-            
+            />
+
             <FormField
               control={form.control}
               name="phone"
@@ -122,26 +126,22 @@ const HeroForm = () => {
                 </FormItem>
               )}
             />
-            
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem className="order-1 sm:order-3 w-full sm:w-[220px]">
-                  <FormControl>
-                    <Input 
-                      placeholder="שם מלא"
-                      autoComplete="name"
-                      className={`text-black text-right bg-white/90 backdrop-blur-sm border-white/20 
-                        placeholder:text-gray-500 h-[54px] px-4 rounded-xl shadow-md
-                        ${form.formState.errors.name ? 'border-red-500' : ''}`}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage className="text-right text-red-200" />
-                </FormItem>
+
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="order-3 sm:order-1 bg-[#c0017e] text-white px-6 py-3 rounded-xl font-medium 
+                hover:bg-opacity-90 transition-all duration-300 ease-in-out
+                w-full sm:w-[140px] h-[54px] flex items-center justify-center gap-2
+                disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "שולח..." : (
+                <>
+                  שלח!
+                  <span role="img" aria-label="rocket">🚀</span>
+                </>
               )}
-            />
+            </button>
           </div>
         </form>
       </Form>
