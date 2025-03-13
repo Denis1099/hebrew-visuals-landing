@@ -116,14 +116,14 @@ export function YouTubeContainer({
       ) : (
         <div className="relative w-full h-full overflow-hidden">
           {/* YouTube iframe with proper centering */}
-          <div className="aspect-video absolute w-full h-full">
+          <div className="aspect-video absolute inset-0 w-full h-full flex items-center justify-center">
             <iframe
               data-video-id={videoId}
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&mute=1`}
               title="YouTube"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="absolute top-0 left-0 w-full h-full"
+              className="absolute inset-0 w-full h-full"
               style={{ border: 'none' }}
             />
           </div>
@@ -139,16 +139,16 @@ export function YouTubeContainer({
         isLoaded={isLoaded}
       />
 
-      {/* Video position dots - moved below the player */}
+      {/* Video position dots - moved below the player with improved spacing */}
       {totalVideos > 1 && (
-        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center space-x-3 z-20">
+        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center gap-4 z-20">
           {Array.from({ length: totalVideos }).map((_, index) => (
             <button
               key={index}
               onClick={() => onDotClick && onDotClick(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
+              className={`w-3 h-3 rounded-full transition-all ${
                 currentIndex === index 
-                  ? 'bg-[#c0017e] scale-125' 
+                  ? 'bg-[#c0017e] scale-110' 
                   : 'bg-white bg-opacity-60 hover:bg-opacity-100'
               }`}
               aria-label={`Go to video ${index + 1}`}
