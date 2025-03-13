@@ -1,4 +1,3 @@
-
 import { Volume2, VolumeX, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface YouTubeControlsProps {
@@ -24,8 +23,8 @@ export function YouTubeControls({
       {isLoaded && (
         <button
           onClick={onToggleMute}
-          className="absolute bottom-14 right-10 z-20 bg-black bg-opacity-60 p-2 rounded-full
-                    transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white"
+          className="absolute top-4 right-4 z-50 bg-black bg-opacity-70 p-2 rounded-full
+                   transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white"
           aria-label={isMuted ? "Unmute" : "Mute"}
         >
           {isMuted ? (
@@ -36,13 +35,13 @@ export function YouTubeControls({
         </button>
       )}
 
-      {/* Navigation controls - Outside the video frame */}
+      {/* Navigation controls - Positioned to be visible */}
       {showControls && onPrev && (
         <button
           onClick={onPrev}
-          className="absolute -left-16 md:-left-20 top-1/2 -translate-y-1/2 z-20
-                     bg-[#6b46c1] p-3 rounded-full 
-                     transition-transform hover:scale-110 focus:outline-none"
+          className="absolute -left-12 md:-left-16 top-1/2 -translate-y-1/2 z-30
+                   bg-[#6b46c1] p-3 rounded-full shadow-lg
+                   transition-transform hover:scale-110 focus:outline-none"
           aria-label="Previous video"
         >
           <ChevronLeft className="w-6 h-6 text-white" />
@@ -52,9 +51,9 @@ export function YouTubeControls({
       {showControls && onNext && (
         <button
           onClick={onNext}
-          className="absolute -right-16 md:-right-20 top-1/2 -translate-y-1/2 z-20
-                     bg-[#6b46c1] p-3 rounded-full
-                     transition-transform hover:scale-110 focus:outline-none"
+          className="absolute -right-12 md:-right-16 top-1/2 -translate-y-1/2 z-30
+                   bg-[#6b46c1] p-3 rounded-full shadow-lg
+                   transition-transform hover:scale-110 focus:outline-none"
           aria-label="Next video"
         >
           <ChevronRight className="w-6 h-6 text-white" />

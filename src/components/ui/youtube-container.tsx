@@ -1,7 +1,4 @@
-
 import { useRef, useEffect, useState } from "react";
-import { useYouTubePlayer } from "@/hooks/use-youtube-player";
-import { loadBestThumbnail } from "@/utils/youtube-thumbnail";
 import { YouTubeThumbnail } from "./youtube-thumbnail";
 import { YouTubeControls } from "./youtube-controls";
 
@@ -27,86 +24,68 @@ export function YouTubeContainer({
   onDotClick,
 }: YouTubeContainerProps) {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
-  const playerContainerRef = useRef<HTMLDivElement>(null);
-
-  const { 
-    playerRef, 
-    isLoaded, 
-    initializePlayer, 
-    setIsLoaded 
-  } = useYouTubePlayer({
-    videoId,
-    playerContainerRef,
-    onPlayerReady: (player) => {
-      player.mute();
-      player.playVideo();
-    }
-  });
 
   // Load thumbnail
   useEffect(() => {
     const loadThumbnail = async () => {
-      const url = await loadBestThumbnail(videoId);
-      setThumbnailUrl(url);
+      try {
+        // Try to load the highest quality thumbnail first
+        const maxresThumbnail = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+        setThumbnailUrl(maxresThumbnail);
+      } catch (error) {
+        // Fallback to standard quality thumbnail
+        setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
+      }
     };
     
     loadThumbnail();
+    
+    // Reset isLoaded when videoId changes
+    setIsLoaded(false);
   }, [videoId]);
 
-  // Initialize YouTube player when container is visible
-  useEffect(() => {
-    if (!containerRef.current) return;
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !isLoaded) {
-          initializePlayer();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(containerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [isLoaded, initializePlayer]);
-
   const toggleMute = () => {
-    if (!playerRef.current) return;
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
     
-    if (isMuted) {
-      playerRef.current.unMute();
-      setIsMuted(false);
-    } else {
-      playerRef.current.mute();
-      setIsMuted(true);
+    try {
+      // Find the iframe and toggle mute using postMessage API
+      const iframe = document.querySelector(`iframe[data-video-id="${videoId}"]`) as HTMLIFrameElement;
+      if (iframe) {
+        // Using postMessage to avoid reloading the iframe
+        iframe.contentWindow?.postMessage(
+          JSON.stringify({
+            event: 'command',
+            func: newMutedState ? 'mute' : 'unMute',
+            args: []
+          }), 
+          '*'
+        );
+      }
+    } catch (error) {
+      console.error('Failed to toggle mute state:', error);
     }
   };
 
   const playVideo = () => {
     setIsLoaded(true);
-    initializePlayer();
   };
 
   return (
     <div 
       ref={containerRef}
-      className={`relative overflow-hidden ${className}`}
+      className={`relative ${className}`}
       style={{ 
         backgroundColor: '#000',
         borderRadius: '0.5rem',
-        maxWidth: '80%', // Make player 20% smaller on desktop
+        maxWidth: '100%',
         margin: '0 auto',
         aspectRatio: '9/16',
       }}
     >
-      {/* Black bar overlays to fix aspect ratio */}
-      <div className="absolute inset-y-0 left-0 w-[7%] bg-black z-10"></div>
-      <div className="absolute inset-y-0 right-0 w-[7%] bg-black z-10"></div>
 
       {!isLoaded ? (
         <YouTubeThumbnail 
@@ -115,11 +94,18 @@ export function YouTubeContainer({
         />
       ) : (
         <div className="relative w-full h-full overflow-hidden">
-          {/* YouTube player will be inserted here */}
-          <div 
-            ref={playerContainerRef} 
-            className="absolute inset-0 w-[114%] left-1/2 -translate-x-1/2"
-          ></div>
+          {/* Direct YouTube iframe embed */}
+          <div className="absolute inset-0 w-[114%] left-1/2 -translate-x-1/2">
+            <iframe
+              data-video-id={videoId}
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&mute=1`}
+              title="YouTube"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+              style={{ border: 'none' }}
+            />
+          </div>
         </div>
       )}
 

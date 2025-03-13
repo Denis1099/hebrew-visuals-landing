@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { YouTubePlayer } from "@/components/ui/youtube-player";
 
@@ -33,7 +32,8 @@ const TestimonialsSection = () => {
         </h2>
         
         <div className="relative my-8 mt-16 mb-20 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
-          <div className="md:w-[80%] w-[90%] mx-auto"> {/* Container for smaller player on mobile */}
+          {/* Added padding to leave space for navigation arrows */}
+          <div className="mx-auto px-16 md:px-20"> 
             <YouTubePlayer
               videoId={videos[currentIndex]}
               onNext={handleNext}
