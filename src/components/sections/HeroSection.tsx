@@ -6,9 +6,7 @@ import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative h-screen flex flex-col overflow-hidden">
-      {/* Background gradient - removed as we're using the global background now */}
-      
+    <section id="home" className="relative h-screen flex flex-col overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white">
       {/* SVG shapes container */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
         <AnimatedHeroShapes />

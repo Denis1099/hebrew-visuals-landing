@@ -1,6 +1,5 @@
 
 import { lazy, Suspense, useEffect } from "react";
-import BackgroundAnimation from "@/components/BackgroundAnimation";
 import Navbar from "@/components/Navbar";
 
 // Lazy load sections that are not immediately visible
@@ -52,10 +51,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen relative">
-      {/* Global Animated Background */}
-      <BackgroundAnimation />
-      
+    <div className="min-h-screen relative bg-gradient-to-b from-white via-gray-50 to-white">
       {/* Navbar */}
       <Navbar />
       

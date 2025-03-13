@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-8 md:py-12 md:pb-8 backdrop-blur-sm">
+    <section ref={sectionRef} className="py-8 md:py-12 md:pb-8 bg-gradient-to-br from-white via-gray-100 to-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-migdal text-[#6b46c1] text-center mb-16">
           עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:
