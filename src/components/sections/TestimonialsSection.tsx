@@ -29,12 +29,14 @@ const TestimonialsSection = () => {
         </h2>
         
         <div className="relative my-8 mt-16 mb-20 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
-          <YouTubePlayer
-            videoId={videos[currentIndex]}
-            onNext={handleNext}
-            onPrev={handlePrev}
-            className="w-full shadow-xl"
-          />
+          <div className="md:w-[80%] w-[90%] mx-auto"> {/* Container for smaller player on mobile */}
+            <YouTubePlayer
+              videoId={videos[currentIndex]}
+              onNext={handleNext}
+              onPrev={handlePrev}
+              className="w-full shadow-xl"
+            />
+          </div>
         </div>
       </div>
     </section>

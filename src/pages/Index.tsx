@@ -11,6 +11,7 @@ const ProcessSection = lazy(() => import("@/components/sections/ProcessSection")
 const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
 const FinalCTASection = lazy(() => import("@/components/sections/FinalCTASection"));
 const ContactSection = lazy(() => import("@/components/sections/ContactSection"));
+const LogoShowcaseSection = lazy(() => import("@/components/sections/LogoShowcaseSection"));
 
 // Import HeroSection normally since it's above the fold
 import HeroSection from "@/components/sections/HeroSection";
@@ -58,7 +59,17 @@ const Index = () => {
       {/* Navbar */}
       <Navbar />
       
+      {/* HeroSection is not lazy loaded as it's above the fold */}
       <HeroSection />
+      
+      {/* LogoShowcaseSection comes right after the hero */}
+      <Suspense fallback={
+        <div className="h-32 flex items-center justify-center" role="status" aria-label="טוען...">
+          טוען...
+        </div>
+      }>
+        <LogoShowcaseSection />
+      </Suspense>
       
       <Suspense fallback={
         <div className="h-96 flex items-center justify-center" role="status" aria-label="טוען...">

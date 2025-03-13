@@ -37,24 +37,37 @@ export const YouTubePlayer = ({
 
   // Load YouTube API
   useEffect(() => {
-    if (!document.getElementById('youtube-api-script')) {
-      // Create script element
-      const tag = document.createElement('script');
-      tag.id = 'youtube-api-script';
-      tag.src = 'https://www.youtube.com/iframe_api';
-      
-      // Insert script before first script tag
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-    }
+    // Function to initialize the YouTube API
+    const loadYouTubeAPI = () => {
+      if (!document.getElementById('youtube-api-script')) {
+        // Create script element
+        const tag = document.createElement('script');
+        tag.id = 'youtube-api-script';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        
+        // Insert script before first script tag
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+        
+        // Set global callback
+        window.onYouTubeIframeAPIReady = () => {
+          if (playerContainerRef.current && !playerRef.current) {
+            createPlayer();
+          }
+        };
+      } else if (window.YT && window.YT.Player && playerContainerRef.current && !playerRef.current) {
+        createPlayer();
+      }
+    };
 
-    // Load best thumbnail quality
+    loadYouTubeAPI();
     loadBestThumbnail(videoId);
 
     return () => {
       // Clean up player on unmount
       if (playerRef.current) {
         playerRef.current.destroy();
+        playerRef.current = null;
       }
     };
   }, []);
@@ -67,14 +80,28 @@ export const YouTubePlayer = ({
     } else {
       loadBestThumbnail(videoId);
     }
-  }, [videoId]);
+  }, [videoId, isLoaded]);
 
   // Initialize YouTube player when container is visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !isLoaded && containerRef.current) {
-          initializePlayer();
+          if (window.YT && window.YT.Player) {
+            createPlayer();
+          } else {
+            // If YouTube API isn't loaded yet, load it
+            if (!document.getElementById('youtube-api-script')) {
+              const tag = document.createElement('script');
+              tag.id = 'youtube-api-script';
+              tag.src = 'https://www.youtube.com/iframe_api';
+              
+              const firstScriptTag = document.getElementsByTagName('script')[0];
+              firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+              
+              window.onYouTubeIframeAPIReady = createPlayer;
+            }
+          }
         }
       },
       { threshold: 0.5 }
@@ -108,17 +135,8 @@ export const YouTubePlayer = ({
     }
   };
 
-  const initializePlayer = () => {
-    if (window.YT && window.YT.Player) {
-      createPlayer();
-    } else {
-      // If API isn't loaded yet, set up callback
-      window.onYouTubeIframeAPIReady = createPlayer;
-    }
-  };
-
   const createPlayer = () => {
-    if (!playerContainerRef.current) return;
+    if (!playerContainerRef.current || playerRef.current) return;
     
     setIsLoaded(true);
     
@@ -162,6 +180,25 @@ export const YouTubePlayer = ({
     }
   };
 
+  const playVideo = () => {
+    if (window.YT && window.YT.Player) {
+      createPlayer();
+    } else {
+      // If YouTube API isn't loaded yet, set up callback
+      window.onYouTubeIframeAPIReady = createPlayer;
+      
+      // Load YouTube API if not already loaded
+      if (!document.getElementById('youtube-api-script')) {
+        const tag = document.createElement('script');
+        tag.id = 'youtube-api-script';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+      }
+    }
+  };
+
   return (
     <div 
       ref={containerRef}
@@ -169,7 +206,7 @@ export const YouTubePlayer = ({
       style={{ 
         backgroundColor: '#000',
         borderRadius: '0.5rem',
-        maxWidth: '100%',
+        maxWidth: '80%', // Make player 20% smaller on desktop
         margin: '0 auto',
         aspectRatio: '9/16',
       }}
@@ -191,7 +228,7 @@ export const YouTubePlayer = ({
             <div className="w-16 h-16 bg-[#c0017e] rounded-full flex items-center justify-center 
                          transition-transform duration-300 hover:scale-110 shadow-lg
                          cursor-pointer"
-                 onClick={initializePlayer}>
+                 onClick={playVideo}>
               <span className="text-2xl text-white" style={{ marginLeft: "4px" }}>▶</span>
             </div>
           </div>
@@ -204,8 +241,8 @@ export const YouTubePlayer = ({
             className="absolute inset-0 w-[114%] left-1/2 -translate-x-1/2"
           ></div>
           
-          {/* Sound toggle button */}
-          {isPlaying && (
+          {/* Sound toggle button - Always visible when player is active */}
+          {isLoaded && (
             <button
               onClick={toggleMute}
               className="absolute bottom-4 right-4 z-20 bg-black bg-opacity-60 p-2 rounded-full
@@ -222,12 +259,12 @@ export const YouTubePlayer = ({
         </div>
       )}
 
-      {/* Navigation controls */}
+      {/* Navigation controls - Moved outside the video frame */}
       {showControls && onPrev && (
         <button
           onClick={onPrev}
-          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20
-                     bg-black bg-opacity-60 p-2 rounded-full
+          className="absolute -left-14 md:-left-16 top-1/2 -translate-y-1/2 z-20
+                     bg-[#6b46c1] p-3 rounded-full 
                      transition-transform hover:scale-110 focus:outline-none"
           aria-label="Previous video"
         >
@@ -238,8 +275,8 @@ export const YouTubePlayer = ({
       {showControls && onNext && (
         <button
           onClick={onNext}
-          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20
-                     bg-black bg-opacity-60 p-2 rounded-full
+          className="absolute -right-14 md:-right-16 top-1/2 -translate-y-1/2 z-20
+                     bg-[#6b46c1] p-3 rounded-full
                      transition-transform hover:scale-110 focus:outline-none"
           aria-label="Next video"
         >
