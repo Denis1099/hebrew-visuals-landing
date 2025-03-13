@@ -1,6 +1,6 @@
-import { YouTubeFacade } from "@/components/ui/youtube-facade";
-import CardCarousel from "../ui/CardCarousel";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
+import { YouTubePlayer } from "@/components/ui/youtube-player";
 
 const videos = [
   "P_Gz_pML_ds",
@@ -12,53 +12,28 @@ const videos = [
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [carouselItems, setCarouselItems] = useState<React.ReactNode[]>([]);
+  
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % videos.length);
+  };
 
-  useEffect(() => {
-    // Create carousel items with active state and navigation callbacks
-    const updateItems = () => {
-      const items = videos.map((videoId, index) => {
-        const isActive = index === currentIndex;
-        
-        return (
-          <div key={videoId} className="w-full h-full">
-            <YouTubeFacade
-              videoId={videoId}
-              className="w-full h-full rounded-lg overflow-hidden shadow-xl"
-              isActive={isActive}
-              // Only allow activation for the active card
-              disableActivation={!isActive}
-              onNavigationClick={() => setCurrentIndex(index)}
-            />
-          </div>
-        );
-      });
-      
-      setCarouselItems(items);
-    };
-    
-    updateItems();
-  }, [currentIndex]);
-
-  // Handler for when carousel navigation happens
-  const handleCarouselChange = (newIndex: number) => {
-    setCurrentIndex(newIndex);
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
   };
 
   return (
     <section className="py-8 md:py-12 md:pb-8 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-migdal text-[#410175] text-center mb-16">
+        <h2 className="text-4xl font-migdal text-[#6b46c1] text-center mb-16">
           עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:
         </h2>
         
-        {/* Using a taller container for the YouTube Shorts */}
-        <div className="h-[580px] md:h-[640px] lg:h-[700px] relative my-8 mt-16 mb-20">
-          <CardCarousel 
-            items={carouselItems} 
-            rtl={true} 
-            onChangeIndex={handleCarouselChange} 
-            currentIndex={currentIndex}
+        <div className="relative my-8 mt-16 mb-20 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+          <YouTubePlayer
+            videoId={videos[currentIndex]}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            className="w-full shadow-xl"
           />
         </div>
       </div>
