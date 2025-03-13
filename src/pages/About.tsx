@@ -1,14 +1,10 @@
 
 import Navbar from "@/components/Navbar";
-import BackgroundAnimation from "@/components/BackgroundAnimation";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const About = () => {
   return (
-    <div className="min-h-screen relative">
-      {/* Global Animated Background */}
-      <BackgroundAnimation />
-      
+    <div className="min-h-screen relative bg-gradient-to-b from-white via-gray-50 to-white">
       {/* Navbar */}
       <Navbar />
       
