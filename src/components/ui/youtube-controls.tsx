@@ -1,9 +1,7 @@
 
-import { Volume2, VolumeX, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface YouTubeControlsProps {
-  isMuted: boolean;
-  onToggleMute: () => void;
   onNext?: () => void;
   onPrev?: () => void;
   showControls?: boolean;
@@ -11,8 +9,6 @@ interface YouTubeControlsProps {
 }
 
 export function YouTubeControls({
-  isMuted,
-  onToggleMute,
   onNext,
   onPrev,
   showControls = true,
@@ -20,22 +16,6 @@ export function YouTubeControls({
 }: YouTubeControlsProps) {
   return (
     <>
-      {/* Sound toggle button - Bottom right corner */}
-      {isLoaded && (
-        <button
-          onClick={onToggleMute}
-          className="absolute bottom-4 right-4 z-50 bg-black bg-opacity-70 p-2 rounded-full
-                   transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white"
-          aria-label={isMuted ? "Unmute" : "Mute"}
-        >
-          {isMuted ? (
-            <VolumeX className="w-5 h-5 text-white" />
-          ) : (
-            <Volume2 className="w-5 h-5 text-white" />
-          )}
-        </button>
-      )}
-
       {/* Navigation controls - Positioned outside the player */}
       {showControls && onPrev && (
         <button

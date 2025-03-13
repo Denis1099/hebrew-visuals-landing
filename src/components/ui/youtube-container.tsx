@@ -26,18 +26,29 @@ export function YouTubeContainer({
 }: YouTubeContainerProps) {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Load thumbnail
+  // Load thumbnail - optimized to try multiple resolutions
   useEffect(() => {
     const loadThumbnail = async () => {
       try {
-        // Try to load the highest quality thumbnail first
-        const maxresThumbnail = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
-        setThumbnailUrl(maxresThumbnail);
+        // Use standard quality thumbnail initially for faster loading
+        setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
+        
+        // Then try to load higher quality thumbnail
+        const img = new Image();
+        img.onload = () => {
+          if (img.width > 120) { // Check if it's not a default image
+            setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`);
+          }
+        };
+        img.onerror = () => {
+          // Fallback to standard thumbnail
+          console.log("Couldn't load high quality thumbnail");
+        };
+        img.src = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
       } catch (error) {
-        // Fallback to standard quality thumbnail
+        console.error("Failed to load thumbnail:", error);
         setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
       }
     };
@@ -69,29 +80,6 @@ export function YouTubeContainer({
     };
   }, [isLoaded]);
 
-  const toggleMute = () => {
-    const newMutedState = !isMuted;
-    setIsMuted(newMutedState);
-    
-    try {
-      // Find the iframe and toggle mute using postMessage API
-      const iframe = document.querySelector(`iframe[data-video-id="${videoId}"]`) as HTMLIFrameElement;
-      if (iframe) {
-        // Using postMessage to avoid reloading the iframe
-        iframe.contentWindow?.postMessage(
-          JSON.stringify({
-            event: 'command',
-            func: newMutedState ? 'mute' : 'unMute',
-            args: []
-          }), 
-          '*'
-        );
-      }
-    } catch (error) {
-      console.error('Failed to toggle mute state:', error);
-    }
-  };
-
   const playVideo = () => {
     setIsLoaded(true);
   };
@@ -105,7 +93,7 @@ export function YouTubeContainer({
         borderRadius: '0.5rem',
         maxWidth: '100%',
         margin: '0 auto',
-        aspectRatio: '9/16',
+        aspectRatio: '16/9',
       }}
     >
       {!isLoaded ? (
@@ -119,20 +107,19 @@ export function YouTubeContainer({
           <div className="aspect-video absolute inset-0 w-full h-full flex items-center justify-center">
             <iframe
               data-video-id={videoId}
-              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&mute=1`}
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&mute=1&enablejsapi=1&origin=${window.location.origin}`}
               title="YouTube"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="absolute inset-0 w-full h-full"
               style={{ border: 'none' }}
+              loading="lazy"
             />
           </div>
         </div>
       )}
 
       <YouTubeControls
-        isMuted={isMuted}
-        onToggleMute={toggleMute}
         onNext={onNext}
         onPrev={onPrev}
         showControls={showControls}
