@@ -35,8 +35,8 @@ const PortfolioSection = () => {
         <p className="text-xl text-center mb-8">טוב ידעתי שתבקשו:</p>
         
         <div className="relative my-8 mt-16 pb-20 mx-auto">
-          {/* Container with reduced size for 9:16 ratio */}
-          <div className="w-[35%] md:w-[25%] mx-auto"> 
+          {/* Adjusted container width to be larger on desktop */}
+          <div className="w-[40%] md:w-[30%] mx-auto"> 
             <YouTubePlayer
               videoId={videos[currentIndex]}
               onNext={handleNext}

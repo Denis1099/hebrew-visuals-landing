@@ -72,7 +72,7 @@ export function YouTubeContainer({
         borderRadius: '0.5rem',
         maxWidth: '100%',
         margin: '0 auto',
-        aspectRatio: '9/16', // Changed from 16/9 to 9/16 for YouTube Shorts format
+        aspectRatio: '9/16', // Maintaining YouTube Shorts format
       }}
     >
       {!isLoaded ? (
@@ -105,9 +105,9 @@ export function YouTubeContainer({
         isLoaded={isLoaded}
       />
 
-      {/* Video position dots - moved below the player with improved spacing */}
+      {/* Fixed dots spacing to match the image - using gap with exact pixel values */}
       {totalVideos > 1 && (
-        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center space-x-4 z-20">
+        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center gap-5 z-20">
           {Array.from({ length: totalVideos }).map((_, index) => (
             <button
               key={index}
