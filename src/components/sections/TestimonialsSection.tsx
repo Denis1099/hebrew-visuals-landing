@@ -34,8 +34,8 @@ const TestimonialsSection = () => {
         </h2>
         
         <div className="relative my-8 mt-16 pb-20 mx-auto">
-          {/* Adjusted container width to be larger on desktop */}
-          <div className="w-[40%] md:w-[30%] mx-auto">
+          {/* Optimized container size for YouTube Shorts format */}
+          <div className="w-[45%] md:w-[35%] mx-auto">
             <YouTubePlayer
               videoId={videos[currentIndex]}
               onNext={handleNext}

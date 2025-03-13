@@ -28,35 +28,22 @@ export function YouTubeContainer({
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Load thumbnail - optimized to try multiple resolutions
+  // Optimized thumbnail loading strategy
   useEffect(() => {
-    const loadThumbnail = async () => {
-      try {
-        // Use standard quality thumbnail initially for faster loading
-        setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
-        
-        // Then try to load higher quality thumbnail
-        const img = new Image();
-        img.onload = () => {
-          if (img.width > 120) { // Check if it's not a default image
-            setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`);
-          }
-        };
-        img.onerror = () => {
-          // Fallback to standard thumbnail
-          console.log("Couldn't load high quality thumbnail");
-        };
-        img.src = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
-      } catch (error) {
-        console.error("Failed to load thumbnail:", error);
-        setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
-      }
-    };
-    
-    loadThumbnail();
+    // Immediately set standard quality thumbnail for fast initial load
+    setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`);
     
     // Reset isLoaded when videoId changes
     setIsLoaded(false);
+    
+    // Try preloading high quality image without blocking
+    const img = new Image();
+    img.onload = () => {
+      if (img.width > 120) { // Check if it's not a default image
+        setThumbnailUrl(`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`);
+      }
+    };
+    img.src = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
   }, [videoId]);
 
   const playVideo = () => {
@@ -105,9 +92,9 @@ export function YouTubeContainer({
         isLoaded={isLoaded}
       />
 
-      {/* Fixed dots spacing to match the image - using gap with exact pixel values */}
+      {/* Improved dot indicator spacing with exact gap value */}
       {totalVideos > 1 && (
-        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center gap-5 z-20">
+        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center gap-6 z-20">
           {Array.from({ length: totalVideos }).map((_, index) => (
             <button
               key={index}
