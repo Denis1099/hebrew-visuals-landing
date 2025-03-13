@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -89,7 +88,7 @@ const HeroForm = () => {
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem className="order-1 sm:order-3 w-full sm:w-[220px]">
+                <FormItem className="order-1 sm:order-1 w-full sm:w-[220px]">
                   <FormControl>
                     <Input 
                       placeholder="שם מלא"
@@ -130,10 +129,10 @@ const HeroForm = () => {
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="order-3 sm:order-1 bg-[#c0017e] text-white px-6 py-3 rounded-xl font-medium 
-                hover:bg-opacity-90 transition-all duration-300 ease-in-out
+              className="order-3 sm:order-3 bg-gradient-to-r from-[#c0017e] to-[#e4008c] text-white px-6 py-3 rounded-xl font-medium 
+                hover:bg-opacity-90 hover:shadow-lg transition-all duration-300 ease-in-out
                 w-full sm:w-[140px] h-[54px] flex items-center justify-center gap-2
-                disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
             >
               {isSubmitting ? "שולח..." : (
                 <>
