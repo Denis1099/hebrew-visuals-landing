@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 declare global {
   interface Window {
@@ -27,46 +27,67 @@ export function useYouTubePlayer({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const playerRef = useRef<any>(null);
+  const apiLoadedRef = useRef(false);
 
   // Function to create the YouTube player
-  const createPlayer = () => {
+  const createPlayer = useCallback(() => {
     if (!playerContainerRef.current || playerRef.current) return;
     
-    setIsLoaded(true);
-    
-    playerRef.current = new window.YT.Player(playerContainerRef.current, {
-      videoId: videoId,
-      playerVars: {
-        autoplay: 1,
-        mute: 1,
-        playsinline: 1,
-        controls: 0,
-        modestbranding: 1,
-        rel: 0,
-        showinfo: 0,
-        fs: 0,
-        iv_load_policy: 3
-      },
-      events: {
-        onReady: (event: any) => {
-          event.target.playVideo();
-          setIsPlaying(true);
-          if (onPlayerReady) onPlayerReady(event.target);
+    // Create a div element for the player
+    const playerDiv = document.createElement('div');
+    playerDiv.id = `youtube-player-${Math.random().toString(36).substring(2, 9)}`;
+    playerContainerRef.current.innerHTML = '';
+    playerContainerRef.current.appendChild(playerDiv);
+
+    try {
+      playerRef.current = new window.YT.Player(playerDiv.id, {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          playsinline: 1,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          showinfo: 0,
+          fs: 0,
+          iv_load_policy: 3
         },
-        onStateChange: (event: any) => {
-          setIsPlaying(event.data === window.YT.PlayerState.PLAYING);
-          if (onPlayerStateChange) onPlayerStateChange(event);
-        },
-        onError: (event: any) => {
-          console.error("YouTube player error:", event.data);
+        events: {
+          onReady: (event: any) => {
+            event.target.mute();
+            event.target.playVideo();
+            setIsPlaying(true);
+            if (onPlayerReady) onPlayerReady(event.target);
+            console.log("YouTube player ready");
+          },
+          onStateChange: (event: any) => {
+            setIsPlaying(event.data === window.YT.PlayerState.PLAYING);
+            if (onPlayerStateChange) onPlayerStateChange(event);
+            console.log("YouTube player state changed:", event.data);
+          },
+          onError: (event: any) => {
+            console.error("YouTube player error:", event.data);
+          }
         }
-      }
-    });
-  };
+      });
+      console.log("YouTube player created");
+    } catch (error) {
+      console.error("Error creating YouTube player:", error);
+    }
+  }, [videoId, playerContainerRef, onPlayerReady, onPlayerStateChange]);
 
   // Load YouTube API
-  const loadYouTubeAPI = () => {
+  const loadYouTubeAPI = useCallback(() => {
+    if (apiLoadedRef.current) {
+      createPlayer();
+      return;
+    }
+
     if (!document.getElementById('youtube-api-script')) {
+      console.log("Loading YouTube API script");
+      apiLoadedRef.current = true;
+      
       // Create script element
       const tag = document.createElement('script');
       tag.id = 'youtube-api-script';
@@ -74,53 +95,49 @@ export function useYouTubePlayer({
       
       // Insert script before first script tag
       const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+      if (firstScriptTag.parentNode) {
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      }
       
       // Set global callback
       window.onYouTubeIframeAPIReady = () => {
-        if (playerContainerRef.current && !playerRef.current) {
-          createPlayer();
-        }
+        console.log("YouTube API ready");
+        createPlayer();
       };
-    } else if (window.YT && window.YT.Player && playerContainerRef.current && !playerRef.current) {
+    } else if (window.YT && window.YT.Player) {
+      console.log("YouTube API already loaded");
       createPlayer();
     }
-  };
+  }, [createPlayer]);
 
   // Initialize YouTube player
-  const initializePlayer = () => {
+  const initializePlayer = useCallback(() => {
+    if (isLoaded) return;
+    
+    console.log("Initializing YouTube player");
+    setIsLoaded(true);
+    
     if (window.YT && window.YT.Player) {
       createPlayer();
     } else {
-      // If YouTube API isn't loaded yet, set up callback
-      window.onYouTubeIframeAPIReady = createPlayer;
-      
-      // Load YouTube API if not already loaded
-      if (!document.getElementById('youtube-api-script')) {
-        const tag = document.createElement('script');
-        tag.id = 'youtube-api-script';
-        tag.src = 'https://www.youtube.com/iframe_api';
-        
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-      }
+      loadYouTubeAPI();
     }
-  };
+  }, [isLoaded, createPlayer, loadYouTubeAPI]);
 
   // Handle video ID changes
   useEffect(() => {
     if (isLoaded && playerRef.current) {
+      console.log("Loading new video:", videoId);
       playerRef.current.loadVideoById(videoId);
       setIsPlaying(true);
     }
   }, [videoId, isLoaded]);
 
   useEffect(() => {
-    loadYouTubeAPI();
-
     return () => {
       // Clean up player on unmount
       if (playerRef.current) {
+        console.log("Destroying YouTube player");
         playerRef.current.destroy();
         playerRef.current = null;
       }

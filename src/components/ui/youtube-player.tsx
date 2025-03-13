@@ -7,6 +7,9 @@ interface YouTubePlayerProps {
   onNext?: () => void;
   onPrev?: () => void;
   showControls?: boolean;
+  totalVideos?: number;
+  currentIndex?: number;
+  onDotClick?: (index: number) => void;
 }
 
 export const YouTubePlayer = ({ 
@@ -15,6 +18,9 @@ export const YouTubePlayer = ({
   onNext, 
   onPrev,
   showControls = true,
+  totalVideos = 0,
+  currentIndex = 0,
+  onDotClick,
 }: YouTubePlayerProps) => {
   return (
     <YouTubeContainer
@@ -23,6 +29,9 @@ export const YouTubePlayer = ({
       onNext={onNext}
       onPrev={onPrev}
       showControls={showControls}
+      totalVideos={totalVideos}
+      currentIndex={currentIndex}
+      onDotClick={onDotClick}
     />
   );
 };

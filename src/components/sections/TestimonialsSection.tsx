@@ -21,6 +21,10 @@ const TestimonialsSection = () => {
     setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
   };
 
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <section className="py-8 md:py-12 md:pb-8 backdrop-blur-sm">
       <div className="container mx-auto px-4">
@@ -35,6 +39,9 @@ const TestimonialsSection = () => {
               onNext={handleNext}
               onPrev={handlePrev}
               className="w-full shadow-xl"
+              totalVideos={videos.length}
+              currentIndex={currentIndex}
+              onDotClick={handleDotClick}
             />
           </div>
         </div>

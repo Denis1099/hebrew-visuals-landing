@@ -11,6 +11,9 @@ interface YouTubeContainerProps {
   onNext?: () => void;
   onPrev?: () => void;
   showControls?: boolean;
+  totalVideos?: number;
+  currentIndex?: number;
+  onDotClick?: (index: number) => void;
 }
 
 export function YouTubeContainer({
@@ -19,6 +22,9 @@ export function YouTubeContainer({
   onNext,
   onPrev,
   showControls = true,
+  totalVideos = 0,
+  currentIndex = 0,
+  onDotClick,
 }: YouTubeContainerProps) {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [isMuted, setIsMuted] = useState(true);
@@ -34,6 +40,7 @@ export function YouTubeContainer({
     videoId,
     playerContainerRef,
     onPlayerReady: (player) => {
+      player.mute();
       player.playVideo();
     }
   });
@@ -50,18 +57,18 @@ export function YouTubeContainer({
 
   // Initialize YouTube player when container is visible
   useEffect(() => {
+    if (!containerRef.current) return;
+    
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !isLoaded && containerRef.current) {
+        if (entries[0].isIntersecting && !isLoaded) {
           initializePlayer();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+    observer.observe(containerRef.current);
 
     return () => {
       observer.disconnect();
@@ -124,6 +131,24 @@ export function YouTubeContainer({
         showControls={showControls}
         isLoaded={isLoaded}
       />
+
+      {/* Video position dots */}
+      {totalVideos > 1 && (
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+          {Array.from({ length: totalVideos }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => onDotClick && onDotClick(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all ${
+                currentIndex === index 
+                  ? 'bg-[#c0017e] scale-125' 
+                  : 'bg-white bg-opacity-60 hover:bg-opacity-100'
+              }`}
+              aria-label={`Go to video ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

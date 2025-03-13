@@ -59,7 +59,7 @@ const LogoShowcaseSection = () => {
     <section className="py-16 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-migdal text-[#6b46c1] text-center mb-12">
-          חברות מובילות שעובדות איתנו
+          מבין לקוחותינו
         </h2>
 
         {/* Top row - scrolling from left to right */}
