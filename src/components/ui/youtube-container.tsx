@@ -26,6 +26,7 @@ export function YouTubeContainer({
 }: YouTubeContainerProps) {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Optimized thumbnail loading strategy
@@ -46,6 +47,7 @@ export function YouTubeContainer({
     img.src = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
   }, [videoId]);
 
+  // Direct play handling without facade
   const playVideo = () => {
     setIsLoaded(true);
   };
@@ -72,8 +74,9 @@ export function YouTubeContainer({
           {/* YouTube iframe with proper centering */}
           <div className="aspect-[9/16] absolute inset-0 w-full h-full flex items-center justify-center">
             <iframe
+              ref={iframeRef}
               data-video-id={videoId}
-              src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&enablejsapi=1&origin=${window.location.origin}`}
+              src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&enablejsapi=1&origin=${window.location.origin}&autoplay=1`}
               title="YouTube"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

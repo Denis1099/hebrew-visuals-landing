@@ -4,7 +4,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 const About = () => {
   return (
-    <div className="min-h-screen relative bg-gradient-to-b from-white via-gray-50 to-white">
+    <div className="min-h-screen relative bg-[radial-gradient(circle_at_50%_50%,#ffffff,#abaaaa)]">
       {/* Navbar */}
       <Navbar />
       

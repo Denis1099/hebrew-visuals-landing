@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative h-screen flex flex-col overflow-hidden bg-gradient-to-br from-white via-gray-50 to-white">
+    <section id="home" className="relative h-screen flex flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_50%,#ffffff,#abaaaa)]">
       {/* SVG shapes container */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
         <AnimatedHeroShapes />

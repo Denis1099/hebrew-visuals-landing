@@ -51,7 +51,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen relative bg-gradient-to-b from-white via-gray-50 to-white">
+    <div className="min-h-screen relative">
       {/* Navbar */}
       <Navbar />
       
