@@ -1,3 +1,4 @@
+
 import { Volume2, VolumeX, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface YouTubeControlsProps {
@@ -19,11 +20,11 @@ export function YouTubeControls({
 }: YouTubeControlsProps) {
   return (
     <>
-      {/* Sound toggle button - Always visible when player is active */}
+      {/* Sound toggle button - Bottom right corner */}
       {isLoaded && (
         <button
           onClick={onToggleMute}
-          className="absolute top-4 right-4 z-50 bg-black bg-opacity-70 p-2 rounded-full
+          className="absolute bottom-4 right-4 z-50 bg-black bg-opacity-70 p-2 rounded-full
                    transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white"
           aria-label={isMuted ? "Unmute" : "Mute"}
         >
@@ -35,11 +36,11 @@ export function YouTubeControls({
         </button>
       )}
 
-      {/* Navigation controls - Positioned to be visible */}
+      {/* Navigation controls - Positioned outside the player */}
       {showControls && onPrev && (
         <button
           onClick={onPrev}
-          className="absolute -left-12 md:-left-16 top-1/2 -translate-y-1/2 z-30
+          className="absolute -left-16 md:-left-20 top-1/2 -translate-y-1/2 z-30
                    bg-[#6b46c1] p-3 rounded-full shadow-lg
                    transition-transform hover:scale-110 focus:outline-none"
           aria-label="Previous video"
@@ -51,7 +52,7 @@ export function YouTubeControls({
       {showControls && onNext && (
         <button
           onClick={onNext}
-          className="absolute -right-12 md:-right-16 top-1/2 -translate-y-1/2 z-30
+          className="absolute -right-16 md:-right-20 top-1/2 -translate-y-1/2 z-30
                    bg-[#6b46c1] p-3 rounded-full shadow-lg
                    transition-transform hover:scale-110 focus:outline-none"
           aria-label="Next video"

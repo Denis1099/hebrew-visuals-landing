@@ -1,3 +1,4 @@
+
 import { useRef, useEffect, useState } from "react";
 import { YouTubeThumbnail } from "./youtube-thumbnail";
 import { YouTubeControls } from "./youtube-controls";
@@ -47,6 +48,27 @@ export function YouTubeContainer({
     setIsLoaded(false);
   }, [videoId]);
 
+  // Auto-play when scrolled into view
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // If container is 70% visible and video isn't already playing
+        if (entries[0].isIntersecting && entries[0].intersectionRatio > 0.7 && !isLoaded) {
+          setIsLoaded(true);
+        }
+      },
+      { threshold: [0.7] }
+    );
+    
+    observer.observe(containerRef.current);
+    
+    return () => {
+      observer.disconnect();
+    };
+  }, [isLoaded]);
+
   const toggleMute = () => {
     const newMutedState = !isMuted;
     setIsMuted(newMutedState);
@@ -86,7 +108,6 @@ export function YouTubeContainer({
         aspectRatio: '9/16',
       }}
     >
-
       {!isLoaded ? (
         <YouTubeThumbnail 
           thumbnailUrl={thumbnailUrl} 
@@ -94,8 +115,8 @@ export function YouTubeContainer({
         />
       ) : (
         <div className="relative w-full h-full overflow-hidden">
-          {/* Direct YouTube iframe embed */}
-          <div className="absolute inset-0 w-[114%] left-1/2 -translate-x-1/2">
+          {/* YouTube iframe with proper centering */}
+          <div className="aspect-video absolute w-full h-full">
             <iframe
               data-video-id={videoId}
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0&playsinline=1&controls=1&mute=1`}
@@ -118,9 +139,9 @@ export function YouTubeContainer({
         isLoaded={isLoaded}
       />
 
-      {/* Video position dots */}
+      {/* Video position dots - moved below the player */}
       {totalVideos > 1 && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex justify-center space-x-3 z-20">
           {Array.from({ length: totalVideos }).map((_, index) => (
             <button
               key={index}
