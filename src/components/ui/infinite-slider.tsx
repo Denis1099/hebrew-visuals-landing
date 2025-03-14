@@ -33,6 +33,8 @@ export function InfiniteSlider({
   useEffect(() => {
     let controls;
     const size = direction === 'horizontal' ? width : height;
+    if (!size) return;
+    
     const contentSize = size + gap;
     const from = reverse ? -contentSize / 2 : 0;
     const to = reverse ? 0 : -contentSize / 2;
@@ -48,6 +50,8 @@ export function InfiniteSlider({
         },
       });
     } else {
+      // Start animation immediately
+      translation.set(from);
       controls = animate(translation, [from, to], {
         ease: 'linear',
         duration: currentDuration,

@@ -28,6 +28,7 @@ const bottomRowLogos = allLogos.slice(8);
 
 const LogoShowcaseSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   
   // Check if mobile for responsive adjustments
   useEffect(() => {
@@ -37,6 +38,7 @@ const LogoShowcaseSection = () => {
     
     checkMobile();
     window.addEventListener('resize', checkMobile);
+    setMounted(true);
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
@@ -57,6 +59,20 @@ const LogoShowcaseSection = () => {
     </div>
   );
 
+  // Added mounted state to ensure we only render carousels after component is mounted
+  if (!mounted) {
+    return (
+      <section className="py-16 backdrop-blur-sm overflow-hidden">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-migdal text-[#6b46c1] text-center mb-12">
+            מבין לקוחותינו
+          </h2>
+          <div className="h-[200px] flex items-center justify-center">Loading...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-16 backdrop-blur-sm overflow-hidden">
       <div className="container mx-auto px-4">
@@ -68,10 +84,11 @@ const LogoShowcaseSection = () => {
         <div className="mb-8" style={{ height: '100px' }}>
           <InfiniteSlider 
             gap={isMobile ? 16 : 24}
-            duration={40}
+            duration={30} // Slightly adjusted duration
             durationOnHover={120}
             reverse={true} // Right to left
             className="w-full"
+            key="top-carousel"
           >
             {topRowLogos.map((logo, index) => (
               <LogoItem 
@@ -88,10 +105,11 @@ const LogoShowcaseSection = () => {
         <div style={{ height: '100px' }}>
           <InfiniteSlider 
             gap={isMobile ? 16 : 24}
-            duration={40}
+            duration={35} // Slightly different duration from top to create visual interest
             durationOnHover={120}
             reverse={false} // Left to right
             className="w-full"
+            key="bottom-carousel"
           >
             {bottomRowLogos.map((logo, index) => (
               <LogoItem 
