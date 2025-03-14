@@ -1,121 +1,132 @@
+import { useEffect, useState } from "react";
 
-import { useEffect, useRef } from "react";
-
-// Placeholder logos - will be replaced with actual logos later
-const placeholderLogos = [
-  "/lovable-uploads/placeholder-logo-1.svg",
-  "/lovable-uploads/placeholder-logo-2.svg",
-  "/lovable-uploads/placeholder-logo-3.svg",
-  "/lovable-uploads/placeholder-logo-4.svg",
-  "/lovable-uploads/placeholder-logo-5.svg",
-  "/lovable-uploads/placeholder-logo-6.svg",
-  "/lovable-uploads/placeholder-logo-7.svg",
-  "/lovable-uploads/placeholder-logo-8.svg",
-  "/lovable-uploads/placeholder-logo-9.svg",
+// Placeholder logos
+const allLogos = [
+  "/lovable-uploads/logos/logo1.webp",
+  "/lovable-uploads/logos/logo2.webp",
+  "/lovable-uploads/logos/logo3.webp",
+  "/lovable-uploads/logos/logo4.webp",
+  "/lovable-uploads/logos/logo5.webp",
+  "/lovable-uploads/logos/logo6.webp",
+  "/lovable-uploads/logos/logo7.webp",
+  "/lovable-uploads/logos/logo8.webp",
+  "/lovable-uploads/logos/logo9.webp",
+  "/lovable-uploads/logos/logo10.webp",
+  "/lovable-uploads/logos/logo11.webp",
+  "/lovable-uploads/logos/logo12.webp",
+  "/lovable-uploads/logos/logo13.webp",
+  "/lovable-uploads/logos/logo14.webp",
+  "/lovable-uploads/logos/logo15.webp",
+  "/lovable-uploads/logos/logo16.webp",
 ];
 
-// Duplicate logos to ensure continuous scrolling
-const logosGroup1 = [...placeholderLogos, ...placeholderLogos];
-const logosGroup2 = [...placeholderLogos, ...placeholderLogos];
+// Split logos between two rows
+const topRowLogos = allLogos.slice(0, 8);
+const bottomRowLogos = allLogos.slice(8);
 
 const LogoShowcaseSection = () => {
-  const topRowRef = useRef<HTMLDivElement>(null);
-  const bottomRowRef = useRef<HTMLDivElement>(null);
-
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check if mobile
   useEffect(() => {
-    // Function to animate the logos
-    let animationFrameId: number;
-    let topScrollPosition = 0;
-    let bottomScrollPosition = 0;
-
-    const animate = () => {
-      if (topRowRef.current && bottomRowRef.current) {
-        // Top row scrolls from left to right
-        topScrollPosition += 0.5;
-        if (topScrollPosition >= topRowRef.current.scrollWidth / 2) {
-          topScrollPosition = 0;
-        }
-        topRowRef.current.style.transform = `translateX(${topScrollPosition}px)`;
-
-        // Bottom row scrolls from right to left
-        bottomScrollPosition -= 0.5;
-        if (Math.abs(bottomScrollPosition) >= bottomRowRef.current.scrollWidth / 2) {
-          bottomScrollPosition = 0;
-        }
-        bottomRowRef.current.style.transform = `translateX(${bottomScrollPosition}px)`;
-      }
-
-      animationFrameId = requestAnimationFrame(animate);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
-
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
+  
+  // Duplicate logos for smooth scrolling
+  const createDuplicates = (logos) => [...logos, ...logos];
+  
+  const topLogos = createDuplicates(topRowLogos);
+  const bottomLogos = createDuplicates(bottomRowLogos);
+  
   return (
-    <section className="py-16 backdrop-blur-sm">
+    <section className="py-16 backdrop-blur-sm overflow-hidden">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-migdal text-[#6b46c1] text-center mb-12">
           מבין לקוחותינו
         </h2>
-
-        {/* Top row - scrolling from left to right */}
-        <div className="overflow-hidden mb-8">
-          <div 
-            ref={topRowRef} 
-            className="flex items-center space-x-16 py-4"
-            style={{ width: 'fit-content' }}
-          >
-            {logosGroup1.map((logo, index) => (
+        
+        {/* Top row - right to left */}
+        <div className="mb-8 overflow-hidden" style={{ height: '100px' }}>
+          <div className="whitespace-nowrap animate-marquee-rtl">
+            {topLogos.map((logo, index) => (
               <div 
                 key={`top-${index}`} 
-                className="flex-shrink-0 h-16 w-32 bg-white/80 rounded-lg shadow-md flex items-center justify-center p-4"
-                style={{ marginRight: '4rem' }}
+                className="inline-flex h-20 items-center justify-center mx-4 md:mx-6"
+                style={{ width: isMobile ? '120px' : '160px' }}
               >
                 <img 
                   src={logo} 
-                  alt={`Logo ${index + 1}`} 
-                  className="h-full w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = `https://via.placeholder.com/150x80?text=Logo+${index + 1}`;
-                  }}
+                  alt={`Client Logo ${index % topRowLogos.length + 1}`} 
+                  className="h-full w-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                  style={{ maxWidth: '90%', maxHeight: '90%' }}
+                  loading="lazy"
                 />
               </div>
             ))}
           </div>
         </div>
-
-        {/* Bottom row - scrolling from right to left */}
-        <div className="overflow-hidden">
-          <div 
-            ref={bottomRowRef}
-            className="flex items-center space-x-16 py-4"
-            style={{ width: 'fit-content' }}
-          >
-            {logosGroup2.map((logo, index) => (
+        
+        {/* Bottom row - left to right */}
+        <div className="overflow-hidden" style={{ height: '100px' }}>
+          <div className="whitespace-nowrap animate-marquee-ltr">
+            {bottomLogos.map((logo, index) => (
               <div 
                 key={`bottom-${index}`} 
-                className="flex-shrink-0 h-16 w-32 bg-white/80 rounded-lg shadow-md flex items-center justify-center p-4"
-                style={{ marginRight: '4rem' }}
+                className="inline-flex h-20 items-center justify-center mx-4 md:mx-6"
+                style={{ width: isMobile ? '120px' : '160px' }}
               >
                 <img 
                   src={logo} 
-                  alt={`Logo ${index + 1}`} 
-                  className="h-full w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = `https://via.placeholder.com/150x80?text=Logo+${index + 1}`;
-                  }}
+                  alt={`Client Logo ${(index % bottomRowLogos.length) + topRowLogos.length + 1}`} 
+                  className="h-full w-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                  style={{ maxWidth: '90%', maxHeight: '90%' }}
+                  loading="lazy"
                 />
               </div>
             ))}
           </div>
         </div>
       </div>
+      
+      {/* Inline animations - better browser support */}
+      <style jsx global>{`
+        @keyframes marquee-rtl {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes marquee-ltr {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        
+        .animate-marquee-rtl {
+          display: inline-block;
+          animation: marquee-rtl 40s linear infinite;
+        }
+        
+        .animate-marquee-ltr {
+          display: inline-block;
+          animation: marquee-ltr 40s linear infinite;
+        }
+        
+        @media (max-width: 768px) {
+          .animate-marquee-rtl {
+            animation-duration: 50s;
+          }
+          
+          .animate-marquee-ltr {
+            animation-duration: 50s;
+          }
+        }
+      `}</style>
     </section>
   );
 };
