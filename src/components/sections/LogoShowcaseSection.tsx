@@ -1,4 +1,6 @@
+
 import { useEffect, useState } from "react";
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
 // Placeholder logos
 const allLogos = [
@@ -20,14 +22,14 @@ const allLogos = [
   "/lovable-uploads/logos/logo16.webp",
 ];
 
-// Split logos between two rows
+// Split logos between two rows - top row will show first 8 logos, bottom row will show the remaining 8
 const topRowLogos = allLogos.slice(0, 8);
 const bottomRowLogos = allLogos.slice(8);
 
 const LogoShowcaseSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   
-  // Check if mobile
+  // Check if mobile for responsive adjustments
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -38,13 +40,23 @@ const LogoShowcaseSection = () => {
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-  
-  // Duplicate logos for smooth scrolling
-  const createDuplicates = (logos) => [...logos, ...logos];
-  
-  const topLogos = createDuplicates(topRowLogos);
-  const bottomLogos = createDuplicates(bottomRowLogos);
-  
+
+  // Logo component for consistent styling
+  const LogoItem = ({ src, index, total }: { src: string; index: number; total: number }) => (
+    <div 
+      className="inline-flex h-20 items-center justify-center mx-4 md:mx-6"
+      style={{ width: isMobile ? '120px' : '160px' }}
+    >
+      <img 
+        src={src} 
+        alt={`Client Logo ${index + 1}`} 
+        className="h-full w-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+        style={{ maxWidth: '90%', maxHeight: '90%' }}
+        loading="lazy"
+      />
+    </div>
+  );
+
   return (
     <section className="py-16 backdrop-blur-sm overflow-hidden">
       <div className="container mx-auto px-4">
@@ -53,80 +65,45 @@ const LogoShowcaseSection = () => {
         </h2>
         
         {/* Top row - right to left */}
-        <div className="mb-8 overflow-hidden" style={{ height: '100px' }}>
-          <div className="whitespace-nowrap animate-marquee-rtl">
-            {topLogos.map((logo, index) => (
-              <div 
-                key={`top-${index}`} 
-                className="inline-flex h-20 items-center justify-center mx-4 md:mx-6"
-                style={{ width: isMobile ? '120px' : '160px' }}
-              >
-                <img 
-                  src={logo} 
-                  alt={`Client Logo ${index % topRowLogos.length + 1}`} 
-                  className="h-full w-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-                  style={{ maxWidth: '90%', maxHeight: '90%' }}
-                  loading="lazy"
-                />
-              </div>
+        <div className="mb-8" style={{ height: '100px' }}>
+          <InfiniteSlider 
+            gap={isMobile ? 16 : 24}
+            duration={40}
+            durationOnHover={120}
+            reverse={true} // Right to left
+            className="w-full"
+          >
+            {topRowLogos.map((logo, index) => (
+              <LogoItem 
+                key={`top-${index}`}
+                src={logo}
+                index={index}
+                total={topRowLogos.length}
+              />
             ))}
-          </div>
+          </InfiniteSlider>
         </div>
         
         {/* Bottom row - left to right */}
-        <div className="overflow-hidden" style={{ height: '100px' }}>
-          <div className="whitespace-nowrap animate-marquee-ltr">
-            {bottomLogos.map((logo, index) => (
-              <div 
-                key={`bottom-${index}`} 
-                className="inline-flex h-20 items-center justify-center mx-4 md:mx-6"
-                style={{ width: isMobile ? '120px' : '160px' }}
-              >
-                <img 
-                  src={logo} 
-                  alt={`Client Logo ${(index % bottomRowLogos.length) + topRowLogos.length + 1}`} 
-                  className="h-full w-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-                  style={{ maxWidth: '90%', maxHeight: '90%' }}
-                  loading="lazy"
-                />
-              </div>
+        <div style={{ height: '100px' }}>
+          <InfiniteSlider 
+            gap={isMobile ? 16 : 24}
+            duration={40}
+            durationOnHover={120}
+            reverse={false} // Left to right
+            className="w-full"
+          >
+            {bottomRowLogos.map((logo, index) => (
+              <LogoItem 
+                key={`bottom-${index}`}
+                src={logo}
+                index={index + topRowLogos.length}
+                total={bottomRowLogos.length}
+              />
             ))}
-          </div>
+          </InfiniteSlider>
         </div>
       </div>
-      
-      {/* Inline animations - better browser support */}
-      <style jsx global>{`
-        @keyframes marquee-rtl {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        
-        @keyframes marquee-ltr {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-        
-        .animate-marquee-rtl {
-          display: inline-block;
-          animation: marquee-rtl 40s linear infinite;
-        }
-        
-        .animate-marquee-ltr {
-          display: inline-block;
-          animation: marquee-ltr 40s linear infinite;
-        }
-        
-        @media (max-width: 768px) {
-          .animate-marquee-rtl {
-            animation-duration: 50s;
-          }
-          
-          .animate-marquee-ltr {
-            animation-duration: 50s;
-          }
-        }
-      `}</style>
     </section>
   );
 };
