@@ -13,28 +13,44 @@ const videos = [
 const PortfolioSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playerMounted, setPlayerMounted] = useState(false);
+  const [isChangingVideo, setIsChangingVideo] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   
-  // Reset player mounted state when video changes
+  // Mount player initially
   useEffect(() => {
-    setPlayerMounted(false);
-    // Small delay to ensure clean remount
-    const timer = setTimeout(() => {
-      setPlayerMounted(true);
-    }, 50);
-    return () => clearTimeout(timer);
-  }, [currentIndex]);
+    setPlayerMounted(true);
+  }, []);
   
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % videos.length);
+    // Prevent UI flickering during transitions
+    setIsChangingVideo(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % videos.length);
+      // Small delay to ensure clean transition
+      setTimeout(() => setIsChangingVideo(false), 50);
+    }, 50);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+    // Prevent UI flickering during transitions
+    setIsChangingVideo(true);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+      // Small delay to ensure clean transition
+      setTimeout(() => setIsChangingVideo(false), 50);
+    }, 50);
   };
 
   const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
+    if (index === currentIndex) return;
+    
+    // Prevent UI flickering during transitions
+    setIsChangingVideo(true);
+    setTimeout(() => {
+      setCurrentIndex(index);
+      // Small delay to ensure clean transition
+      setTimeout(() => setIsChangingVideo(false), 50);
+    }, 50);
   };
 
   return (
@@ -47,18 +63,21 @@ const PortfolioSection = () => {
         
         <div className="relative my-8 mt-16 pb-20 mx-auto">
           {/* Adjusted container width to be smaller on desktop */}
-          <div className="w-[40%] md:w-[30%] lg:w-[27%] mx-auto"> 
-            {playerMounted && (
-              <YouTubePlayer
-                videoId={videos[currentIndex]}
-                onNext={handleNext}
-                onPrev={handlePrev}
-                className="w-full shadow-xl mb-8"
-                totalVideos={videos.length}
-                currentIndex={currentIndex}
-                onDotClick={handleDotClick}
-              />
-            )}
+          <div className="w-[40%] md:w-[30%] lg:w-[27%] mx-auto">
+            {/* Use a persistent wrapper with fixed height to prevent layout shifts */}
+            <div className="relative" style={{ aspectRatio: '9/16' }}>
+              {playerMounted && !isChangingVideo && (
+                <YouTubePlayer
+                  videoId={videos[currentIndex]}
+                  onNext={handleNext}
+                  onPrev={handlePrev}
+                  className="w-full shadow-xl mb-8"
+                  totalVideos={videos.length}
+                  currentIndex={currentIndex}
+                  onDotClick={handleDotClick}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

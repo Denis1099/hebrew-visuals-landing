@@ -1,8 +1,9 @@
 
 import { useEffect, useState } from "react";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-// Placeholder logos
+// All logos in one array
 const allLogos = [
   "/lovable-uploads/logos/logo1.webp",
   "/lovable-uploads/logos/logo2.webp",
@@ -22,29 +23,18 @@ const allLogos = [
   "/lovable-uploads/logos/logo16.webp",
 ];
 
-// Split logos between two rows - top row will show first 8 logos, bottom row will show the remaining 8
-const topRowLogos = allLogos.slice(0, 8);
-const bottomRowLogos = allLogos.slice(8);
-
 const LogoShowcaseSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
   const [mounted, setMounted] = useState(false);
   
-  // Check if mobile for responsive adjustments
+  // Set mounted state after component mounts
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
     setMounted(true);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => setMounted(false);
   }, []);
 
   // Logo component for consistent styling
-  const LogoItem = ({ src, index, total }: { src: string; index: number; total: number }) => (
+  const LogoItem = ({ src, index }: { src: string; index: number }) => (
     <div 
       className="inline-flex h-20 items-center justify-center mx-4 md:mx-6"
       style={{ width: isMobile ? '120px' : '160px' }}
@@ -59,7 +49,7 @@ const LogoShowcaseSection = () => {
     </div>
   );
 
-  // Added mounted state to ensure we only render carousels after component is mounted
+  // Loading state while component is mounting
   if (!mounted) {
     return (
       <section className="py-16 backdrop-blur-sm overflow-hidden">
@@ -67,7 +57,7 @@ const LogoShowcaseSection = () => {
           <h2 className="text-3xl md:text-4xl font-migdal text-[#6b46c1] text-center mb-12">
             מבין לקוחותינו
           </h2>
-          <div className="h-[200px] flex items-center justify-center">Loading...</div>
+          <div className="h-[100px] flex items-center justify-center">Loading...</div>
         </div>
       </section>
     );
@@ -80,43 +70,20 @@ const LogoShowcaseSection = () => {
           מבין לקוחותינו
         </h2>
         
-        {/* Top row - right to left */}
-        <div className="mb-8" style={{ height: '100px' }}>
-          <InfiniteSlider 
-            gap={isMobile ? 16 : 24}
-            duration={30} // Slightly adjusted duration
-            durationOnHover={120}
-            reverse={true} // Right to left
-            className="w-full"
-            key="top-carousel"
-          >
-            {topRowLogos.map((logo, index) => (
-              <LogoItem 
-                key={`top-${index}`}
-                src={logo}
-                index={index}
-                total={topRowLogos.length}
-              />
-            ))}
-          </InfiniteSlider>
-        </div>
-        
-        {/* Bottom row - left to right */}
         <div style={{ height: '100px' }}>
           <InfiniteSlider 
             gap={isMobile ? 16 : 24}
-            duration={35} // Slightly different duration from top to create visual interest
+            duration={40}
             durationOnHover={120}
-            reverse={false} // Left to right
+            reverse={true}
             className="w-full"
-            key="bottom-carousel"
+            key="logo-carousel"
           >
-            {bottomRowLogos.map((logo, index) => (
+            {allLogos.map((logo, index) => (
               <LogoItem 
-                key={`bottom-${index}`}
+                key={`logo-${index}`}
                 src={logo}
-                index={index + topRowLogos.length}
-                total={bottomRowLogos.length}
+                index={index}
               />
             ))}
           </InfiniteSlider>
