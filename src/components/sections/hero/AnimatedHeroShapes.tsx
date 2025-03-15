@@ -51,7 +51,6 @@ const AnimatedHeroShapes = () => {
             left-[0%]
             h-auto
             max-h-[14vh] md:max-h-[100vh]
-          
           "
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
