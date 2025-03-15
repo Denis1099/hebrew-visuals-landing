@@ -62,8 +62,8 @@ const PortfolioSection = () => {
         <p className="text-xl text-center mb-8">טוב ידעתי שתבקשו:</p>
         
         <div className="relative my-8 mt-16 pb-20 mx-auto">
-          {/* Adjusted container width to be smaller on desktop */}
-          <div className="w-[40%] md:w-[30%] lg:w-[27%] mx-auto">
+          {/* Increased size for mobile screens by 15% */}
+          <div className="w-[46%] md:w-[30%] lg:w-[27%] mx-auto">
             {/* Use a persistent wrapper with fixed height to prevent layout shifts */}
             <div className="relative" style={{ aspectRatio: '9/16' }}>
               {playerMounted && !isChangingVideo && (

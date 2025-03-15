@@ -25,12 +25,14 @@ const allLogos = [
 
 const LogoShowcaseSection = () => {
   const isMobile = useIsMobile();
-  const [mounted, setMounted] = useState(false);
+  const [isRendered, setIsRendered] = useState(false);
   
-  // Set mounted state after component mounts
+  // Set rendered state immediately after first render
   useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      setIsRendered(true);
+    });
   }, []);
 
   // Logo component for consistent styling
@@ -49,20 +51,6 @@ const LogoShowcaseSection = () => {
     </div>
   );
 
-  // Loading state while component is mounting
-  if (!mounted) {
-    return (
-      <section className="py-16 backdrop-blur-sm overflow-hidden">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-migdal text-[#6b46c1] text-center mb-12">
-            מבין לקוחותינו
-          </h2>
-          <div className="h-[100px] flex items-center justify-center">Loading...</div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="py-16 backdrop-blur-sm overflow-hidden">
       <div className="container mx-auto px-4">
@@ -71,22 +59,24 @@ const LogoShowcaseSection = () => {
         </h2>
         
         <div style={{ height: '100px' }}>
-          <InfiniteSlider 
-            gap={isMobile ? 16 : 24}
-            duration={40}
-            durationOnHover={120}
-            reverse={true}
-            className="w-full"
-            key="logo-carousel"
-          >
-            {allLogos.map((logo, index) => (
-              <LogoItem 
-                key={`logo-${index}`}
-                src={logo}
-                index={index}
-              />
-            ))}
-          </InfiniteSlider>
+          {isRendered && (
+            <InfiniteSlider 
+              gap={isMobile ? 16 : 24}
+              duration={40}
+              durationOnHover={120}
+              reverse={true}
+              className="w-full"
+              key="logo-carousel"
+            >
+              {allLogos.map((logo, index) => (
+                <LogoItem 
+                  key={`logo-${index}`}
+                  src={logo}
+                  index={index}
+                />
+              ))}
+            </InfiniteSlider>
+          )}
         </div>
       </div>
     </section>

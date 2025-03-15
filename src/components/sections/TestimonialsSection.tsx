@@ -61,8 +61,8 @@ const TestimonialsSection = () => {
         </h2>
         
         <div className="relative my-8 mt-16 pb-20 mx-auto">
-          {/* Optimized container size for YouTube Shorts format */}
-          <div className="w-[45%] md:w-[35%] lg:w-[31.5%] mx-auto">
+          {/* Increased size for mobile screens by 15% */}
+          <div className="w-[51.75%] md:w-[35%] lg:w-[31.5%] mx-auto">
             {/* Use a persistent wrapper with fixed height to prevent layout shifts */}
             <div className="relative" style={{ aspectRatio: '9/16' }}>
               {playerMounted && !isChangingVideo && (
