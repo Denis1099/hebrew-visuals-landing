@@ -25,16 +25,8 @@ const allLogos = [
 
 const LogoShowcaseSection = () => {
   const isMobile = useIsMobile();
-  const [isRendered, setIsRendered] = useState(false);
+  const [isRendered, setIsRendered] = useState(true); // Set to true by default
   
-  // Set rendered state immediately after first render
-  useEffect(() => {
-    // Use requestAnimationFrame to ensure DOM is ready
-    requestAnimationFrame(() => {
-      setIsRendered(true);
-    });
-  }, []);
-
   // Logo component for consistent styling
   const LogoItem = ({ src, index }: { src: string; index: number }) => (
     <div 
@@ -59,24 +51,22 @@ const LogoShowcaseSection = () => {
         </h2>
         
         <div style={{ height: '100px' }}>
-          {isRendered && (
-            <InfiniteSlider 
-              gap={isMobile ? 16 : 24}
-              duration={40}
-              durationOnHover={120}
-              reverse={true}
-              className="w-full"
-              key="logo-carousel"
-            >
-              {allLogos.map((logo, index) => (
-                <LogoItem 
-                  key={`logo-${index}`}
-                  src={logo}
-                  index={index}
-                />
-              ))}
-            </InfiniteSlider>
-          )}
+          <InfiniteSlider 
+            gap={isMobile ? 16 : 24}
+            duration={40}
+            durationOnHover={120}
+            reverse={true}
+            className="w-full"
+            key="logo-carousel"
+          >
+            {allLogos.map((logo, index) => (
+              <LogoItem 
+                key={`logo-${index}`}
+                src={logo}
+                index={index}
+              />
+            ))}
+          </InfiniteSlider>
         </div>
       </div>
     </section>
