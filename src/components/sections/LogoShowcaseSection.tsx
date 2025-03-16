@@ -1,10 +1,8 @@
-
-import { useEffect, useState } from "react";
-import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import React from 'react';
 import { useIsMobile } from "@/hooks/use-mobile";
 
-// All logos in one array
-const allLogos = [
+// First set of logos (for right-to-left carousel)
+const firstSetLogos = [
   "/lovable-uploads/logos/logo1.webp",
   "/lovable-uploads/logos/logo2.webp",
   "/lovable-uploads/logos/logo3.webp",
@@ -13,6 +11,10 @@ const allLogos = [
   "/lovable-uploads/logos/logo6.webp",
   "/lovable-uploads/logos/logo7.webp",
   "/lovable-uploads/logos/logo8.webp",
+];
+
+// Second set of logos (for left-to-right carousel)
+const secondSetLogos = [
   "/lovable-uploads/logos/logo9.webp",
   "/lovable-uploads/logos/logo10.webp",
   "/lovable-uploads/logos/logo11.webp",
@@ -23,71 +25,156 @@ const allLogos = [
   "/lovable-uploads/logos/logo16.webp",
 ];
 
-const LogoShowcaseSection = () => {
+// Reusable Logo Carousel Component
+const LogoCarousel = ({ 
+  logos, 
+  direction = 'rtl', // 'rtl' (right-to-left) or 'ltr' (left-to-right)
+  animationDuration = 172.5 
+}) => {
   const isMobile = useIsMobile();
-  const [mounted, setMounted] = useState(false);
+  const logoWidth = isMobile ? 120 : 160;
+  const spaceBetween = 16;
   
-  // Set mounted state after component mounts
-  useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
-  }, []);
-
-  // Logo component for consistent styling
-  const LogoItem = ({ src, index }: { src: string; index: number }) => (
-    <div 
-      className="inline-flex h-20 items-center justify-center mx-4 md:mx-6"
-      style={{ width: isMobile ? '120px' : '160px' }}
-    >
-      <img 
-        src={src} 
-        alt={`Client Logo ${index + 1}`} 
-        className="h-full w-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-        style={{ maxWidth: '90%', maxHeight: '90%' }}
-        loading="lazy"
-      />
+  // Generate animation keyframes based on direction
+  const keyframesName = direction === 'rtl' ? 'marquee-rtl' : 'marquee-ltr';
+  
+  // CSS for animations
+  const animationCSS = `
+    @keyframes ${keyframesName}-1 {
+      0% { transform: translateX(${direction === 'rtl' ? '100%' : '-100%'}); }
+      100% { transform: translateX(${direction === 'rtl' ? '-100%' : '100%'}); }
+    }
+    
+    @keyframes ${keyframesName}-2 {
+      0% { transform: translateX(${direction === 'rtl' ? '100%' : '-100%'}); }
+      100% { transform: translateX(${direction === 'rtl' ? '-100%' : '100%'}); }
+    }
+  `;
+  
+  return (
+    <div style={{ height: '100px', overflow: 'hidden', position: 'relative', margin: '2rem 0' }}>
+      {/* First marquee */}
+      <div style={{ 
+        display: 'flex',
+        position: 'absolute',
+        width: 'max-content',
+        animation: `${keyframesName}-1 ${animationDuration}s linear infinite`,
+        animationDelay: '0s'
+      }}>
+        {logos.concat(logos).concat(logos).map((logo, index) => (
+          <div 
+            key={`logo1-${index}`} 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: `${logoWidth}px`,
+              height: '70px',
+              margin: `0 ${spaceBetween/2}px`,
+              flexShrink: 0
+            }}
+          >
+            <img 
+              src={logo} 
+              alt={`Client Logo ${index % logos.length + 1}`} 
+              style={{
+                maxWidth: '90%',
+                maxHeight: '90%',
+                objectFit: 'contain',
+                filter: 'grayscale(100%)',
+                opacity: 0.7,
+                transition: 'all 0.5s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.filter = 'grayscale(0%)';
+                e.currentTarget.style.opacity = '1';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.filter = 'grayscale(100%)';
+                e.currentTarget.style.opacity = '0.7';
+              }}
+            />
+          </div>
+        ))}
+      </div>
+      
+      {/* Second marquee - with offset */}
+      <div style={{ 
+        display: 'flex',
+        position: 'absolute',
+        width: 'max-content',
+        animation: `${keyframesName}-2 ${animationDuration}s linear infinite`,
+        animationDelay: `-${animationDuration / 2}s` /* Half the animation duration */
+      }}>
+        {logos.concat(logos).concat(logos).map((logo, index) => (
+          <div 
+            key={`logo2-${index}`} 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: `${logoWidth}px`,
+              height: '70px',
+              margin: `0 ${spaceBetween/2}px`,
+              flexShrink: 0
+            }}
+          >
+            <img 
+              src={logo} 
+              alt={`Client Logo ${index % logos.length + 1}`} 
+              style={{
+                maxWidth: '90%',
+                maxHeight: '90%',
+                objectFit: 'contain',
+                filter: 'grayscale(100%)',
+                opacity: 0.7,
+                transition: 'all 0.5s ease'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.filter = 'grayscale(0%)';
+                e.currentTarget.style.opacity = '1';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.filter = 'grayscale(100%)';
+                e.currentTarget.style.opacity = '0.7';
+              }}
+            />
+          </div>
+        ))}
+      </div>
+      
+      {/* Inject the animation CSS */}
+      <style dangerouslySetInnerHTML={{ __html: animationCSS }} />
     </div>
   );
+};
 
-  // Loading state while component is mounting
-  if (!mounted) {
-    return (
-      <section className="py-16 backdrop-blur-sm overflow-hidden">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-migdal text-[#6b46c1] text-center mb-12">
-            מבין לקוחותינו
-          </h2>
-          <div className="h-[100px] flex items-center justify-center">Loading...</div>
-        </div>
-      </section>
-    );
-  }
-
+// Main component with both carousels
+const LogoShowcaseSection = () => {
   return (
-    <section className="py-16 backdrop-blur-sm overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section style={{ padding: '4rem 0', position: 'relative' }}>
+      <div style={{ 
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        padding: '0 1rem'
+      }}>
         <h2 className="text-3xl md:text-4xl font-migdal text-[#6b46c1] text-center mb-12">
-          מבין לקוחותינו
+          מבין לקוחותינו:
         </h2>
         
-        <div style={{ height: '100px' }}>
-          <InfiniteSlider 
-            gap={isMobile ? 16 : 24}
-            duration={40}
-            durationOnHover={120}
-            reverse={true}
-            className="w-full"
-            key="logo-carousel"
-          >
-            {allLogos.map((logo, index) => (
-              <LogoItem 
-                key={`logo-${index}`}
-                src={logo}
-                index={index}
-              />
-            ))}
-          </InfiniteSlider>
-        </div>
+        {/* First carousel - right to left */}
+        <LogoCarousel 
+          logos={firstSetLogos} 
+          direction="rtl" 
+          animationDuration={172.5}
+        />
+        
+        {/* Second carousel - left to right */}
+        <LogoCarousel 
+          logos={secondSetLogos} 
+          direction="ltr" 
+          animationDuration={172.5}
+        />
       </div>
     </section>
   );
