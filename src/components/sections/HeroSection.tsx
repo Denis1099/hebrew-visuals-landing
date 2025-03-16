@@ -1,12 +1,46 @@
 
+import { useEffect, useState } from 'react';
 import HeroTitle from './hero/HeroTitle';
 import HeroForm from './hero/HeroForm';
 import AnimatedHeroShapes from './hero/AnimatedHeroShapes';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const HeroSection = () => {
+  const [heroHeight, setHeroHeight] = useState<string>('100vh');
+  const isMobile = useIsMobile();
+
+  // Fix for Chrome mobile viewport height issues
+  useEffect(() => {
+    const setHeight = () => {
+      // Use a more reliable height calculation for mobile devices
+      if (isMobile) {
+        const vh = window.innerHeight;
+        setHeroHeight(`${vh}px`);
+      } else {
+        setHeroHeight('100vh');
+      }
+    };
+
+    // Set initial height
+    setHeight();
+    
+    // Update height on resize and orientation change
+    window.addEventListener('resize', setHeight);
+    window.addEventListener('orientationchange', setHeight);
+    
+    return () => {
+      window.removeEventListener('resize', setHeight);
+      window.removeEventListener('orientationchange', setHeight);
+    };
+  }, [isMobile]);
+
   return (
-    <section id="home" className="relative h-screen flex flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_50%,#ffffff,#abaaaa)]">
+    <section 
+      id="home" 
+      className="relative flex flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_50%,#ffffff,#abaaaa)]"
+      style={{ height: heroHeight, maxHeight: heroHeight, minHeight: heroHeight }}
+    >
       {/* SVG shapes container */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
         <AnimatedHeroShapes />
