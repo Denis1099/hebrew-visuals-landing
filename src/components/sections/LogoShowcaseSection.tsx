@@ -52,7 +52,7 @@ const LogoCarousel = ({
   `;
   
   return (
-    <div style={{ height: '100px', overflow: 'hidden', position: 'relative', margin: '2rem 0' }}>
+    <div style={{ height: '100px', overflow: 'hidden', position: 'relative', marginTop: '2rem' }}>
       {/* First marquee */}
       <div style={{ 
         display: 'flex',
