@@ -1,18 +1,35 @@
 const ProblemSection = () => {
   return (
-    <section className="py-8 md:py-12 relative">
+    <section className="py-8 md:py-12 relative pb-[250px] md:pb-8">
+      {/* Mobile image absolute positioned at the bottom - visible on mobile, hidden on md and up */}
+      <div className="md:hidden absolute bottom-0 left-0 right-0 flex justify-center z-10">
+        <img 
+          src="/lovable-uploads/gabriel-selfie.svg" 
+          alt="Gabriel with camera" 
+          className="w-auto h-[250px]"
+        />
+      </div>
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.87),rgba(226,206,255,0.87))]"></div>
       
       {/* SVG positioned in the top right corner */}
-<div className="absolute top-0 right-0 z-10">
-  <img 
-    src="/lovable-uploads/bottom_arrow.svg" 
-    alt="Arrow" 
-    className="w-[45%] md:w-[45%] lg:w-[50%] h-auto transform rotate-180"
-  />
-</div>
+      <div className="absolute top-0 right-0 z-10">
+        <img 
+          src="/lovable-uploads/bottom_arrow.svg" 
+          alt="Arrow" 
+          className="w-[45%] md:w-[45%] lg:w-[50%] h-auto transform rotate-180"
+        />
+      </div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      {/* Desktop image - hidden on mobile, visible on md and up */}
+      <div className="hidden md:block absolute bottom-0 right-0 z-10">
+        <img 
+          src="/lovable-uploads/gabriel-selfie.svg" 
+          alt="Gabriel with camera" 
+          className="w-auto h-[300px] lg:h-[350px]"
+        />
+      </div>
+      
+      <div className="mx-auto px-4 relative z-10 md:pl-8 md:pr-32 lg:pl-12 lg:pr-40">
         <h2 className="text-4xl md:text-5xl text-center mb-4 md:mb-8 text-[#410175] font-migdal">מרגיש תקוע עם יצירת תוכן לעסק שלך?</h2>
         <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
           <p className="text-xl md:text-3xl font-bold text-[#c6008a] font-gveretlevin">אני לגמרי מבין את זה!</p>
@@ -34,11 +51,13 @@ const ProblemSection = () => {
           <p className="text-3xl md:text-4xl text-[#410175] font-migdal">ליצור תוכן יכול להיות פשוט, קליל ואפילו מהנה.</p>
           <p className="text-lg md:text-2xl font-assistant text-[#410175]">רוצה ללמוד איך לעשות את זה?</p>
           <div className="pt-4 md:pt-6">
-            <a href="#contact" className="inline-block bg-gradient-primary text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
-                transition-all duration-300 ease-in-out w-full sm:w-auto text-base sm:text-lg">
+            <a href="#contact" className="inline-block bg-gradient-primary text-white px-12 py-3 rounded-full font-medium hover:bg-opacity-90 hover:transform hover:scale-105 hover:shadow-lg 
+                transition-all duration-300 ease-in-out w-auto sm:w-auto text-base sm:text-lg">
               תראה לי איך עושים את זה!
             </a>
           </div>
+          
+          {/* Mobile image positioned at the very bottom - visible on mobile, hidden on md and up */}
         </div>
       </div>
     </section>
