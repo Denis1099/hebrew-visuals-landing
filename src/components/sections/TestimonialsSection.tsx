@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-8 md:py-12 md:pb-8 bg-[radial-gradient(circle_at_50%_50%,#ffffff,#abaaaa)]">
+    <section ref={sectionRef} className="py-8 md:py-12 md:pb-8 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.81),rgba(191,135,239,0.81))]">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-migdal text-[#6b46c1] text-center mb-16">
           עזוב אותך גבריאל, תן לי לשמוע מה הלקוחות מספרים:

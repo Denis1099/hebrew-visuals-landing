@@ -8,13 +8,13 @@ const AboutSection = () => {
       <div className="absolute inset-0 bg-white/60 backdrop-blur-sm"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-8 gradient-text">אז היי, אני גבריאל גלמן</h2>
+          <h2 className="text-4xl font-bold font-assistant text-center mb-8 gradient-text">אז היי, אני גבריאל גלמן</h2>
           <div className="space-y-4 md:space-y-6 text-center text-lg">
             <p className="font-bold text-xl">ואני כאן כדי לעזור לך לקחת את העסק שלך לשלב הבא!</p>
             <p>הרבה אנשים עושים סרטונים אבל לא הרבה מממשים את המשוואה:</p>
             
             <motion.div 
-              className="font-bold text-3xl md:text-4xl my-6 text-primary-pink"
+              className="font-gveretlevin text-3xl md:text-4xl my-6 text-primary-pink"
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}

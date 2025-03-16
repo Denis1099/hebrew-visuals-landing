@@ -13,7 +13,7 @@ const ProcessCard = ({ title, description, icon: Icon }: { title: string; descri
 
 const ProcessSection = () => {
   return (
-    <section className="py-8 md:py-16">
+    <section className="py-8 md:py-16 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.87),rgba(171,170,170,0.87))]">
       <div className="container mx-auto px-4" >
         <h2 className="text-4xl font-migdal text-[#410175] text-center mb-8 md:mb-12">
           "מגניב, איך בפועל זה עובד?"

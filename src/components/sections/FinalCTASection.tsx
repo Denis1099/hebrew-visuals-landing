@@ -13,17 +13,17 @@ const FinalCTASection = () => {
           </h2>
           <div className="space-y-6 text-lg">
             <p>אני יודע שזה לא קל לעמוד מול מצלמה, ויכול להיות שאתה מרגיש שלא תמיד יש לך את הזמן או את הכלים לעשות את זה נכון.</p>
-            <p className="text-2xl font-bold text-[#0EA5E9]">אבל תן לי לשאול אותך –</p>
+            <p className="text-3xl font-bold font-gveretlevin text-[#0EA5E9]">אבל תן לי לשאול אותך –</p>
             <p>יש שני סוגי של בעלי עסקים בעולם:</p>
             <ul className="space-y-4">
               <li>אלו שלוקחים את העסק שלהם ברצינות, משקיעים בתוכן איכותי, ומשדרגים את עצמם ואת העסק שלהם.</li>
               <li>ויש את אלו שמניחים לפחדים ולחששות להחזיק אותם במקום.</li>
             </ul>
             <p>(ואת מי אתה חושב שהלקוחות יבחרו? את המותג המוביל או את זה שנשאר מאחור?)</p>
-            <p className="text-2xl font-bold text-[#0EA5E9]">אני שואל אותך,</p>
+            <p className="text-3xl font-gveretlevin font-bold text-[#0EA5E9]">אני שואל אותך,</p>
             <p>איזה סוג של בעל עסק אתה רוצה להיות?</p>
             <p>האם אתה מוכן לשים את הפחדים בצד ולהפוך למוביל בשוק שלך?</p>
-            <p className="text-2xl font-bold text-[#0EA5E9]">הבחירה בידיים שלך.</p>
+            <p className="text-3xl font-gveretlevin font-bold text-[#0EA5E9]">הבחירה בידיים שלך.</p>
             <p>אני משאיר לך הזדמנות אחרונה להשאיר את הפרטים שלך לשיחת ייעוץ והכרת העסק במתנה!</p>
           </div>
           <div className="mt-14">
@@ -37,7 +37,7 @@ const FinalCTASection = () => {
                 height="80"
               />
             </picture>
-            <div className="flex justify-center gap-6 mt-8">
+            <div className="flex justify-center gap-6 mt-8 pb-4">
               <a
                 href="https://www.instagram.com/_gabrielgelman?igsh=MW5oMWZuaHdmZnhjZw=="
                 target="_blank"

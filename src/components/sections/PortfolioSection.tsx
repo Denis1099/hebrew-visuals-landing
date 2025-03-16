@@ -54,14 +54,14 @@ const PortfolioSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-8 bg-[radial-gradient(circle_at_50%_50%,#ffffff,#abaaaa)]">
+    <section ref={sectionRef} className="py-8 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.81),rgba(191,135,239,0.81))]">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-migdal text-[#6b46c1] text-center mb-16">
+        <h2 className="text-4xl font-migdal text-[#6b46c1] text-center mb-12">
           "גבריאל, תראה לי קצת דוגמאות"
         </h2>
-        <p className="text-xl text-center mb-8">טוב ידעתי שתבקשו:</p>
+        <p className="text-xl text-center mb-6">טוב ידעתי שתבקשו:</p>
         
-        <div className="relative my-8 mt-16 pb-20 mx-auto">
+        <div className="relative my-8 mt-14 pb-20 mx-auto">
           {/* Increased size for mobile screens */}
           <div className="w-[60%] md:w-[30%] lg:w-[27%] mx-auto">
             {/* Use a persistent wrapper with fixed height to prevent layout shifts */}

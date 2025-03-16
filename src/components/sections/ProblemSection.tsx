@@ -1,7 +1,7 @@
 const ProblemSection = () => {
   return (
     <section className="py-8 md:py-12 relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-white to-[#e2ceff]/[0.13]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.87),rgba(226,206,255,0.87))]"></div>
       
       {/* SVG positioned in the top right corner */}
 <div className="absolute top-0 right-0 z-10">

@@ -29,13 +29,13 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative text-white font-noto">
-      <div className="absolute inset-0 bg-[#c0017e]/40 backdrop-blur-sm"></div>
+    <section id="contact" className="py-20 relative text-black font-assistant">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#ffffff,#abaaaa)] backdrop-blur-sm"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">בואו נדבר על העסק שלך</h2>
+          <h2 className="text-4xl md:text-5xl font-gveretlevin mb-8">בואו נדבר על העסק שלך!</h2>
           <p className="text-xl md:text-2xl mb-12">
-            השאירו פרטים ואחזור אליכם בהקדם כדי שנוכל להתחיל לעבוד על התוכן שלכם! 🔥
+            השאירו פרטים ואחזור אליכם בהקדם כדי שנוכל להתחיל לעבוד על התוכן שלכם
           </p>
           <ContactForm onSubmit={handleSubmit} isSubmitting={isSubmitting} />
         </div>
