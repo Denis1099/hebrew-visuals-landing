@@ -1,14 +1,10 @@
 
 import { useState, useRef, useEffect } from "react";
 import { YouTubePlayer } from "@/components/ui/youtube-player";
+import portfolioVideos from "@/data/portfolioVideos.json";
 
-const videos = [
-  "3S6Y4INJErM",
-  "0UemEt5qmKg",
-  "15K5t4Q75ao",
-  "eoOcIV1wqL8",
-  "MYtRcs0J4_k"
-];
+// Extract YouTube IDs from the JSON data
+const videos = portfolioVideos.map(video => video.id);
 
 const PortfolioSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -63,7 +59,7 @@ const PortfolioSection = () => {
         
         <div className="relative my-8 mt-14 pb-20 mx-auto">
           {/* Increased size for mobile screens */}
-          <div className="w-[60%] md:w-[30%] lg:w-[27%] mx-auto">
+          <div className="w-[65%] md:w-[30%] lg:w-[27%] mx-auto">
             {/* Use a persistent wrapper with fixed height to prevent layout shifts */}
             <div className="relative" style={{ aspectRatio: '9/16' }}>
               {playerMounted && !isChangingVideo && (

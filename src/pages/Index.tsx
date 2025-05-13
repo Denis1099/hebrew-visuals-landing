@@ -12,11 +12,26 @@ const FinalCTASection = lazy(() => import("@/components/sections/FinalCTASection
 const ContactSection = lazy(() => import("@/components/sections/ContactSection"));
 const LogoShowcaseSection = lazy(() => import("@/components/sections/LogoShowcaseSection"));
 
+// Import PortfolioAdmin for route handling
+const PortfolioAdmin = lazy(() => import("@/components/admin/PortfolioAdmin"));
+
 // Import HeroSection normally since it's above the fold
 import HeroSection from "@/components/sections/HeroSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { useState, useEffect as useEffectOnce } from "react";
 
 const Index = () => {
+  const [showAdmin, setShowAdmin] = useState(false);
+  
+  useEffectOnce(() => {
+    // Check URL for admin parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const adminParam = urlParams.get('admin');
+    if (adminParam === 'portfolio') {
+      setShowAdmin(true);
+    }
+  }, []);
+  
   useEffect(() => {
     let scrollTracked = {
       25: false,
@@ -49,6 +64,18 @@ const Index = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Show admin interface if the admin parameter is present
+  if (showAdmin) {
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <Suspense fallback={<div className="p-12 text-center">טוען ממשק ניהול...</div>}>
+          <PortfolioAdmin />
+        </Suspense>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen relative">
