@@ -102,11 +102,11 @@ const Navbar = () => {
         </Link>
       </div>
       
-      {/* Mobile Menu Button - Changed to align right */}
+      {/* Mobile Menu Button - Fixed alignment to right */}
       <div className="sm:hidden flex justify-end px-4 w-full">
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="p-2 bg-white/50 rounded-full"
+          className="p-2 bg-white/50 rounded-full mr-0 ml-auto"
           aria-label={isMenuOpen ? "סגור תפריט" : "פתח תפריט"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
