@@ -102,7 +102,7 @@ const Navbar = () => {
         </Link>
       </div>
       
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button - Changed to align right */}
       <div className="sm:hidden flex justify-end px-4 w-full">
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
